@@ -22,27 +22,29 @@ claude
 ## 전문가 팀 구성
 
 ```
-핵심 운영팀 (Core Operations)
+운영 지원 (Run the Business)
 ├── Productivity   → 작업 관리, 일정 조율, 메모 정리
-├── Research       → 시장 조사, 경쟁사 분석, 트렌드 리서치
-└── Writing        → 이메일, 문서, 번역
+├── Writing        → 이메일, 문서, 번역
+└── Data           → 데이터 분석, 시각화, 인사이트
 
-확장 운영팀 (Extended Operations)
-├── Data           → 데이터 분석, 시각화, 인사이트
+수익 창출 (Grow the Business)
 ├── Marketing      → 마케팅 콘텐츠, 캠페인 기획
-└── Sales          → 영업 전략, 파이프라인, 제안서
+├── Sales          → 영업 전략, 파이프라인, 제안서
+├── BizDev         → 사업 기회, 파트너십 전략
+└── Product        → 제품 전략, 로드맵, 기능 스펙
 
-전략 자문팀 (Strategic Advisory)
+전문 자문 (Protect the Business)
 ├── Legal          → 계약 검토, 법률 자문
 ├── Compliance     → 규정 준수, 리스크 관리
 ├── Finance        → 재무 분석, 예산 계획
-├── BizDev         → 사업 기회, 파트너십 전략
-├── Product        → 제품 전략, 로드맵, 기능 스펙
-├── Development    → 기술 아키텍처, 개발 프로세스
-├── Design         → UX/UI, 브랜드 가이드라인
-├── HR             → 채용 전략, 조직 문화, 성과 관리
-├── PR             → 보도자료, 위기 관리, 미디어 전략
 └── Security       → 보안 평가, 정책 수립, 보안 감사
+
+조직 기반 (Build the Business)
+├── HR             → 채용 전략, 조직 문화, 성과 관리
+├── Design         → UX/UI, 브랜드 가이드라인
+├── Development    → 기술 아키텍처, 개발 프로세스
+├── PR             → 보도자료, 위기 관리, 미디어 전략
+└── Research       → 시장 조사, 경쟁사 분석, 트렌드 리서치
 ```
 
 ---
