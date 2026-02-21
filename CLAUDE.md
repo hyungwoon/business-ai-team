@@ -6,13 +6,20 @@
 ## 폴더 구조
 ```
 business-ai-team/
-├── agents/           # AI 에이전트 모듈
-│   ├── base_agent.py           # 공통 BaseAgent (Prompt Caching 포함)
+├── agents/           # AI 에이전트 모듈 (시스템 프롬프트 + 전문 지식 원천)
+│   ├── base_agent.py           # 공통 BaseAgent 구조
 │   ├── main_agent.py           # 팀 리더 에이전트
-│   ├── team_orchestrator.py    # 팀 조율 및 8개 통합 Tool 등록
-│   └── [16개 전문가 에이전트]
-├── core/             # 설정, 플러그인 로더
-├── plugins/          # Anthropic 플러그인 (marketing, sales, data, productivity, enterprise-search)
+│   ├── team_orchestrator.py    # 팀 조율 및 8개 통합 Tool 구조
+│   └── [16개 전문가 에이전트]    # 각 도메인별 시스템 프롬프트 보유
+├── core/             # 설정, 플러그인 로더 (구조 참조용)
+├── plugins/          # 16개 도메인별 플러그인 (SKILL.md = 베스트 프랙티스)
+│   ├── marketing/    # brand-voice, content-creation, campaign-planning 등
+│   ├── sales/        # draft-outreach, account-research, call-prep 등
+│   ├── data/         # data-exploration, visualization, sql-queries 등
+│   ├── finance/      # financial-analysis, variance-analysis, audit-support 등
+│   ├── legal/        # contract-review, legal-risk-assessment, nda-triage 등
+│   ├── product/      # product-management, roadmap, feature-spec 등
+│   └── [10개 추가 플러그인]
 ├── archive/          # 사용자 요청 결과물 보관 (컨텍스트 제외 대상)
 │   ├── [프로젝트명]/              # 독립 프로젝트 폴더
 │   ├── [상위프로젝트]/            # 상위 프로젝트 폴더 (하위 스쿼드/팀 포함)
@@ -20,7 +27,7 @@ business-ai-team/
 │   │   └── [스쿼드명]/          # 스쿼드별 하위 폴더
 │   │       └── _context.md      # 스쿼드 작업 기록
 │   └── 기타/                     # 단발성 또는 미분류 결과물
-└── venv/             # Python 가상환경
+└── docs/             # 설계 문서
 ```
 
 ## 세션 종료 의무 절차 (MANDATORY — 절대 생략 불가)
@@ -111,16 +118,11 @@ business-ai-team/
 - **프로젝트 재개 시**: `_context.md` 먼저 읽어 맥락 파악 후 작업 시작
 - **중첩 구조 재개 시**: 상위 `_context.md` → 해당 스쿼드 `_context.md` 순으로 읽어 전체 맥락 파악
 
-### 에이전트 추가 규칙
-- **반드시 BaseAgent 상속** (`agents/base_agent.py`)
-- `super().__init__(plugin_names=[...], use_light_model=False/True)`
-- `self.system_prompt = self._build_system_prompt(base_prompt, "Section Name")`
-- LLM 호출은 `self._call_llm(prompt, max_tokens)` 사용 (Prompt Caching 자동 적용)
-- 응답은 `self._ok(**data)` 또는 `self._err(msg)` 사용
-
-### 모델 계층화 원칙
-- 단순 처리 (메모 정리, 이메일 작성 등) → `use_light_model=True` (Haiku)
-- 복잡한 분석/전략 작업 → `use_light_model=False` (Sonnet, 기본값)
+### 에이전트 지식 관리 원칙
+- `agents/*.py`의 시스템 프롬프트는 각 도메인의 전문 지식 원천
+- `plugins/*/skills/*/SKILL.md`는 도메인별 베스트 프랙티스
+- 에이전트 코드 수정 시 해당 도메인의 전문성이 CLI 세션에도 자동 반영됨
+- 새 도메인 추가 시: 에이전트 .py 생성 + 플러그인 스킬 추가 + 라우팅 테이블 갱신
 
 ## 문서 작성 스타일
 - 기본 언어: 한국어
@@ -128,25 +130,10 @@ business-ai-team/
 - 실용적이고 실행 가능한 내용 중심
 - 불필요한 장식(이모지 등) 최소화
 
-## 자주 사용하는 명령어
-```bash
-# 가상환경 활성화
-source venv/bin/activate
-
-# 시스템 실행
-./venv/bin/python3 assistant.py
-
-# 단일 요청
-./venv/bin/python3 run_request.py "요청 내용"
-
-# 시스템 검증 테스트
-./venv/bin/python3 test_complete_system.py
-```
-
-## 환경 설정
-- Python 3.13
-- Anthropic API 키 필요 (.env 파일)
-- 모델: Sonnet (복잡 작업), Haiku (단순 작업)
+## 운영 환경
+- **실행**: Claude Code CLI (별도 API 키 불필요)
+- **지식 원천**: `agents/` (시스템 프롬프트) + `plugins/` (SKILL.md)
+- **결과물 저장**: `archive/` (로컬 전용, Git 제외)
 
 ## 토큰 최적화 (상세: TOKEN_OPTIMIZATION.md)
 1. 16개 에이전트 → 8개 통합 Tool (Tool 정의 토큰 50% 절감)
@@ -154,3 +141,65 @@ source venv/bin/activate
 3. 히스토리 슬라이딩 윈도우 (장기 세션 30% 절감)
 4. Tool 정의 캐시 (루프당 재구성 방지)
 5. 모델 계층화 (단순 작업 Haiku 사용)
+
+---
+
+## 전문가 라우팅 시스템 (CLI 세션용)
+
+> **CLI에서 비즈니스 요청을 받으면, 해당 전문가 에이전트의 시스템 프롬프트와 플러그인 스킬을 읽어서 그 관점으로 응답한다.**
+
+### 라우팅 절차
+
+1. **요청 분류**: 사용자 요청의 도메인을 파악
+2. **에이전트 참조**: 해당 에이전트의 `.py` 파일에서 `system_prompt`(base_prompt 부분) 읽기
+3. **플러그인 스킬 로드**: 해당 에이전트가 사용하는 `plugins/[name]/skills/[skill]/SKILL.md` 읽기
+4. **전문가 관점 적용**: 에이전트의 전문 분야, 원칙, 플러그인 지식을 반영하여 응답
+5. **복합 요청**: 여러 도메인에 걸친 요청은 관련 에이전트 여러 개를 참조
+
+### 에이전트-플러그인 매핑 테이블
+
+| 요청 키워드 | 에이전트 | 파일 | 플러그인 스킬 |
+|---|---|---|---|
+| 작업관리, 일정, 메모, 생산성 | Productivity | `agents/productivity_agent.py` | `productivity/` → task-management, memory-management |
+| 리서치, 조사, 경쟁사분석, 트렌드 | Research | `agents/research_agent.py` | `marketing/` + `sales/` + `data/` 전체 |
+| 이메일, 문서작성, 번역, 요약 | Writing | `agents/writing_agent.py` | `marketing/` + `sales/` + `customer-support/` |
+| 마케팅, 캠페인, 콘텐츠, 브랜드 | Marketing | `agents/marketing_agent.py` | `marketing/` → brand-voice, content-creation, campaign-planning, competitive-analysis, performance-analytics |
+| 영업, 파이프라인, 제안서, CRM | Sales | `agents/sales_agent.py` | `sales/` → draft-outreach, create-an-asset, daily-briefing, account-research, competitive-intelligence, call-prep |
+| 데이터분석, 시각화, 인사이트, 통계 | Data | `agents/data_agent.py` | `data/` → data-exploration, data-visualization, statistical-analysis, sql-queries, data-validation, data-context-extractor, interactive-dashboard-builder |
+| 계약검토, 법률자문, 규정 | Legal | `agents/legal_agent.py` | `legal/` → contract-review, legal-risk-assessment, compliance, nda-triage, canned-responses, meeting-briefing |
+| 컴플라이언스, 리스크, 감사 | Compliance | `agents/compliance_agent.py` | `compliance/` → risk-management |
+| 재무분석, 예산, 투자, ROI | Finance | `agents/finance_agent.py` | `finance/` → financial-analysis, financial-statements, variance-analysis, journal-entry-prep, reconciliation, audit-support, close-management |
+| 사업개발, 파트너십, 성장전략, M&A | BizDev | `agents/business_dev_agent.py` | `business-dev/` → growth-strategy |
+| 제품전략, 로드맵, 기능스펙, PM | Product | `agents/product_agent.py` | `product/` → product-management, roadmap-management, feature-spec, user-research-synthesis, competitive-analysis, metrics-tracking, stakeholder-comms |
+| 기술아키텍처, 개발프로세스, CTO | Development | `agents/development_agent.py` | `development/` → tech-leadership |
+| UX/UI, 브랜드가이드, 디자인시스템 | Design | `agents/design_agent.py` | `design/` → ux-design |
+| 채용, 조직문화, 성과관리, HR | HR | `agents/hr_agent.py` | `hr/` → talent-management |
+| 보도자료, 위기관리, 미디어전략 | PR | `agents/pr_agent.py` | `pr/` → communications |
+| 보안평가, 보안정책, 사이버보안 | Security | `agents/security_agent.py` | `security/` → cybersecurity |
+
+### 복합 요청 라우팅 예시
+
+- "신규 SaaS 런칭 전략" → Research + Product + Marketing + Sales
+- "시리즈A 투자 준비" → Finance + Legal + BizDev + Product
+- "해외 진출 검토" → Research + Legal + Compliance + BizDev
+- "마케팅 캠페인 성과 분석" → Marketing + Data
+- "신규 채용 및 팀 빌딩" → HR + Finance + Product
+
+### 응답 시 에이전트 표시 (필수)
+
+비즈니스 요청에 응답할 때, **본문 맨 앞에** 어떤 에이전트가 참여했는지 표시한다:
+
+```
+> **담당**: Marketing + Data | 참조 스킬: campaign-planning, performance-analytics
+```
+
+- 단일 에이전트: `> **담당**: Marketing | 참조 스킬: content-creation`
+- 복합 에이전트: `> **담당**: Research + Product + Marketing | 참조 스킬: competitive-analysis, product-management, campaign-planning`
+- 일반 대화(비즈니스 도메인 아님): 표시 생략
+
+### 라우팅 원칙
+
+- **단일 도메인 요청**: 해당 에이전트 1개의 시스템 프롬프트 + 플러그인 스킬 참조
+- **복합 도메인 요청**: 주 에이전트의 관점을 중심으로, 보조 에이전트의 전문성 보충
+- **플러그인 스킬은 필요 시에만**: 모든 스킬을 매번 읽지 않고, 요청과 직접 관련된 스킬만 선택적으로 로드
+- **에이전트 코드가 진실의 원천**: CLAUDE.md의 매핑은 라우팅 가이드일 뿐, 실제 시스템 프롬프트와 스킬 내용은 항상 파일에서 직접 읽기

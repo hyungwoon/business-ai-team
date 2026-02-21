@@ -6,64 +6,45 @@
 
 ---
 
+## 실행 방법
+
+**Claude Code CLI**에서 이 프로젝트 디렉토리를 열면 자동으로 전문가 팀이 활성화됩니다.
+
+```bash
+cd business-ai-team
+claude
+```
+
+별도의 API 키 설정이나 환경 구성은 필요하지 않습니다.
+
+---
+
 ## 전문가 팀 구성
 
 ```
 MainAgent (팀 리더)
 │
 ├── 핵심 운영팀 (Core Operations)
-│   ├── ProductivityAgent   → 작업 관리, 일정 조율, 메모 정리       [Haiku]
-│   ├── ResearchAgent       → 시장 조사, 경쟁사 분석, 트렌드 리서치  [Sonnet]
-│   └── WritingAgent        → 이메일, 문서, 번역                   [Haiku]
+│   ├── ProductivityAgent   → 작업 관리, 일정 조율, 메모 정리
+│   ├── ResearchAgent       → 시장 조사, 경쟁사 분석, 트렌드 리서치
+│   └── WritingAgent        → 이메일, 문서, 번역
 │
 ├── 확장 운영팀 (Extended Operations)
-│   ├── DataAgent           → 데이터 분석, 시각화, 인사이트          [Sonnet]
-│   ├── MarketingAgent      → 마케팅 콘텐츠, 캠페인 기획             [Sonnet]
-│   └── SalesAgent          → 영업 전략, 파이프라인, 제안서           [Sonnet]
+│   ├── DataAgent           → 데이터 분석, 시각화, 인사이트
+│   ├── MarketingAgent      → 마케팅 콘텐츠, 캠페인 기획
+│   └── SalesAgent          → 영업 전략, 파이프라인, 제안서
 │
 └── 전략 자문팀 (Strategic Advisory)
-    ├── LegalAgent          → 계약 검토, 법률 자문                   [Sonnet]
-    ├── ComplianceAgent     → 규정 준수, 리스크 관리                  [Sonnet]
-    ├── FinanceAgent        → 재무 분석, 예산 계획                   [Sonnet]
-    ├── BusinessDevAgent    → 사업 기회, 파트너십 전략                [Sonnet]
-    ├── ProductAgent        → 제품 전략, 로드맵, 기능 스펙            [Sonnet]
-    ├── DevelopmentAgent    → 기술 아키텍처, 개발 프로세스            [Sonnet]
-    ├── DesignAgent         → UX/UI, 브랜드 가이드라인               [Sonnet]
-    ├── HRAgent             → 채용 전략, 조직 문화, 성과 관리         [Sonnet]
-    ├── PRAgent             → 보도자료, 위기 관리, 미디어 전략        [Sonnet]
-    └── SecurityAgent       → 보안 평가, 정책 수립, 보안 감사         [Sonnet]
-```
-
----
-
-## 시작하기
-
-### 1. 환경 설정
-
-```bash
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-```
-
-### 2. API 키 설정
-
-```bash
-cp .env.example .env
-# .env 파일에 ANTHROPIC_API_KEY 입력
-```
-
-### 3. 실행
-
-```bash
-# 대화형 인터페이스
-python3 assistant.py
-
-# 단일 요청 실행
-python3 run_request.py "경쟁사 3곳 분석 후 차별화 전략 보고서 작성해줘"
-
-# 시스템 검증
-python3 test_complete_system.py
+    ├── LegalAgent          → 계약 검토, 법률 자문
+    ├── ComplianceAgent     → 규정 준수, 리스크 관리
+    ├── FinanceAgent        → 재무 분석, 예산 계획
+    ├── BusinessDevAgent    → 사업 기회, 파트너십 전략
+    ├── ProductAgent        → 제품 전략, 로드맵, 기능 스펙
+    ├── DevelopmentAgent    → 기술 아키텍처, 개발 프로세스
+    ├── DesignAgent         → UX/UI, 브랜드 가이드라인
+    ├── HRAgent             → 채용 전략, 조직 문화, 성과 관리
+    ├── PRAgent             → 보도자료, 위기 관리, 미디어 전략
+    └── SecurityAgent       → 보안 평가, 정책 수립, 보안 감사
 ```
 
 ---
@@ -92,53 +73,25 @@ python3 test_complete_system.py
 
 ---
 
-## 아키텍처
+## 작동 원리
 
-### 처리 흐름
+비즈니스 요청이 들어오면, CLI가 **CLAUDE.md의 라우팅 테이블**을 따라 해당 전문가 에이전트의 시스템 프롬프트와 플러그인 스킬을 참조하여 응답합니다.
 
 ```
-사용자 요청
+사용자 요청 (예: "마케팅 캠페인 기획")
     ↓
-MainAgent (팀 리더)
-    │  - 요청 분석
-    │  - Prompt Caching 적용 (시스템 프롬프트 캐시)
-    │  - 히스토리 슬라이딩 윈도우 (최근 20개 메시지)
+CLAUDE.md 라우팅 테이블 → 마케팅 도메인 식별
     ↓
-Tool Use Pattern (8개 통합 Tool)
-    │  - Tool 정의 캐시 (루프당 재구성 없음)
+agents/marketing_agent.py → 시스템 프롬프트 참조
     ↓
-전문가 에이전트 실행
-    │  - Prompt Caching 적용 (각 에이전트 시스템 프롬프트)
-    │  - Plugin 베스트 프랙티스 통합
-    │  - 모델 계층화 (단순 작업 Haiku, 복잡 분석 Sonnet)
+plugins/marketing/skills/ → 베스트 프랙티스 참조
     ↓
-결과 통합 → 사용자
+전문가 관점이 반영된 응답
 ```
 
-### 8개 통합 Tool (토큰 최적화 핵심)
-
-16개 에이전트를 8개 Tool로 묶어 Tool 정의 토큰 50% 절감.
-
-| Tool | 담당 에이전트 |
-|------|-------------|
-| `manage_productivity` | ProductivityAgent |
-| `perform_research` | ResearchAgent |
-| `perform_writing` | WritingAgent |
-| `consult_extended_ops` | Data, Marketing, Sales |
-| `consult_legal_team` | Legal, Compliance |
-| `consult_business_strategy` | Finance, BizDev, Product |
-| `consult_tech_creative` | Development, Design |
-| `consult_org_pr_security` | HR, PR, Security |
-
-### 토큰 최적화 현황
-
-| 최적화 항목 | 절감 효과 |
-|-----------|---------|
-| 8개 통합 Tool (16→8) | Tool 정의 토큰 50% |
-| Prompt Caching (ephemeral) | 입력 토큰 60~90% (캐시 히트 시) |
-| 히스토리 슬라이딩 윈도우 | 장기 세션 30% |
-| Tool 정의 캐시 (루프 외부) | 반복당 5~10% |
-| 모델 계층화 (Haiku/Sonnet) | 단순 작업 60~70% |
+복합 요청은 여러 에이전트의 전문성을 조합합니다:
+- "신규 SaaS 런칭 전략" → Research + Product + Marketing + Sales
+- "시리즈A 투자 준비" → Finance + Legal + BizDev + Product
 
 ---
 
@@ -146,94 +99,44 @@ Tool Use Pattern (8개 통합 Tool)
 
 ```
 business-ai-team/
-├── assistant.py              # 대화형 CLI 인터페이스
-├── run_request.py            # 단일 요청 실행
-├── test_complete_system.py   # 시스템 검증 테스트
-├── requirements.txt
-├── .env.example
-├── .gitignore
-├── CLAUDE.md                 # 개발 가이드 (AI 에이전트용)
-│
-├── agents/
-│   ├── base_agent.py         # 공통 BaseAgent (Prompt Caching 포함)
-│   ├── main_agent.py         # 메인 에이전트 (팀 리더)
-│   ├── team_orchestrator.py  # 팀 조율 및 Tool 등록
-│   ├── productivity_agent.py
-│   ├── research_agent.py
-│   ├── writing_agent.py
-│   ├── data_agent.py
+├── CLAUDE.md                # 시스템 설정 + 전문가 라우팅 테이블
+├── agents/                  # 16개 전문가 에이전트 (시스템 프롬프트 원천)
+│   ├── base_agent.py
+│   ├── main_agent.py
+│   ├── team_orchestrator.py
 │   ├── marketing_agent.py
+│   ├── research_agent.py
 │   ├── sales_agent.py
-│   ├── legal_agent.py
-│   ├── compliance_agent.py
-│   ├── finance_agent.py
-│   ├── business_dev_agent.py
-│   ├── product_agent.py
-│   ├── development_agent.py
-│   ├── design_agent.py
-│   ├── hr_agent.py
-│   ├── pr_agent.py
-│   └── security_agent.py
-│
-├── core/
-│   ├── config.py             # 설정 (모델 계층화 포함)
-│   └── plugin_loader.py      # Anthropic 플러그인 로더
-│
-├── plugins/                  # Anthropic 플러그인
-│   ├── marketing/
-│   ├── productivity/
-│   ├── sales/
-│   ├── data/
-│   └── enterprise-search/
-│
-└── archive/                  # 결과물 보관 (Git 제외)
+│   └── ... (13개 추가 에이전트)
+├── core/                    # 설정 및 플러그인 로더 (구조 참조용)
+├── plugins/                 # 16개 도메인별 플러그인 스킬
+│   ├── marketing/skills/    # brand-voice, content-creation 등
+│   ├── sales/skills/        # draft-outreach, account-research 등
+│   ├── data/skills/         # data-exploration, visualization 등
+│   └── ... (13개 추가 플러그인)
+├── archive/                 # 결과물 보관 (Git 제외)
+└── docs/                    # 설계 문서
 ```
 
 ---
 
-## 새 에이전트 추가 방법
+## 플러그인 스킬 목록
 
-1. `agents/new_agent.py` 생성 (BaseAgent 상속)
-
-```python
-from agents.base_agent import BaseAgent
-
-class NewAgent(BaseAgent):
-    def __init__(self):
-        super().__init__(plugin_names=["marketing"])  # 필요한 플러그인
-        base_prompt = "당신은 ... 전문가입니다."
-        self.system_prompt = self._build_system_prompt(base_prompt)
-
-    async def do_something(self, param: str) -> dict:
-        prompt = f"..."
-        return self._ok(result=self._call_llm(prompt))
-```
-
-2. `agents/team_orchestrator.py`에서 에이전트 등록
-
----
-
-## 설정
-
-`.env` 파일:
-
-```
-ANTHROPIC_API_KEY=your-api-key
-MODEL_NAME=claude-sonnet-4-5          # 복잡한 작업용 (기본값)
-MODEL_NAME_LIGHT=claude-haiku-4-5-20251001  # 단순 작업용
-```
-
----
-
-## 문제 해결
-
-**ANTHROPIC_API_KEY not found**
-`.env` 파일과 API 키를 확인하세요.
-
-**Module not found**
-```bash
-source venv/bin/activate && pip install -r requirements.txt
-```
-
-**Plugin 스킬 경고**
-일부 스킬이 없어도 에이전트는 정상 작동합니다. 경고는 무시해도 됩니다.
+| 플러그인 | 스킬 |
+|---------|------|
+| marketing | brand-voice, content-creation, campaign-planning, competitive-analysis, performance-analytics |
+| sales | draft-outreach, create-an-asset, daily-briefing, account-research, competitive-intelligence, call-prep |
+| data | data-exploration, data-visualization, statistical-analysis, sql-queries, data-validation, data-context-extractor, interactive-dashboard-builder |
+| finance | financial-analysis, financial-statements, variance-analysis, journal-entry-prep, reconciliation, audit-support, close-management |
+| legal | contract-review, legal-risk-assessment, compliance, nda-triage, canned-responses, meeting-briefing |
+| product | product-management, roadmap-management, feature-spec, user-research-synthesis, competitive-analysis, metrics-tracking, stakeholder-comms |
+| productivity | task-management, memory-management |
+| customer-support | ticket-triage, response-drafting, customer-research, escalation, knowledge-management |
+| enterprise-search | search-strategy, knowledge-synthesis, source-management |
+| business-dev | growth-strategy |
+| compliance | risk-management |
+| development | tech-leadership |
+| design | ux-design |
+| hr | talent-management |
+| pr | communications |
+| security | cybersecurity |
