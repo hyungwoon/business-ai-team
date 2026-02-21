@@ -82,7 +82,7 @@ MainAgent (팀 리더)
     ↓
 CLAUDE.md 라우팅 테이블 → 마케팅 도메인 식별
     ↓
-agents/marketing_agent.py → 시스템 프롬프트 참조
+agents/marketing.md → 시스템 프롬프트 참조
     ↓
 plugins/marketing/skills/ → 베스트 프랙티스 참조
     ↓
@@ -101,14 +101,13 @@ plugins/marketing/skills/ → 베스트 프랙티스 참조
 business-ai-team/
 ├── CLAUDE.md                # 시스템 설정 + 전문가 라우팅 테이블
 ├── agents/                  # 16개 전문가 에이전트 (시스템 프롬프트 원천)
-│   ├── base_agent.py
-│   ├── main_agent.py
-│   ├── team_orchestrator.py
-│   ├── marketing_agent.py
-│   ├── research_agent.py
-│   ├── sales_agent.py
+│   ├── _architecture.md
+│   ├── _main.md
+│   ├── _orchestrator.md
+│   ├── marketing.md
+│   ├── research.md
+│   ├── sales.md
 │   └── ... (13개 추가 에이전트)
-├── core/                    # 설정 및 플러그인 로더 (구조 참조용)
 ├── plugins/                 # 16개 도메인별 플러그인 스킬
 │   ├── marketing/skills/    # brand-voice, content-creation 등
 │   ├── sales/skills/        # draft-outreach, account-research 등

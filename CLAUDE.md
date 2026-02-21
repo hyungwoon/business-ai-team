@@ -7,11 +7,10 @@
 ```
 business-ai-team/
 ├── agents/           # AI 에이전트 모듈 (시스템 프롬프트 + 전문 지식 원천)
-│   ├── base_agent.py           # 공통 BaseAgent 구조
-│   ├── main_agent.py           # 팀 리더 에이전트
-│   ├── team_orchestrator.py    # 팀 조율 및 8개 통합 Tool 구조
-│   └── [16개 전문가 에이전트]    # 각 도메인별 시스템 프롬프트 보유
-├── core/             # 설정, 플러그인 로더 (구조 참조용)
+│   ├── _architecture.md        # 공통 구조, 설정, 플러그인 로드
+│   ├── _main.md                # 팀 리더 에이전트
+│   ├── _orchestrator.md        # 팀 조율 및 8개 통합 Tool 구조
+│   └── [16개 전문가 에이전트.md] # 각 도메인별 시스템 프롬프트 보유
 ├── plugins/          # 16개 도메인별 플러그인 (SKILL.md = 베스트 프랙티스)
 │   ├── marketing/    # brand-voice, content-creation, campaign-planning 등
 │   ├── sales/        # draft-outreach, account-research, call-prep 등
@@ -119,10 +118,10 @@ business-ai-team/
 - **중첩 구조 재개 시**: 상위 `_context.md` → 해당 스쿼드 `_context.md` 순으로 읽어 전체 맥락 파악
 
 ### 에이전트 지식 관리 원칙
-- `agents/*.py`의 시스템 프롬프트는 각 도메인의 전문 지식 원천
+- `agents/*.md`의 시스템 프롬프트는 각 도메인의 전문 지식 원천
 - `plugins/*/skills/*/SKILL.md`는 도메인별 베스트 프랙티스
-- 에이전트 코드 수정 시 해당 도메인의 전문성이 CLI 세션에도 자동 반영됨
-- 새 도메인 추가 시: 에이전트 .py 생성 + 플러그인 스킬 추가 + 라우팅 테이블 갱신
+- 에이전트 문서 수정 시 해당 도메인의 전문성이 CLI 세션에도 자동 반영됨
+- 새 도메인 추가 시: 에이전트 .md 생성 + 플러그인 스킬 추가 + 라우팅 테이블 갱신
 
 ## 문서 작성 스타일
 - 기본 언어: 한국어
@@ -151,7 +150,7 @@ business-ai-team/
 ### 라우팅 절차
 
 1. **요청 분류**: 사용자 요청의 도메인을 파악
-2. **에이전트 참조**: 해당 에이전트의 `.py` 파일에서 `system_prompt`(base_prompt 부분) 읽기
+2. **에이전트 참조**: 해당 에이전트의 `.md` 파일에서 시스템 프롬프트 읽기
 3. **플러그인 스킬 로드**: 해당 에이전트가 사용하는 `plugins/[name]/skills/[skill]/SKILL.md` 읽기
 4. **전문가 관점 적용**: 에이전트의 전문 분야, 원칙, 플러그인 지식을 반영하여 응답
 5. **복합 요청**: 여러 도메인에 걸친 요청은 관련 에이전트 여러 개를 참조
@@ -160,22 +159,22 @@ business-ai-team/
 
 | 요청 키워드 | 에이전트 | 파일 | 플러그인 스킬 |
 |---|---|---|---|
-| 작업관리, 일정, 메모, 생산성 | Productivity | `agents/productivity_agent.py` | `productivity/` → task-management, memory-management |
-| 리서치, 조사, 경쟁사분석, 트렌드 | Research | `agents/research_agent.py` | `marketing/` + `sales/` + `data/` 전체 |
-| 이메일, 문서작성, 번역, 요약 | Writing | `agents/writing_agent.py` | `marketing/` + `sales/` + `customer-support/` |
-| 마케팅, 캠페인, 콘텐츠, 브랜드 | Marketing | `agents/marketing_agent.py` | `marketing/` → brand-voice, content-creation, campaign-planning, competitive-analysis, performance-analytics |
-| 영업, 파이프라인, 제안서, CRM | Sales | `agents/sales_agent.py` | `sales/` → draft-outreach, create-an-asset, daily-briefing, account-research, competitive-intelligence, call-prep |
-| 데이터분석, 시각화, 인사이트, 통계 | Data | `agents/data_agent.py` | `data/` → data-exploration, data-visualization, statistical-analysis, sql-queries, data-validation, data-context-extractor, interactive-dashboard-builder |
-| 계약검토, 법률자문, 규정 | Legal | `agents/legal_agent.py` | `legal/` → contract-review, legal-risk-assessment, compliance, nda-triage, canned-responses, meeting-briefing |
-| 컴플라이언스, 리스크, 감사 | Compliance | `agents/compliance_agent.py` | `compliance/` → risk-management |
-| 재무분석, 예산, 투자, ROI | Finance | `agents/finance_agent.py` | `finance/` → financial-analysis, financial-statements, variance-analysis, journal-entry-prep, reconciliation, audit-support, close-management |
-| 사업개발, 파트너십, 성장전략, M&A | BizDev | `agents/business_dev_agent.py` | `business-dev/` → growth-strategy |
-| 제품전략, 로드맵, 기능스펙, PM | Product | `agents/product_agent.py` | `product/` → product-management, roadmap-management, feature-spec, user-research-synthesis, competitive-analysis, metrics-tracking, stakeholder-comms |
-| 기술아키텍처, 개발프로세스, CTO | Development | `agents/development_agent.py` | `development/` → tech-leadership |
-| UX/UI, 브랜드가이드, 디자인시스템 | Design | `agents/design_agent.py` | `design/` → ux-design |
-| 채용, 조직문화, 성과관리, HR | HR | `agents/hr_agent.py` | `hr/` → talent-management |
-| 보도자료, 위기관리, 미디어전략 | PR | `agents/pr_agent.py` | `pr/` → communications |
-| 보안평가, 보안정책, 사이버보안 | Security | `agents/security_agent.py` | `security/` → cybersecurity |
+| 작업관리, 일정, 메모, 생산성 | Productivity | `agents/productivity.md` | `productivity/` → task-management, memory-management |
+| 리서치, 조사, 경쟁사분석, 트렌드 | Research | `agents/research.md` | `marketing/` + `sales/` + `data/` 전체 |
+| 이메일, 문서작성, 번역, 요약 | Writing | `agents/writing.md` | `marketing/` + `sales/` + `customer-support/` |
+| 마케팅, 캠페인, 콘텐츠, 브랜드 | Marketing | `agents/marketing.md` | `marketing/` → brand-voice, content-creation, campaign-planning, competitive-analysis, performance-analytics |
+| 영업, 파이프라인, 제안서, CRM | Sales | `agents/sales.md` | `sales/` → draft-outreach, create-an-asset, daily-briefing, account-research, competitive-intelligence, call-prep |
+| 데이터분석, 시각화, 인사이트, 통계 | Data | `agents/data.md` | `data/` → data-exploration, data-visualization, statistical-analysis, sql-queries, data-validation, data-context-extractor, interactive-dashboard-builder |
+| 계약검토, 법률자문, 규정 | Legal | `agents/legal.md` | `legal/` → contract-review, legal-risk-assessment, compliance, nda-triage, canned-responses, meeting-briefing |
+| 컴플라이언스, 리스크, 감사 | Compliance | `agents/compliance.md` | `compliance/` → risk-management |
+| 재무분석, 예산, 투자, ROI | Finance | `agents/finance.md` | `finance/` → financial-analysis, financial-statements, variance-analysis, journal-entry-prep, reconciliation, audit-support, close-management |
+| 사업개발, 파트너십, 성장전략, M&A | BizDev | `agents/business-dev.md` | `business-dev/` → growth-strategy |
+| 제품전략, 로드맵, 기능스펙, PM | Product | `agents/product.md` | `product/` → product-management, roadmap-management, feature-spec, user-research-synthesis, competitive-analysis, metrics-tracking, stakeholder-comms |
+| 기술아키텍처, 개발프로세스, CTO | Development | `agents/development.md` | `development/` → tech-leadership |
+| UX/UI, 브랜드가이드, 디자인시스템 | Design | `agents/design.md` | `design/` → ux-design |
+| 채용, 조직문화, 성과관리, HR | HR | `agents/hr.md` | `hr/` → talent-management |
+| 보도자료, 위기관리, 미디어전략 | PR | `agents/pr.md` | `pr/` → communications |
+| 보안평가, 보안정책, 사이버보안 | Security | `agents/security.md` | `security/` → cybersecurity |
 
 ### 복합 요청 라우팅 예시
 
@@ -202,4 +201,4 @@ business-ai-team/
 - **단일 도메인 요청**: 해당 에이전트 1개의 시스템 프롬프트 + 플러그인 스킬 참조
 - **복합 도메인 요청**: 주 에이전트의 관점을 중심으로, 보조 에이전트의 전문성 보충
 - **플러그인 스킬은 필요 시에만**: 모든 스킬을 매번 읽지 않고, 요청과 직접 관련된 스킬만 선택적으로 로드
-- **에이전트 코드가 진실의 원천**: CLAUDE.md의 매핑은 라우팅 가이드일 뿐, 실제 시스템 프롬프트와 스킬 내용은 항상 파일에서 직접 읽기
+- **에이전트 문서가 진실의 원천**: CLAUDE.md의 매핑은 라우팅 가이드일 뿐, 실제 시스템 프롬프트와 스킬 내용은 항상 파일에서 직접 읽기
