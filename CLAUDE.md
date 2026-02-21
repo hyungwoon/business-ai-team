@@ -82,7 +82,7 @@ business-ai-team/
 
 #### 중첩 프로젝트 구조 (상위 프로젝트가 있는 경우)
 - 스쿼드/팀이 상위 프로젝트(매거진, 조직 등)에 소속된 경우 → `archive/[상위프로젝트]/[스쿼드명]/` 중첩 구조 사용
-- 현재 적용 사례: `archive/antiegg/그레이스쿼드/`, `archive/antiegg/피플스쿼드/`
+- 예: `archive/[매거진명]/[스쿼드명]/`, `archive/[조직명]/[팀명]/`
 - 상위 프로젝트 폴더에 `_context.md` 생성 — 전체 개요 + 하위 스쿼드 목록 역할
 - 새 스쿼드 추가 시 `archive/[상위프로젝트]/[신규스쿼드]/` 폴더 생성 및 `_context.md` 작성
 - 상위 `_context.md`의 스쿼드 목록 테이블도 함께 업데이트
@@ -110,12 +110,6 @@ business-ai-team/
   - 다음 단계
 - **프로젝트 재개 시**: `_context.md` 먼저 읽어 맥락 파악 후 작업 시작
 - **중첩 구조 재개 시**: 상위 `_context.md` → 해당 스쿼드 `_context.md` 순으로 읽어 전체 맥락 파악
-
-### ANTIEGG 작업 시 참조 에이전트
-- ANTIEGG 관련 작업(아티클 피드백, 기획안 리뷰, 에디터 통계 등) 시 → 편집장 형운 에이전트 참조
-- 에이전트 경로: `/Users/hyungwoonlee/Documents/AI/editor-in-chief/`
-- 스킬 파일(`skill.md`)을 통해 Claude Code 스킬로 직접 호출 가능
-- 상세 정보: `archive/antiegg/_context.md`의 "편집장 형운 에이전트" 섹션 참조
 
 ### 에이전트 추가 규칙
 - **반드시 BaseAgent 상속** (`agents/base_agent.py`)
