@@ -14,7 +14,7 @@ class BusinessDevAgent(BaseAgent):
     """
 
     def __init__(self):
-        super().__init__(plugin_names=["marketing", "sales"])
+        super().__init__(plugin_names=["business-dev", "marketing", "sales"])
 
         base_prompt = """당신은 사업개발 전문가입니다.
 조직의 성장 전략과 전략적 파트너십을 지원합니다.

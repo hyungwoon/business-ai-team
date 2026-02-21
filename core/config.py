@@ -15,7 +15,7 @@ class Settings(BaseSettings):
 
     # Model Configuration
     # 복잡한 분석/전략 작업 (Research, Marketing, Legal 등)
-    model_name: str = "claude-sonnet-4-5"
+    model_name: str = "claude-sonnet-4-6"
     # 단순 처리 작업 (Productivity, Writing 등) - 비용 약 60~70% 절감
     model_name_light: str = "claude-haiku-4-5-20251001"
 

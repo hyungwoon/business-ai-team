@@ -15,8 +15,7 @@ class WritingAgent(BaseAgent):
 
     def __init__(self):
         super().__init__(
-            plugin_names=["marketing", "sales"],
-            skill_names=["content-creation"],
+            plugin_names=["marketing", "sales", "customer-support"],
             use_light_model=True,
         )
 

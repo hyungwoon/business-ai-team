@@ -4,6 +4,7 @@ Business AI Team - Main Agent
 """
 from anthropic import Anthropic
 from typing import List, Dict, Any, Optional, Callable
+import asyncio
 import json
 from pathlib import Path
 import sys
@@ -135,7 +136,7 @@ class MainAgent:
             # Prompt Caching 적용: system을 캐시 블록으로 전송 (Step 1)
             response = self.client.messages.create(
                 model=self.settings.model_name,
-                max_tokens=4096,
+                max_tokens=2048,
                 system=[
                     {
                         "type": "text",
@@ -168,49 +169,53 @@ class MainAgent:
                     "content": response.content
                 })
 
-                tool_results_content = []
-                for tool_use in tool_uses:
+                async def _execute_tool(tool_use) -> Dict[str, Any]:
                     tool_name = tool_use.name
                     tool_input = tool_use.input
                     tool_id = tool_use.id
 
-                    if tool_name in self.tools:
-                        handler = self.tools[tool_name]["handler"]
+                    if tool_name not in self.tools:
+                        return {
+                            "tool_result": {
+                                "type": "tool_result",
+                                "tool_use_id": tool_id,
+                                "content": f"Tool '{tool_name}' not found",
+                                "is_error": True
+                            },
+                            "log": None
+                        }
 
-                        try:
-                            result = await handler(**tool_input)
-                            tool_results.append({
-                                "tool": tool_name,
-                                "input": tool_input,
-                                "result": result,
-                                "success": True
-                            })
-                            tool_results_content.append({
+                    handler = self.tools[tool_name]["handler"]
+                    try:
+                        result = await handler(**tool_input)
+                        return {
+                            "tool_result": {
                                 "type": "tool_result",
                                 "tool_use_id": tool_id,
                                 "content": json.dumps(result, ensure_ascii=False)
-                            })
-                        except Exception as e:
-                            error_msg = f"Error: {str(e)}"
-                            tool_results.append({
-                                "tool": tool_name,
-                                "input": tool_input,
-                                "error": error_msg,
-                                "success": False
-                            })
-                            tool_results_content.append({
+                            },
+                            "log": {"tool": tool_name, "input": tool_input, "result": result, "success": True}
+                        }
+                    except Exception as e:
+                        error_msg = f"Error: {str(e)}"
+                        return {
+                            "tool_result": {
                                 "type": "tool_result",
                                 "tool_use_id": tool_id,
                                 "content": error_msg,
                                 "is_error": True
-                            })
-                    else:
-                        tool_results_content.append({
-                            "type": "tool_result",
-                            "tool_use_id": tool_id,
-                            "content": f"Tool '{tool_name}' not found",
-                            "is_error": True
-                        })
+                            },
+                            "log": {"tool": tool_name, "input": tool_input, "error": error_msg, "success": False}
+                        }
+
+                # 여러 Tool 동시 병렬 실행
+                executed = await asyncio.gather(*[_execute_tool(tu) for tu in tool_uses])
+
+                tool_results_content = []
+                for item in executed:
+                    tool_results_content.append(item["tool_result"])
+                    if item["log"]:
+                        tool_results.append(item["log"])
 
                 messages.append({
                     "role": "user",

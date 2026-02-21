@@ -23,6 +23,8 @@ class BaseAgent:
     - 응답 포맷 표준화
     """
 
+    _shared_client: Optional[Anthropic] = None  # 모든 에이전트가 공유하는 클라이언트
+
     def __init__(
         self,
         plugin_names: Optional[list] = None,
@@ -30,7 +32,9 @@ class BaseAgent:
         use_light_model: bool = False,
     ):
         self.settings = get_settings()
-        self.client = Anthropic(api_key=self.settings.anthropic_api_key)
+        if BaseAgent._shared_client is None:
+            BaseAgent._shared_client = Anthropic(api_key=self.settings.anthropic_api_key)
+        self.client = BaseAgent._shared_client
         self.use_light_model = use_light_model
         self._skills = self._load_skills(plugin_names, skill_names)
 

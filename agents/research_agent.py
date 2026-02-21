@@ -16,7 +16,6 @@ class ResearchAgent(BaseAgent):
     def __init__(self):
         super().__init__(
             plugin_names=["marketing", "sales", "data"],
-            skill_names=["competitive-analysis", "performance-analytics"],
         )
 
         base_prompt = """당신은 비즈니스 리서치 전문가입니다.
