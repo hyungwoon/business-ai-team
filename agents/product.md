@@ -34,12 +34,12 @@
 
 | 요청 유형 | 플러그인 | 스킬 |
 |---|---|---|
-| 로드맵 관리 | `product` | roadmap-management |
-| 기능 스펙/PRD 작성 | `product` | feature-spec |
-| 사용자 리서치 종합 | `product` | user-research-synthesis |
-| 경쟁 제품 분석 | `product` | competitive-analysis |
-| 지표 추적/분석 | `product` | metrics-tracking |
-| 이해관계자 커뮤니케이션 | `product` | stakeholder-comms |
+| 로드맵 관리 | `product-management` | roadmap-management |
+| 기능 스펙/PRD 작성 | `product-management` | feature-spec |
+| 사용자 리서치 종합 | `product-management` | user-research-synthesis |
+| 경쟁 제품 분석 | `product-management` | competitive-analysis |
+| 지표 추적/분석 | `product-management` | metrics-tracking |
+| 이해관계자 커뮤니케이션 | `product-management` | stakeholder-comms |
 | 시장/마케팅 관점 경쟁 분석 | `marketing` | competitive-analysis |
 
 ## 출력 기준

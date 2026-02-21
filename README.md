@@ -22,29 +22,27 @@ claude
 ## 전문가 팀 구성
 
 ```
-MainAgent (팀 리더)
-│
-├── 핵심 운영팀 (Core Operations)
-│   ├── ProductivityAgent   → 작업 관리, 일정 조율, 메모 정리
-│   ├── ResearchAgent       → 시장 조사, 경쟁사 분석, 트렌드 리서치
-│   └── WritingAgent        → 이메일, 문서, 번역
-│
-├── 확장 운영팀 (Extended Operations)
-│   ├── DataAgent           → 데이터 분석, 시각화, 인사이트
-│   ├── MarketingAgent      → 마케팅 콘텐츠, 캠페인 기획
-│   └── SalesAgent          → 영업 전략, 파이프라인, 제안서
-│
-└── 전략 자문팀 (Strategic Advisory)
-    ├── LegalAgent          → 계약 검토, 법률 자문
-    ├── ComplianceAgent     → 규정 준수, 리스크 관리
-    ├── FinanceAgent        → 재무 분석, 예산 계획
-    ├── BusinessDevAgent    → 사업 기회, 파트너십 전략
-    ├── ProductAgent        → 제품 전략, 로드맵, 기능 스펙
-    ├── DevelopmentAgent    → 기술 아키텍처, 개발 프로세스
-    ├── DesignAgent         → UX/UI, 브랜드 가이드라인
-    ├── HRAgent             → 채용 전략, 조직 문화, 성과 관리
-    ├── PRAgent             → 보도자료, 위기 관리, 미디어 전략
-    └── SecurityAgent       → 보안 평가, 정책 수립, 보안 감사
+핵심 운영팀 (Core Operations)
+├── Productivity   → 작업 관리, 일정 조율, 메모 정리
+├── Research       → 시장 조사, 경쟁사 분석, 트렌드 리서치
+└── Writing        → 이메일, 문서, 번역
+
+확장 운영팀 (Extended Operations)
+├── Data           → 데이터 분석, 시각화, 인사이트
+├── Marketing      → 마케팅 콘텐츠, 캠페인 기획
+└── Sales          → 영업 전략, 파이프라인, 제안서
+
+전략 자문팀 (Strategic Advisory)
+├── Legal          → 계약 검토, 법률 자문
+├── Compliance     → 규정 준수, 리스크 관리
+├── Finance        → 재무 분석, 예산 계획
+├── BizDev         → 사업 기회, 파트너십 전략
+├── Product        → 제품 전략, 로드맵, 기능 스펙
+├── Development    → 기술 아키텍처, 개발 프로세스
+├── Design         → UX/UI, 브랜드 가이드라인
+├── HR             → 채용 전략, 조직 문화, 성과 관리
+├── PR             → 보도자료, 위기 관리, 미디어 전략
+└── Security       → 보안 평가, 정책 수립, 보안 감사
 ```
 
 ---
@@ -100,10 +98,7 @@ plugins/marketing/skills/ → 베스트 프랙티스 참조
 ```
 business-ai-team/
 ├── CLAUDE.md                # 시스템 설정 + 전문가 라우팅 테이블
-├── agents/                  # 16개 전문가 에이전트 (시스템 프롬프트 원천)
-│   ├── _architecture.md
-│   ├── _main.md
-│   ├── _orchestrator.md
+├── agents/                  # 16개 전문가 에이전트 (시스템 프롬프트 + 스킬 라우팅)
 │   ├── marketing.md
 │   ├── research.md
 │   ├── sales.md
@@ -126,9 +121,9 @@ business-ai-team/
 | marketing | brand-voice, content-creation, campaign-planning, competitive-analysis, performance-analytics |
 | sales | draft-outreach, create-an-asset, daily-briefing, account-research, competitive-intelligence, call-prep |
 | data | data-exploration, data-visualization, statistical-analysis, sql-queries, data-validation, data-context-extractor, interactive-dashboard-builder |
-| finance | financial-analysis, financial-statements, variance-analysis, journal-entry-prep, reconciliation, audit-support, close-management |
+| finance | financial-statements, variance-analysis, journal-entry-prep, reconciliation, audit-support, close-management |
 | legal | contract-review, legal-risk-assessment, compliance, nda-triage, canned-responses, meeting-briefing |
-| product | product-management, roadmap-management, feature-spec, user-research-synthesis, competitive-analysis, metrics-tracking, stakeholder-comms |
+| product-management | roadmap-management, feature-spec, user-research-synthesis, competitive-analysis, metrics-tracking, stakeholder-comms |
 | productivity | task-management, memory-management |
 | customer-support | ticket-triage, response-drafting, customer-research, escalation, knowledge-management |
 | enterprise-search | search-strategy, knowledge-synthesis, source-management |

@@ -14,7 +14,7 @@ business-ai-team/
 │   ├── data/         # data-exploration, visualization, sql-queries 등
 │   ├── finance/      # financial-statements, variance-analysis, audit-support 등
 │   ├── legal/        # contract-review, legal-risk-assessment, nda-triage 등
-│   ├── product/      # roadmap-management, feature-spec, metrics-tracking 등
+│   ├── product-management/  # roadmap-management, feature-spec, metrics-tracking 등
 │   └── [10개 추가 플러그인]
 ├── archive/          # 사용자 요청 결과물 보관 (컨텍스트 제외 대상)
 │   ├── [프로젝트명]/              # 독립 프로젝트 폴더
@@ -159,7 +159,7 @@ business-ai-team/
 | 컴플라이언스, 리스크, 감사 | Compliance | `agents/compliance.md` | `compliance/` → risk-management |
 | 재무분석, 예산, 투자, ROI | Finance | `agents/finance.md` | `finance/` → financial-statements, variance-analysis, journal-entry-prep, reconciliation, audit-support, close-management |
 | 사업개발, 파트너십, 성장전략, M&A | BizDev | `agents/business-dev.md` | `business-dev/` → growth-strategy |
-| 제품전략, 로드맵, 기능스펙, PM | Product | `agents/product.md` | `product/` → roadmap-management, feature-spec, user-research-synthesis, competitive-analysis, metrics-tracking, stakeholder-comms |
+| 제품전략, 로드맵, 기능스펙, PM | Product | `agents/product.md` | `product-management/` → roadmap-management, feature-spec, user-research-synthesis, competitive-analysis, metrics-tracking, stakeholder-comms |
 | 기술아키텍처, 개발프로세스, CTO | Development | `agents/development.md` | `development/` → tech-leadership |
 | UX/UI, 브랜드가이드, 디자인시스템 | Design | `agents/design.md` | `design/` → ux-design |
 | 채용, 조직문화, 성과관리, HR | HR | `agents/hr.md` | `hr/` → talent-management |
