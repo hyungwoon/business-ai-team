@@ -8,14 +8,14 @@
 business-ai-team/
 ├── agents/           # AI 에이전트 모듈 (시스템 프롬프트 + 전문 지식 원천)
 │   └── [16개 전문가 에이전트.md] # 각 도메인별 시스템 프롬프트 + 스킬 라우팅
-├── plugins/          # 16개 도메인별 플러그인 (SKILL.md = 베스트 프랙티스)
+├── plugins/          # 18개 도메인별 플러그인 (SKILL.md = 베스트 프랙티스)
 │   ├── marketing/    # brand-voice, content-creation, campaign-planning 등
 │   ├── sales/        # draft-outreach, account-research, call-prep 등
 │   ├── data/         # data-exploration, visualization, sql-queries 등
 │   ├── finance/      # financial-statements, variance-analysis, audit-support 등
 │   ├── legal/        # contract-review, legal-risk-assessment, nda-triage 등
 │   ├── product-management/  # roadmap-management, feature-spec, metrics-tracking 등
-│   └── [10개 추가 플러그인]
+│   └── [12개 추가 플러그인]
 ├── archive/          # 사용자 요청 결과물 보관 (컨텍스트 제외 대상)
 │   ├── [프로젝트명]/              # 독립 프로젝트 폴더
 │   ├── [상위프로젝트]/            # 상위 프로젝트 폴더 (하위 스쿼드/팀 포함)

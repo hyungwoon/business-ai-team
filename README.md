@@ -103,7 +103,7 @@ business-ai-team/
 │   ├── research.md
 │   ├── sales.md
 │   └── ... (13개 추가 에이전트)
-├── plugins/                 # 16개 도메인별 플러그인 스킬
+├── plugins/                 # 18개 도메인별 플러그인 스킬
 │   ├── marketing/skills/    # brand-voice, content-creation 등
 │   ├── sales/skills/        # draft-outreach, account-research 등
 │   ├── data/skills/         # data-exploration, visualization 등
@@ -116,7 +116,7 @@ business-ai-team/
 
 ## 플러그인 스킬 목록
 
-9개 플러그인은 [Anthropic knowledge-work-plugins](https://github.com/anthropics/knowledge-work-plugins)에서 가져왔으며, 7개는 이 프로젝트에서 자체 생성했습니다.
+11개 플러그인은 [Anthropic knowledge-work-plugins](https://github.com/anthropics/knowledge-work-plugins)에서 가져왔으며, 7개는 이 프로젝트에서 자체 생성했습니다.
 
 | 플러그인 | 출처 | 스킬 |
 |---------|------|------|
@@ -129,6 +129,8 @@ business-ai-team/
 | productivity | Anthropic | task-management, memory-management |
 | customer-support | Anthropic | ticket-triage, response-drafting, customer-research, escalation, knowledge-management |
 | enterprise-search | Anthropic | search-strategy, knowledge-synthesis, source-management |
+| bio-research | Anthropic | instrument-data-to-allotrope, nextflow-development, scientific-problem-selection, scvi-tools, single-cell-rna-qc |
+| cowork-plugin-management | Anthropic | cowork-plugin-customizer, create-cowork-plugin |
 | business-dev | 자체 | growth-strategy |
 | compliance | 자체 | risk-management |
 | development | 자체 | tech-leadership |
