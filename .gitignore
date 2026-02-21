@@ -21,6 +21,9 @@ __pycache__/
 # Archive (결과물 보관, 버전 관리 제외)
 archive/
 
+# Docs (설계 문서, 로컬 전용)
+docs/
+
 # Claude Code 로컬 설정
 .claude/
 
