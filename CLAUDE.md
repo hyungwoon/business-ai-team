@@ -12,9 +12,9 @@ business-ai-team/
 │   ├── marketing/    # brand-voice, content-creation, campaign-planning 등
 │   ├── sales/        # draft-outreach, account-research, call-prep 등
 │   ├── data/         # data-exploration, visualization, sql-queries 등
-│   ├── finance/      # financial-analysis, variance-analysis, audit-support 등
+│   ├── finance/      # financial-statements, variance-analysis, audit-support 등
 │   ├── legal/        # contract-review, legal-risk-assessment, nda-triage 등
-│   ├── product/      # product-management, roadmap, feature-spec 등
+│   ├── product/      # roadmap-management, feature-spec, metrics-tracking 등
 │   └── [10개 추가 플러그인]
 ├── archive/          # 사용자 요청 결과물 보관 (컨텍스트 제외 대상)
 │   ├── [프로젝트명]/              # 독립 프로젝트 폴더
@@ -183,7 +183,7 @@ business-ai-team/
 ```
 
 - 단일 에이전트: `> **담당**: Marketing | 참조 스킬: content-creation`
-- 복합 에이전트: `> **담당**: Research + Product + Marketing | 참조 스킬: competitive-analysis, product-management, campaign-planning`
+- 복합 에이전트: `> **담당**: Research + Product + Marketing | 참조 스킬: competitive-analysis, feature-spec, campaign-planning`
 - 일반 대화(비즈니스 도메인 아님): 표시 생략
 
 ### 라우팅 원칙
