@@ -1,11 +1,5 @@
 # Environment
 .env
-venv/
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-.Python
 
 # macOS
 .DS_Store
