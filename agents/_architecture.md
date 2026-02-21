@@ -11,14 +11,14 @@
 3. **모델 선택**: 작업 복잡도에 따라 Sonnet 또는 Haiku 사용
 4. **Prompt Caching**: 시스템 프롬프트를 ephemeral 캐시 블록으로 전송하여 반복 호출 시 입력 토큰 60~90% 절감
 
-## 설정 (기존 core/config.py 내용)
+## 설정
 
 - **API 키**: 환경 변수 `ANTHROPIC_API_KEY`
 - **기본 모델**: `claude-sonnet-4-6` (복잡한 분석/전략 작업)
 - **경량 모델**: `claude-haiku-4-5-20251001` (단순 처리 작업 — 비용 60~70% 절감)
 - **환경 파일**: `.env`
 
-## 플러그인 로드 (기존 core/plugin_loader.py 내용)
+## 플러그인 로드
 
 플러그인 스킬은 다음 경로 규칙을 따른다:
 - 매니페스트: `plugins/[name]/.claude-plugin/plugin.json`

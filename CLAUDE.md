@@ -160,16 +160,16 @@ business-ai-team/
 | 요청 키워드 | 에이전트 | 파일 | 플러그인 스킬 |
 |---|---|---|---|
 | 작업관리, 일정, 메모, 생산성 | Productivity | `agents/productivity.md` | `productivity/` → task-management, memory-management |
-| 리서치, 조사, 경쟁사분석, 트렌드 | Research | `agents/research.md` | `marketing/` + `sales/` + `data/` 전체 |
-| 이메일, 문서작성, 번역, 요약 | Writing | `agents/writing.md` | `marketing/` + `sales/` + `customer-support/` |
+| 리서치, 조사, 경쟁사분석, 트렌드 | Research | `agents/research.md` | `marketing/` → competitive-analysis · `sales/` → account-research, competitive-intelligence · `data/` → data-exploration |
+| 이메일, 문서작성, 번역, 요약 | Writing | `agents/writing.md` | `marketing/` → brand-voice, content-creation · `sales/` → draft-outreach, create-an-asset · `customer-support/` → response-drafting |
 | 마케팅, 캠페인, 콘텐츠, 브랜드 | Marketing | `agents/marketing.md` | `marketing/` → brand-voice, content-creation, campaign-planning, competitive-analysis, performance-analytics |
 | 영업, 파이프라인, 제안서, CRM | Sales | `agents/sales.md` | `sales/` → draft-outreach, create-an-asset, daily-briefing, account-research, competitive-intelligence, call-prep |
 | 데이터분석, 시각화, 인사이트, 통계 | Data | `agents/data.md` | `data/` → data-exploration, data-visualization, statistical-analysis, sql-queries, data-validation, data-context-extractor, interactive-dashboard-builder |
 | 계약검토, 법률자문, 규정 | Legal | `agents/legal.md` | `legal/` → contract-review, legal-risk-assessment, compliance, nda-triage, canned-responses, meeting-briefing |
 | 컴플라이언스, 리스크, 감사 | Compliance | `agents/compliance.md` | `compliance/` → risk-management |
-| 재무분석, 예산, 투자, ROI | Finance | `agents/finance.md` | `finance/` → financial-analysis, financial-statements, variance-analysis, journal-entry-prep, reconciliation, audit-support, close-management |
+| 재무분석, 예산, 투자, ROI | Finance | `agents/finance.md` | `finance/` → financial-statements, variance-analysis, journal-entry-prep, reconciliation, audit-support, close-management |
 | 사업개발, 파트너십, 성장전략, M&A | BizDev | `agents/business-dev.md` | `business-dev/` → growth-strategy |
-| 제품전략, 로드맵, 기능스펙, PM | Product | `agents/product.md` | `product/` → product-management, roadmap-management, feature-spec, user-research-synthesis, competitive-analysis, metrics-tracking, stakeholder-comms |
+| 제품전략, 로드맵, 기능스펙, PM | Product | `agents/product.md` | `product/` → roadmap-management, feature-spec, user-research-synthesis, competitive-analysis, metrics-tracking, stakeholder-comms |
 | 기술아키텍처, 개발프로세스, CTO | Development | `agents/development.md` | `development/` → tech-leadership |
 | UX/UI, 브랜드가이드, 디자인시스템 | Design | `agents/design.md` | `design/` → ux-design |
 | 채용, 조직문화, 성과관리, HR | HR | `agents/hr.md` | `hr/` → talent-management |
