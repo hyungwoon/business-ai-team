@@ -1,0 +1,28 @@
+# Environment
+.env
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Archive (결과물 보관, 버전 관리 제외)
+archive/
+
+# Claude Code 로컬 설정
+.claude/
+
+# Logs
+*.log
