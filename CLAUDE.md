@@ -7,10 +7,7 @@
 ```
 business-ai-team/
 ├── agents/           # AI 에이전트 모듈 (시스템 프롬프트 + 전문 지식 원천)
-│   ├── _architecture.md        # 공통 구조, 설정, 플러그인 로드
-│   ├── _main.md                # 팀 리더 에이전트
-│   ├── _orchestrator.md        # 팀 조율 및 8개 통합 Tool 구조
-│   └── [16개 전문가 에이전트.md] # 각 도메인별 시스템 프롬프트 보유
+│   └── [16개 전문가 에이전트.md] # 각 도메인별 시스템 프롬프트 + 스킬 라우팅
 ├── plugins/          # 16개 도메인별 플러그인 (SKILL.md = 베스트 프랙티스)
 │   ├── marketing/    # brand-voice, content-creation, campaign-planning 등
 │   ├── sales/        # draft-outreach, account-research, call-prep 등
@@ -133,13 +130,6 @@ business-ai-team/
 - **실행**: Claude Code CLI (별도 API 키 불필요)
 - **지식 원천**: `agents/` (시스템 프롬프트) + `plugins/` (SKILL.md)
 - **결과물 저장**: `archive/` (로컬 전용, Git 제외)
-
-## 토큰 최적화 (상세: TOKEN_OPTIMIZATION.md)
-1. 16개 에이전트 → 8개 통합 Tool (Tool 정의 토큰 50% 절감)
-2. Prompt Caching 적용 (입력 토큰 60~90% 절감)
-3. 히스토리 슬라이딩 윈도우 (장기 세션 30% 절감)
-4. Tool 정의 캐시 (루프당 재구성 방지)
-5. 모델 계층화 (단순 작업 Haiku 사용)
 
 ---
 
