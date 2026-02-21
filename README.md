@@ -116,21 +116,23 @@ business-ai-team/
 
 ## 플러그인 스킬 목록
 
-| 플러그인 | 스킬 |
-|---------|------|
-| marketing | brand-voice, content-creation, campaign-planning, competitive-analysis, performance-analytics |
-| sales | draft-outreach, create-an-asset, daily-briefing, account-research, competitive-intelligence, call-prep |
-| data | data-exploration, data-visualization, statistical-analysis, sql-queries, data-validation, data-context-extractor, interactive-dashboard-builder |
-| finance | financial-statements, variance-analysis, journal-entry-prep, reconciliation, audit-support, close-management |
-| legal | contract-review, legal-risk-assessment, compliance, nda-triage, canned-responses, meeting-briefing |
-| product-management | roadmap-management, feature-spec, user-research-synthesis, competitive-analysis, metrics-tracking, stakeholder-comms |
-| productivity | task-management, memory-management |
-| customer-support | ticket-triage, response-drafting, customer-research, escalation, knowledge-management |
-| enterprise-search | search-strategy, knowledge-synthesis, source-management |
-| business-dev | growth-strategy |
-| compliance | risk-management |
-| development | tech-leadership |
-| design | ux-design |
-| hr | talent-management |
-| pr | communications |
-| security | cybersecurity |
+9개 플러그인은 [Anthropic knowledge-work-plugins](https://github.com/anthropics/knowledge-work-plugins)에서 가져왔으며, 7개는 이 프로젝트에서 자체 생성했습니다.
+
+| 플러그인 | 출처 | 스킬 |
+|---------|------|------|
+| marketing | Anthropic | brand-voice, content-creation, campaign-planning, competitive-analysis, performance-analytics |
+| sales | Anthropic | draft-outreach, create-an-asset, daily-briefing, account-research, competitive-intelligence, call-prep |
+| data | Anthropic | data-exploration, data-visualization, statistical-analysis, sql-queries, data-validation, data-context-extractor, interactive-dashboard-builder |
+| finance | Anthropic | financial-statements, variance-analysis, journal-entry-prep, reconciliation, audit-support, close-management |
+| legal | Anthropic | contract-review, legal-risk-assessment, compliance, nda-triage, canned-responses, meeting-briefing |
+| product-management | Anthropic | roadmap-management, feature-spec, user-research-synthesis, competitive-analysis, metrics-tracking, stakeholder-comms |
+| productivity | Anthropic | task-management, memory-management |
+| customer-support | Anthropic | ticket-triage, response-drafting, customer-research, escalation, knowledge-management |
+| enterprise-search | Anthropic | search-strategy, knowledge-synthesis, source-management |
+| business-dev | 자체 | growth-strategy |
+| compliance | 자체 | risk-management |
+| development | 자체 | tech-leadership |
+| design | 자체 | ux-design |
+| hr | 자체 | talent-management |
+| pr | 자체 | communications |
+| security | 자체 | cybersecurity |
