@@ -150,7 +150,7 @@ business-ai-team/
 | 요청 키워드 | 에이전트 | 파일 | 플러그인 스킬 |
 |---|---|---|---|
 | 작업관리, 일정, 메모, 생산성 | Productivity | `agents/productivity.md` | `productivity/` → task-management, memory-management |
-| 리서치, 조사, 경쟁사분석, 트렌드 | Research | `agents/research.md` | `marketing/` → competitive-analysis · `sales/` → account-research, competitive-intelligence · `data/` → data-exploration |
+| 리서치, 조사, 경쟁사분석, 트렌드, 생명과학 | Research | `agents/research.md` | `marketing/` → competitive-analysis · `sales/` → account-research, competitive-intelligence · `data/` → data-exploration · `bio-research/` → scientific-problem-selection, single-cell-rna-qc, scvi-tools, nextflow-development, instrument-data-to-allotrope |
 | 이메일, 문서작성, 번역, 요약 | Writing | `agents/writing.md` | `marketing/` → brand-voice, content-creation · `sales/` → draft-outreach, create-an-asset · `customer-support/` → response-drafting |
 | 마케팅, 캠페인, 콘텐츠, 브랜드 | Marketing | `agents/marketing.md` | `marketing/` → brand-voice, content-creation, campaign-planning, competitive-analysis, performance-analytics |
 | 영업, 파이프라인, 제안서, CRM | Sales | `agents/sales.md` | `sales/` → draft-outreach, create-an-asset, daily-briefing, account-research, competitive-intelligence, call-prep |
@@ -160,7 +160,7 @@ business-ai-team/
 | 재무분석, 예산, 투자, ROI | Finance | `agents/finance.md` | `finance/` → financial-statements, variance-analysis, journal-entry-prep, reconciliation, audit-support, close-management |
 | 사업개발, 파트너십, 성장전략, M&A | BizDev | `agents/business-dev.md` | `business-dev/` → growth-strategy |
 | 제품전략, 로드맵, 기능스펙, PM | Product | `agents/product.md` | `product-management/` → roadmap-management, feature-spec, user-research-synthesis, competitive-analysis, metrics-tracking, stakeholder-comms |
-| 기술아키텍처, 개발프로세스, CTO | Development | `agents/development.md` | `development/` → tech-leadership |
+| 기술아키텍처, 개발프로세스, CTO, 플러그인관리 | Development | `agents/development.md` | `development/` → tech-leadership · `cowork-plugin-management/` → cowork-plugin-customizer, create-cowork-plugin |
 | UX/UI, 브랜드가이드, 디자인시스템 | Design | `agents/design.md` | `design/` → ux-design |
 | 채용, 조직문화, 성과관리, HR | HR | `agents/hr.md` | `hr/` → talent-management |
 | 보도자료, 위기관리, 미디어전략 | PR | `agents/pr.md` | `pr/` → communications |

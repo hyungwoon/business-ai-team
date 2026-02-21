@@ -36,6 +36,8 @@
 |---|---|---|
 | 기술 리더십/아키텍처 결정 | `development` | tech-leadership |
 | 기술 데이터 탐색/분석 | `data` | data-exploration |
+| 플러그인 커스터마이징 | `cowork-plugin-management` | cowork-plugin-customizer |
+| 플러그인 신규 생성 | `cowork-plugin-management` | create-cowork-plugin |
 
 ## 출력 기준
 
