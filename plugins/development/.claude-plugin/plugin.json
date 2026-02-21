@@ -1,0 +1,8 @@
+{
+  "name": "development",
+  "version": "1.0.0",
+  "description": "Guide technology strategy, architecture decisions, and engineering team management. Plan technical roadmaps, evaluate technology stacks, manage technical debt, and build engineering culture.",
+  "author": {
+    "name": "Custom"
+  }
+}

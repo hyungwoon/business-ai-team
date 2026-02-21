@@ -14,7 +14,7 @@ class HRAgent(BaseAgent):
     """
 
     def __init__(self):
-        super().__init__(plugin_names=["productivity"])
+        super().__init__(plugin_names=["hr", "productivity"])
 
         base_prompt = """당신은 인사(HR) 전문가입니다.
 조직의 인재 관리와 문화 발전을 지원합니다.

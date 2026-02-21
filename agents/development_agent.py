@@ -14,7 +14,7 @@ class DevelopmentAgent(BaseAgent):
     """
 
     def __init__(self):
-        super().__init__(plugin_names=["data"])
+        super().__init__(plugin_names=["development", "data"])
 
         base_prompt = """당신은 개발 리더(CTO/Tech Lead)입니다.
 기술 전략, 아키텍처, 개발 프로세스를 담당합니다.

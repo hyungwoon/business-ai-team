@@ -14,7 +14,7 @@ class ComplianceAgent(BaseAgent):
     """
 
     def __init__(self):
-        super().__init__(plugin_names=["data"])
+        super().__init__(plugin_names=["compliance", "data"])
 
         base_prompt = """당신은 컴플라이언스 전문가입니다.
 조직의 규정 준수 및 리스크 관리를 지원합니다.

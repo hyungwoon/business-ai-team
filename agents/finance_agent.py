@@ -14,7 +14,7 @@ class FinanceAgent(BaseAgent):
     """
 
     def __init__(self):
-        super().__init__(plugin_names=["data"])
+        super().__init__(plugin_names=["finance", "data"])
 
         base_prompt = """당신은 재무 전문가입니다.
 조직의 재무 건강과 성장을 지원합니다.

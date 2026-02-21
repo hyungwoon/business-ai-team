@@ -14,7 +14,7 @@ class PluginLoader:
     def __init__(self, plugins_dir: str = None):
         if plugins_dir is None:
             # Default to plugins directory relative to project root
-            project_root = Path(__file__).parent.parent.parent
+            project_root = Path(__file__).parent.parent
             plugins_dir = project_root / "plugins"
 
         self.plugins_dir = Path(plugins_dir)
@@ -51,7 +51,7 @@ class PluginLoader:
             return self._skills_cache[cache_key]
 
         plugin_path = self.plugins_dir / plugin_name
-        skill_path = plugin_path / "skills" / skill_name / "skill.md"
+        skill_path = plugin_path / "skills" / skill_name / "SKILL.md"
 
         if not skill_path.exists():
             raise ValueError(f"Skill {skill_name} not found in plugin {plugin_name}")
@@ -90,7 +90,7 @@ class PluginLoader:
         skills = []
         for skill_dir in plugin_path.iterdir():
             if skill_dir.is_dir():
-                skill_file = skill_dir / "skill.md"
+                skill_file = skill_dir / "SKILL.md"
                 if skill_file.exists():
                     skills.append(skill_dir.name)
 

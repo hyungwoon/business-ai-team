@@ -14,7 +14,7 @@ class PRAgent(BaseAgent):
     """
 
     def __init__(self):
-        super().__init__(plugin_names=["marketing"])
+        super().__init__(plugin_names=["pr", "marketing"])
 
         base_prompt = """당신은 홍보(PR) 전문가입니다.
 조직의 대외 커뮤니케이션과 평판 관리를 담당합니다.

@@ -14,7 +14,7 @@ class LegalAgent(BaseAgent):
     """
 
     def __init__(self):
-        super().__init__(plugin_names=["enterprise-search"])
+        super().__init__(plugin_names=["legal", "enterprise-search"])
 
         base_prompt = """당신은 법률 전문가입니다.
 기업의 법적 위험을 최소화하고 규정 준수를 지원합니다.

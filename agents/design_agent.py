@@ -14,7 +14,7 @@ class DesignAgent(BaseAgent):
     """
 
     def __init__(self):
-        super().__init__(plugin_names=["marketing"])
+        super().__init__(plugin_names=["design", "marketing"])
 
         base_prompt = """당신은 디자인 전문가입니다.
 사용자 경험과 브랜드 일관성을 담당합니다.

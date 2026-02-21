@@ -14,7 +14,7 @@ class ProductAgent(BaseAgent):
     """
 
     def __init__(self):
-        super().__init__(plugin_names=["marketing"])
+        super().__init__(plugin_names=["product", "marketing"])
 
         base_prompt = """당신은 제품 전문가입니다.
 제품의 개발, 관리, 성장을 지원합니다.

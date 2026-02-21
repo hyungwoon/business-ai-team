@@ -1,0 +1,8 @@
+{
+  "name": "finance",
+  "version": "1.0.0",
+  "description": "Analyze financial statements, build valuation models, and support investment decisions. Create financial projections, evaluate M&A opportunities, and design management reporting frameworks.",
+  "author": {
+    "name": "Custom"
+  }
+}

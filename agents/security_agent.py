@@ -14,7 +14,7 @@ class SecurityAgent(BaseAgent):
     """
 
     def __init__(self):
-        super().__init__(plugin_names=["data"])
+        super().__init__(plugin_names=["security", "data"])
 
         base_prompt = """당신은 정보보안 전문가입니다.
 조직의 사이버 보안과 데이터 보호를 담당합니다.

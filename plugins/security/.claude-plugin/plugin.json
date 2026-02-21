@@ -1,0 +1,8 @@
+{
+  "name": "security",
+  "version": "1.0.0",
+  "description": "Assess cybersecurity posture, design security policies, and respond to incidents. Conduct risk assessments, review security architecture, draft security policies, and plan incident response.",
+  "author": {
+    "name": "Custom"
+  }
+}
