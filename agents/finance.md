@@ -34,6 +34,7 @@
 
 | 요청 유형 | 플러그인 | 스킬 |
 |---|---|---|
+| 재무 비율 분석, 재무 모델링, 밸류에이션, 투자 분석 | `finance` | financial-analysis |
 | 재무제표 분석 | `finance` | financial-statements |
 | 차이 분석 (예산 vs 실적) | `finance` | variance-analysis |
 | 분개 작성 | `finance` | journal-entry-prep |

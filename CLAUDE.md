@@ -30,15 +30,22 @@
 - 시스템/코드 관련 작업 (git, 파일 편집, 디버깅)
 - CLAUDE.md 자체에 대한 질문
 
-### 빠른 라우팅 명령
+### 빠른 명령
 
-사용자가 `/route [요청]`을 입력하면 위 절차를 명시적으로 실행한다.
+| 명령 | 설명 |
+|------|------|
+| `/ask [질문]` | 비즈니스 질문에 전문가 관점으로 답변 (`/route`의 간편 버전) |
+| `/route [요청]` | 비즈니스 요청을 전문가 에이전트에 라우팅하여 전문 관점으로 응답 |
+| `/team` | 현재 사용 가능한 전문가 에이전트 팀과 보유 스킬 목록 표시 |
+
+사용자가 위 명령을 입력하면 해당 절차를 명시적으로 실행한다.
 
 ---
 
 ## 폴더 구조
 ```
 business-ai-team/
+├── .claude/commands/ # 슬래시 커맨드 (/ask, /route, /team)
 ├── agents/           # AI 에이전트 모듈 (시스템 프롬프트 + 전문 지식 원천)
 │   └── [16개 전문가 에이전트.md] # 각 도메인별 시스템 프롬프트 + 스킬 라우팅
 ├── plugins/          # 18개 도메인별 플러그인 (SKILL.md = 베스트 프랙티스)
@@ -190,7 +197,7 @@ business-ai-team/
 | 데이터분석, 시각화, 인사이트, 통계 | Data | `agents/data.md` | `data/` → data-exploration, data-visualization, statistical-analysis, sql-queries, data-validation, data-context-extractor, interactive-dashboard-builder |
 | 계약검토, 법률자문, 규정 | Legal | `agents/legal.md` | `legal/` → contract-review, legal-risk-assessment, compliance, nda-triage, canned-responses, meeting-briefing |
 | 컴플라이언스, 리스크, 감사 | Compliance | `agents/compliance.md` | `compliance/` → risk-management |
-| 재무분석, 예산, 투자, ROI | Finance | `agents/finance.md` | `finance/` → financial-statements, variance-analysis, journal-entry-prep, reconciliation, audit-support, close-management |
+| 재무분석, 예산, 투자, ROI | Finance | `agents/finance.md` | `finance/` → financial-analysis, financial-statements, variance-analysis, journal-entry-prep, reconciliation, audit-support, close-management |
 | 사업개발, 파트너십, 성장전략, M&A | BizDev | `agents/business-dev.md` | `business-dev/` → growth-strategy |
 | 제품전략, 로드맵, 기능스펙, PM | Product | `agents/product.md` | `product-management/` → roadmap-management, feature-spec, user-research-synthesis, competitive-analysis, metrics-tracking, stakeholder-comms |
 | 기술아키텍처, 개발프로세스, CTO, 플러그인관리 | Development | `agents/development.md` | `development/` → tech-leadership · `cowork-plugin-management/` → cowork-plugin-customizer, create-cowork-plugin |

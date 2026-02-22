@@ -49,9 +49,26 @@ claude
 
 ---
 
+## 빠른 명령
+
+| 명령 | 설명 |
+|------|------|
+| `/ask [질문]` | 비즈니스 질문에 전문가 관점으로 답변 (`/route`의 간편 버전) |
+| `/route [요청]` | 비즈니스 요청을 전문가 에이전트에 라우팅하여 전문 관점으로 응답 |
+| `/team` | 현재 사용 가능한 전문가 에이전트 팀과 보유 스킬 목록 표시 |
+
+일반 대화에서도 비즈니스 요청 시 자동으로 해당 전문가에게 라우팅됩니다.
+
+---
+
 ## 사용 예시
 
 ```
+# 빠른 명령 사용
+/ask AI 에이전트 시장의 주요 트렌드는?
+/route 시리즈A 투자 준비를 위한 재무 전략 수립해줘
+/team
+
 # 작업 관리
 "이번 주 해야 할 작업 정리하고 우선순위 잡아줘. 신제품 출시 준비, 투자자 미팅, 마케팅 자료 작성."
 
@@ -105,11 +122,12 @@ business-ai-team/
 │   ├── research.md
 │   ├── sales.md
 │   └── ... (13개 추가 에이전트)
+├── .claude/commands/         # 슬래시 커맨드 (/ask, /route, /team)
 ├── plugins/                 # 18개 도메인별 플러그인 스킬
 │   ├── marketing/skills/    # brand-voice, content-creation 등
 │   ├── sales/skills/        # draft-outreach, account-research 등
 │   ├── data/skills/         # data-exploration, visualization 등
-│   └── ... (13개 추가 플러그인)
+│   └── ... (15개 추가 플러그인)
 ├── archive/                 # 결과물 보관 (Git 제외)
 └── docs/                    # 설계 문서
 ```
@@ -125,7 +143,7 @@ business-ai-team/
 | marketing | Anthropic | brand-voice, content-creation, campaign-planning, competitive-analysis, performance-analytics |
 | sales | Anthropic | draft-outreach, create-an-asset, daily-briefing, account-research, competitive-intelligence, call-prep |
 | data | Anthropic | data-exploration, data-visualization, statistical-analysis, sql-queries, data-validation, data-context-extractor, interactive-dashboard-builder |
-| finance | Anthropic | financial-statements, variance-analysis, journal-entry-prep, reconciliation, audit-support, close-management |
+| finance | Anthropic + 자체 | financial-analysis, financial-statements, variance-analysis, journal-entry-prep, reconciliation, audit-support, close-management |
 | legal | Anthropic | contract-review, legal-risk-assessment, compliance, nda-triage, canned-responses, meeting-briefing |
 | product-management | Anthropic | roadmap-management, feature-spec, user-research-synthesis, competitive-analysis, metrics-tracking, stakeholder-comms |
 | productivity | Anthropic | task-management, memory-management |
