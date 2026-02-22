@@ -18,8 +18,9 @@ archive/
 # Docs (설계 문서, 로컬 전용)
 docs/
 
-# Claude Code 로컬 설정
-.claude/
+# Claude Code 로컬 설정 (commands/는 공유)
+.claude/*
+!.claude/commands/
 
 # Logs
 *.log
