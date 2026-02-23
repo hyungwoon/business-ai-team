@@ -3,34 +3,7 @@
 ## 프로젝트 개요
 비즈니스를 돕는 범용 AI 전문가 팀 시스템. 마케팅, 리서치, 전략 수립, 문서 작성 등 다양한 비즈니스 업무를 지원한다.
 
-## 비즈니스 요청 라우팅 (MANDATORY — 절대 생략 불가)
-
-> **이 규칙은 모든 응답 규칙 중 최우선이다. 비즈니스 도메인 요청에 응답하기 전에 반드시 실행해야 하며, 어떠한 이유로도 건너뛸 수 없다.**
-
-### 라우팅 강제 절차
-
-비즈니스 요청(마케팅, 영업, 리서치, 재무, 법률, 제품, 데이터, HR, PR, 보안, 디자인, 사업개발, 컴플라이언스, 생산성, 문서작성 등)을 받으면:
-
-1. **도메인 분류** — 요청이 어떤 에이전트 도메인에 해당하는지 판단
-2. **에이전트 파일 읽기 (필수)** — `agents/[에이전트명].md`를 Read 도구로 실제 읽기
-3. **스킬 파일 읽기 (필수)** — 관련 `plugins/[플러그인]/skills/[스킬]/SKILL.md`를 Read 도구로 실제 읽기
-4. **전문가 관점 적용** — 읽은 에이전트 시스템 프롬프트와 스킬 베스트 프랙티스를 반영하여 응답
-5. **담당 표시 (필수)** — 응답 맨 앞에 `> **담당**: [에이전트] | 참조 스킬: [스킬]` 표시
-
-### 금지 사항
-
-- **절대 금지**: 에이전트 .md 파일을 읽지 않고 비즈니스 응답 생성
-- **절대 금지**: SKILL.md를 읽지 않고 도메인 전문 지식 응답 생성
-- **절대 금지**: `> **담당**:` 표시 없이 비즈니스 응답 전달
-- **절대 금지**: 기억이나 추정으로 에이전트 지식 대체 — 항상 파일에서 직접 읽기
-
-### 라우팅 예외 (이 경우에만 생략 가능)
-
-- 일반 대화 (인사, 잡담)
-- 시스템/코드 관련 작업 (git, 파일 편집, 디버깅)
-- CLAUDE.md 자체에 대한 질문
-
-### 빠른 명령
+## 빠른 명령
 
 | 명령 | 설명 |
 |------|------|
@@ -38,14 +11,43 @@
 | `/route [요청]` | 비즈니스 요청을 전문가 에이전트에 라우팅하여 전문 관점으로 응답 |
 | `/team` | 현재 사용 가능한 전문가 에이전트 팀과 보유 스킬 목록 표시 |
 
-사용자가 위 명령을 입력하면 해당 절차를 명시적으로 실행한다.
+## 에이전트 매핑 테이블 (라우팅 힌트)
+
+> 라우팅 절차는 `~/.claude/rules/expert-routing.md`에 정의됨. 아래 테이블은 도메인 분류 가속을 위한 참조용.
+
+| 요청 키워드 | 에이전트 | 파일 | 플러그인 스킬 |
+|---|---|---|---|
+| 작업관리, 일정, 메모, 생산성 | Productivity | `agents/productivity.md` | `productivity/` → task-management, memory-management |
+| 리서치, 조사, 경쟁사분석, 트렌드, 생명과학 | Research | `agents/research.md` | `marketing/` → competitive-analysis · `sales/` → account-research, competitive-intelligence · `data/` → data-exploration · `bio-research/` → scientific-problem-selection, single-cell-rna-qc, scvi-tools, nextflow-development, instrument-data-to-allotrope |
+| 이메일, 문서작성, 번역, 요약 | Writing | `agents/writing.md` | `marketing/` → brand-voice, content-creation · `sales/` → draft-outreach, create-an-asset · `customer-support/` → response-drafting |
+| 마케팅, 캠페인, 콘텐츠, 브랜드 | Marketing | `agents/marketing.md` | `marketing/` → brand-voice, content-creation, campaign-planning, competitive-analysis, performance-analytics |
+| 영업, 파이프라인, 제안서, CRM | Sales | `agents/sales.md` | `sales/` → draft-outreach, create-an-asset, daily-briefing, account-research, competitive-intelligence, call-prep |
+| 데이터분석, 시각화, 인사이트, 통계 | Data | `agents/data.md` | `data/` → data-exploration, data-visualization, statistical-analysis, sql-queries, data-validation, data-context-extractor, interactive-dashboard-builder |
+| 계약검토, 법률자문, 규정 | Legal | `agents/legal.md` | `legal/` → contract-review, legal-risk-assessment, compliance, nda-triage, canned-responses, meeting-briefing |
+| 컴플라이언스, 리스크, 감사 | Compliance | `agents/compliance.md` | `compliance/` → risk-management |
+| 재무분석, 예산, 투자, ROI | Finance | `agents/finance.md` | `finance/` → financial-analysis, financial-statements, variance-analysis, journal-entry-prep, reconciliation, audit-support, close-management |
+| 사업개발, 파트너십, 성장전략, M&A | BizDev | `agents/business-dev.md` | `business-dev/` → growth-strategy |
+| 제품전략, 로드맵, 기능스펙, PM | Product | `agents/product.md` | `product-management/` → roadmap-management, feature-spec, user-research-synthesis, competitive-analysis, metrics-tracking, stakeholder-comms |
+| 기술아키텍처, 개발프로세스, CTO, 플러그인관리 | Development | `agents/development.md` | `development/` → tech-leadership · `cowork-plugin-management/` → cowork-plugin-customizer, create-cowork-plugin |
+| UX/UI, 브랜드가이드, 디자인시스템 | Design | `agents/design.md` | `design/` → ux-design |
+| 채용, 조직문화, 성과관리, HR | HR | `agents/hr.md` | `hr/` → talent-management |
+| 보도자료, 위기관리, 미디어전략 | PR | `agents/pr.md` | `pr/` → communications |
+| 보안평가, 보안정책, 사이버보안 | Security | `agents/security.md` | `security/` → cybersecurity |
+
+### 복합 요청 라우팅 예시
+
+- "신규 SaaS 런칭 전략" → Research + Product + Marketing + Sales
+- "시리즈A 투자 준비" → Finance + Legal + BizDev + Product
+- "해외 진출 검토" → Research + Legal + Compliance + BizDev
+- "마케팅 캠페인 성과 분석" → Marketing + Data
+- "신규 채용 및 팀 빌딩" → HR + Finance + Product
 
 ---
 
 ## 폴더 구조
 ```
 business-ai-team/
-├── .claude/commands/ # 슬래시 커맨드 (/ask, /route, /team)
+├── .claude/commands/ # 슬래시 커맨드 (/ask, /route, /team) — 글로벌로 이동됨
 ├── agents/           # AI 에이전트 모듈 (시스템 프롬프트 + 전문 지식 원천)
 │   └── [16개 전문가 에이전트.md] # 각 도메인별 시스템 프롬프트 + 스킬 라우팅
 ├── plugins/          # 18개 도메인별 플러그인 (SKILL.md = 베스트 프랙티스)
@@ -116,18 +118,6 @@ business-ai-team/
 
 ## 작업 규칙
 
-### 디렉토리 구조 확인 (MANDATORY — 절대 생략 불가)
-
-> **파일 경로를 추정하지 마라. 반드시 확인하라.**
-
-- **프로젝트 폴더 작업 시**: 파일에 접근하기 전에 `ls`로 디렉토리 구조를 **반드시** 먼저 확인
-- **_context.md에 파일명만 있는 경우**: 파일이 서브폴더에 있을 수 있으므로 경로를 추정하지 않고 `ls` 또는 `Glob`으로 실제 위치 확인
-- **"파일이 없다"고 보고하기 전에**: 서브폴더까지 탐색했는지 재확인 — 플랫 경로 실패 시 `Glob`으로 재검색
-
-**금지 사항**:
-- **절대 금지**: `ls` 없이 파일 경로를 추정하여 접근
-- **절대 금지**: 파일을 못 찾았을 때 서브폴더 탐색 없이 "없다"고 보고
-
 ### 프로젝트 폴더링 규칙
 - 사용자가 특정 클라이언트/프로젝트를 언급하면 → `archive/[프로젝트명]/` 폴더 자동 생성 후 저장
 - 프로젝트명은 클라이언트명 또는 브랜드명 기준 (예: `빈센트-스튜디오`, `antiegg`)
@@ -166,12 +156,6 @@ business-ai-team/
 - **프로젝트 재개 시**: `_context.md` 먼저 읽어 맥락 파악 후 작업 시작
 - **중첩 구조 재개 시**: 상위 `_context.md` → 해당 스쿼드 `_context.md` 순으로 읽어 전체 맥락 파악
 
-### 에이전트 지식 관리 원칙
-- `agents/*.md`의 시스템 프롬프트는 각 도메인의 전문 지식 원천
-- `plugins/*/skills/*/SKILL.md`는 도메인별 베스트 프랙티스
-- 에이전트 문서 수정 시 해당 도메인의 전문성이 CLI 세션에도 자동 반영됨
-- 새 도메인 추가 시: 에이전트 .md 생성 + 플러그인 스킬 추가 + 라우팅 테이블 갱신
-
 ## 문서 작성 스타일
 - 기본 언어: 한국어
 - 마크다운 포맷 사용
@@ -182,65 +166,3 @@ business-ai-team/
 - **실행**: Claude Code CLI (별도 API 키 불필요)
 - **지식 원천**: `agents/` (시스템 프롬프트) + `plugins/` (SKILL.md)
 - **결과물 저장**: `archive/` (로컬 전용, Git 제외)
-
----
-
-## 전문가 라우팅 시스템 (CLI 세션용)
-
-> **CLI에서 비즈니스 요청을 받으면, 해당 전문가 에이전트의 시스템 프롬프트와 플러그인 스킬을 읽어서 그 관점으로 응답한다.**
-
-### 라우팅 절차
-
-1. **요청 분류**: 사용자 요청의 도메인을 파악
-2. **에이전트 참조**: 해당 에이전트의 `.md` 파일에서 시스템 프롬프트 읽기
-3. **플러그인 스킬 로드**: 해당 에이전트가 사용하는 `plugins/[name]/skills/[skill]/SKILL.md` 읽기
-4. **전문가 관점 적용**: 에이전트의 전문 분야, 원칙, 플러그인 지식을 반영하여 응답
-5. **복합 요청**: 여러 도메인에 걸친 요청은 관련 에이전트 여러 개를 참조
-
-### 에이전트-플러그인 매핑 테이블
-
-| 요청 키워드 | 에이전트 | 파일 | 플러그인 스킬 |
-|---|---|---|---|
-| 작업관리, 일정, 메모, 생산성 | Productivity | `agents/productivity.md` | `productivity/` → task-management, memory-management |
-| 리서치, 조사, 경쟁사분석, 트렌드, 생명과학 | Research | `agents/research.md` | `marketing/` → competitive-analysis · `sales/` → account-research, competitive-intelligence · `data/` → data-exploration · `bio-research/` → scientific-problem-selection, single-cell-rna-qc, scvi-tools, nextflow-development, instrument-data-to-allotrope |
-| 이메일, 문서작성, 번역, 요약 | Writing | `agents/writing.md` | `marketing/` → brand-voice, content-creation · `sales/` → draft-outreach, create-an-asset · `customer-support/` → response-drafting |
-| 마케팅, 캠페인, 콘텐츠, 브랜드 | Marketing | `agents/marketing.md` | `marketing/` → brand-voice, content-creation, campaign-planning, competitive-analysis, performance-analytics |
-| 영업, 파이프라인, 제안서, CRM | Sales | `agents/sales.md` | `sales/` → draft-outreach, create-an-asset, daily-briefing, account-research, competitive-intelligence, call-prep |
-| 데이터분석, 시각화, 인사이트, 통계 | Data | `agents/data.md` | `data/` → data-exploration, data-visualization, statistical-analysis, sql-queries, data-validation, data-context-extractor, interactive-dashboard-builder |
-| 계약검토, 법률자문, 규정 | Legal | `agents/legal.md` | `legal/` → contract-review, legal-risk-assessment, compliance, nda-triage, canned-responses, meeting-briefing |
-| 컴플라이언스, 리스크, 감사 | Compliance | `agents/compliance.md` | `compliance/` → risk-management |
-| 재무분석, 예산, 투자, ROI | Finance | `agents/finance.md` | `finance/` → financial-analysis, financial-statements, variance-analysis, journal-entry-prep, reconciliation, audit-support, close-management |
-| 사업개발, 파트너십, 성장전략, M&A | BizDev | `agents/business-dev.md` | `business-dev/` → growth-strategy |
-| 제품전략, 로드맵, 기능스펙, PM | Product | `agents/product.md` | `product-management/` → roadmap-management, feature-spec, user-research-synthesis, competitive-analysis, metrics-tracking, stakeholder-comms |
-| 기술아키텍처, 개발프로세스, CTO, 플러그인관리 | Development | `agents/development.md` | `development/` → tech-leadership · `cowork-plugin-management/` → cowork-plugin-customizer, create-cowork-plugin |
-| UX/UI, 브랜드가이드, 디자인시스템 | Design | `agents/design.md` | `design/` → ux-design |
-| 채용, 조직문화, 성과관리, HR | HR | `agents/hr.md` | `hr/` → talent-management |
-| 보도자료, 위기관리, 미디어전략 | PR | `agents/pr.md` | `pr/` → communications |
-| 보안평가, 보안정책, 사이버보안 | Security | `agents/security.md` | `security/` → cybersecurity |
-
-### 복합 요청 라우팅 예시
-
-- "신규 SaaS 런칭 전략" → Research + Product + Marketing + Sales
-- "시리즈A 투자 준비" → Finance + Legal + BizDev + Product
-- "해외 진출 검토" → Research + Legal + Compliance + BizDev
-- "마케팅 캠페인 성과 분석" → Marketing + Data
-- "신규 채용 및 팀 빌딩" → HR + Finance + Product
-
-### 응답 시 에이전트 표시 (필수)
-
-비즈니스 요청에 응답할 때, **본문 맨 앞에** 어떤 에이전트가 참여했는지 표시한다:
-
-```
-> **담당**: Marketing + Data | 참조 스킬: campaign-planning, performance-analytics
-```
-
-- 단일 에이전트: `> **담당**: Marketing | 참조 스킬: content-creation`
-- 복합 에이전트: `> **담당**: Research + Product + Marketing | 참조 스킬: competitive-analysis, feature-spec, campaign-planning`
-- 일반 대화(비즈니스 도메인 아님): 표시 생략
-
-### 라우팅 원칙
-
-- **단일 도메인 요청**: 해당 에이전트 1개의 시스템 프롬프트 + 플러그인 스킬 참조
-- **복합 도메인 요청**: 주 에이전트의 관점을 중심으로, 보조 에이전트의 전문성 보충
-- **플러그인 스킬은 필요 시에만**: 모든 스킬을 매번 읽지 않고, 요청과 직접 관련된 스킬만 선택적으로 로드
-- **에이전트 문서가 진실의 원천**: CLAUDE.md의 매핑은 라우팅 가이드일 뿐, 실제 시스템 프롬프트와 스킬 내용은 항상 파일에서 직접 읽기
