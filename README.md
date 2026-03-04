@@ -56,6 +56,7 @@ claude
 | `/ask [질문]` | 비즈니스 질문에 전문가 관점으로 답변 (`/route`의 간편 버전) |
 | `/route [요청]` | 비즈니스 요청을 전문가 에이전트에 라우팅하여 전문 관점으로 응답 |
 | `/team` | 현재 사용 가능한 전문가 에이전트 팀과 보유 스킬 목록 표시 |
+| `/improve` | 학습 지식 리뷰 — 누적된 피드백 현황 확인 및 SKILL.md 반영 |
 
 일반 대화에서도 비즈니스 요청 시 자동으로 해당 전문가에게 라우팅됩니다.
 
@@ -92,18 +93,26 @@ claude
 
 ## 작동 원리
 
-비즈니스 요청이 들어오면, CLI가 **CLAUDE.md의 라우팅 테이블**을 따라 해당 전문가 에이전트의 시스템 프롬프트와 플러그인 스킬을 참조하여 응답합니다.
+비즈니스 요청이 들어오면 다음 흐름을 거칩니다:
 
 ```
-사용자 요청 (예: "마케팅 캠페인 기획")
+사용자 요청 (예: "마케팅 캠페인 기획해줘")
     ↓
-CLAUDE.md 라우팅 테이블 → 마케팅 도메인 식별
+[0.5] 기존 맥락 확인 (projects/_context.md)
     ↓
-agents/marketing.md → 시스템 프롬프트 참조
+[1] 브레인스토밍 게이트 — 모호한 요청은 요구사항 정제 후 진행
     ↓
-plugins/marketing/skills/ → 베스트 프랙티스 참조
+[2] 도메인 분류 — CLAUDE.md 매핑 테이블로 에이전트 식별
     ↓
-전문가 관점이 반영된 응답
+[3] agents/marketing.md → 시스템 프롬프트 참조
+    ↓
+[4] plugins/marketing/skills/ → 베스트 프랙티스 참조
+    ↓
+[5] knowledge/marketing.md → 학습된 보정 지식 반영
+    ↓
+[6] 전문가 관점이 반영된 응답
+    ↓
+대화 중 피드백 → knowledge/ 자동 학습 (RLVR)
 ```
 
 복합 요청은 여러 에이전트의 전문성을 조합합니다:
@@ -122,21 +131,25 @@ business-ai-team/
 │   ├── research.md
 │   ├── sales.md
 │   └── ... (13개 추가 에이전트)
-├── .claude/commands/         # 슬래시 커맨드 (/ask, /route, /team)
-├── plugins/                 # 18개 도메인별 플러그인 스킬
+├── .claude/commands/        # 슬래시 커맨드 (/ask, /route, /team, /improve)
+├── .claude/rules/           # 라우팅 규칙 (expert-routing, brainstorming, feedback-learning)
+├── plugins/                 # 17개 도메인별 플러그인 스킬
 │   ├── marketing/skills/    # brand-voice, content-creation 등
 │   ├── sales/skills/        # draft-outreach, account-research 등
 │   ├── data/skills/         # data-exploration, visualization 등
-│   └── ... (15개 추가 플러그인)
-├── archive/                 # 결과물 보관 (Git 제외)
-└── docs/                    # 설계 문서
+│   └── ... (14개 추가 플러그인)
+├── knowledge/               # 학습 지식 (RLVR — 사용자 피드백 자동 학습)
+│   ├── _index.md            # 도메인별 학습 현황 카운트
+│   ├── [도메인].md          # 16개 도메인별 보정/노하우/주의사항
+│   └── preferences.md      # 도메인 공통 선호도
+└── projects/                # 프로젝트 작업 공간 (Git 제외)
 ```
 
 ---
 
 ## 플러그인 스킬 목록
 
-11개 플러그인은 [Anthropic knowledge-work-plugins](https://github.com/anthropics/knowledge-work-plugins)에서 가져왔으며, 7개는 이 프로젝트에서 자체 생성했습니다.
+10개 플러그인은 [Anthropic knowledge-work-plugins](https://github.com/anthropics/knowledge-work-plugins)에서 가져왔으며, 7개는 이 프로젝트에서 자체 생성했습니다.
 
 | 플러그인 | 출처 | 스킬 |
 |---------|------|------|
@@ -149,7 +162,6 @@ business-ai-team/
 | productivity | Anthropic | task-management, memory-management |
 | customer-support | Anthropic | ticket-triage, response-drafting, customer-research, escalation, knowledge-management |
 | enterprise-search | Anthropic | search-strategy, knowledge-synthesis, source-management |
-| bio-research | Anthropic | instrument-data-to-allotrope, nextflow-development, scientific-problem-selection, scvi-tools, single-cell-rna-qc |
 | cowork-plugin-management | Anthropic | cowork-plugin-customizer, create-cowork-plugin |
 | business-dev | 자체 | growth-strategy |
 | compliance | 자체 | risk-management |
@@ -158,3 +170,13 @@ business-ai-team/
 | hr | 자체 | talent-management |
 | pr | 자체 | communications |
 | security | 자체 | cybersecurity |
+
+---
+
+## 학습 시스템 (RLVR)
+
+대화 중 사용자의 보정 피드백을 자동 감지하여 `knowledge/` 디렉토리에 저장합니다.
+
+- **자동 학습**: "아닌데", "실무에서는", "주의해야" 등의 패턴 감지 시 자동 기록
+- **누적 반영**: 동일 도메인 3건 이상 누적 시 해당 SKILL.md에 자동 반영
+- **수동 리뷰**: `/improve` 커맨드로 전체 학습 지식 리뷰 및 SKILL.md 반영

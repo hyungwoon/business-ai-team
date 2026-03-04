@@ -40,6 +40,9 @@
 | 고객/계정 조사 | `sales` | account-research |
 | 경쟁사 정보 수집 | `sales` | competitive-intelligence |
 | 미팅/콜 준비 | `sales` | call-prep |
+| 고객 문의 분류/배정 | `customer-support` | ticket-triage |
+| 고객 조사/분석 | `customer-support` | customer-research |
+| 이슈 에스컬레이션 | `customer-support` | escalation |
 
 ## 출력 기준
 

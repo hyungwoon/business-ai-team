@@ -38,11 +38,9 @@
 | 고객/계정 심층 조사 | `sales` | account-research |
 | 데이터 기반 탐색 분석 | `data` | data-exploration |
 | 경쟁사 정보 수집 | `sales` | competitive-intelligence |
-| 생명과학 연구 문제 선정 | `bio-research` | scientific-problem-selection |
-| 단일세포 RNA QC | `bio-research` | single-cell-rna-qc |
-| scvi-tools 분석 | `bio-research` | scvi-tools |
-| Nextflow 파이프라인 개발 | `bio-research` | nextflow-development |
-| 기기 데이터 변환 (Allotrope) | `bio-research` | instrument-data-to-allotrope |
+| 자료 검색 전략 | `enterprise-search` | search-strategy |
+| 지식 종합/요약 | `enterprise-search` | knowledge-synthesis |
+| 출처 관리 | `enterprise-search` | source-management |
 
 ## 출력 기준
 

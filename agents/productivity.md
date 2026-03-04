@@ -36,6 +36,7 @@
 |---|---|---|
 | 작업/할일 관리, 우선순위 설정 | `productivity` | task-management |
 | 기억/맥락 저장, 이전 대화 참조 | `productivity` | memory-management |
+| 지식 베이스 관리 | `customer-support` | knowledge-management |
 
 ## 출력 기준
 

@@ -10,20 +10,22 @@
 | `/ask [질문]` | 비즈니스 질문에 전문가 관점으로 답변 (`/route`의 간편 버전) |
 | `/route [요청]` | 비즈니스 요청을 전문가 에이전트에 라우팅하여 전문 관점으로 응답 |
 | `/team` | 현재 사용 가능한 전문가 에이전트 팀과 보유 스킬 목록 표시 |
+| `/improve` | 학습 지식 리뷰 — 누적된 피드백 현황 확인 및 SKILL.md 반영 |
 
 ## 에이전트 매핑 테이블 (라우팅 힌트)
 
-> 라우팅 절차는 `~/.claude/rules/expert-routing.md`에 정의됨. 아래 테이블은 도메인 분류 가속을 위한 참조용.
+> 라우팅 절차는 `.claude/rules/expert-routing.md`에 정의됨. 아래 테이블은 도메인 분류 가속을 위한 참조용.
+> 모호한 요청은 `requirements-brainstorming.md` 규칙의 2축 분류 매트릭스를 거친 후 라우팅된다.
 
 | 요청 키워드 | 에이전트 | 파일 | 플러그인 스킬 |
 |---|---|---|---|
-| 작업관리, 일정, 메모, 생산성 | Productivity | `agents/productivity.md` | `productivity/` → task-management, memory-management |
-| 리서치, 조사, 경쟁사분석, 트렌드, 생명과학 | Research | `agents/research.md` | `marketing/` → competitive-analysis · `sales/` → account-research, competitive-intelligence · `data/` → data-exploration · `bio-research/` → scientific-problem-selection, single-cell-rna-qc, scvi-tools, nextflow-development, instrument-data-to-allotrope |
+| 작업관리, 일정, 메모, 생산성 | Productivity | `agents/productivity.md` | `productivity/` → task-management, memory-management · `customer-support/` → knowledge-management |
+| 리서치, 조사, 경쟁사분석, 트렌드 | Research | `agents/research.md` | `marketing/` → competitive-analysis · `sales/` → account-research, competitive-intelligence · `data/` → data-exploration · `enterprise-search/` → search-strategy, knowledge-synthesis, source-management |
 | 이메일, 문서작성, 번역, 요약 | Writing | `agents/writing.md` | `marketing/` → brand-voice, content-creation · `sales/` → draft-outreach, create-an-asset · `customer-support/` → response-drafting |
 | 마케팅, 캠페인, 콘텐츠, 브랜드 | Marketing | `agents/marketing.md` | `marketing/` → brand-voice, content-creation, campaign-planning, competitive-analysis, performance-analytics |
-| 영업, 파이프라인, 제안서, CRM | Sales | `agents/sales.md` | `sales/` → draft-outreach, create-an-asset, daily-briefing, account-research, competitive-intelligence, call-prep |
+| 영업, 파이프라인, 제안서, CRM | Sales | `agents/sales.md` | `sales/` → draft-outreach, create-an-asset, daily-briefing, account-research, competitive-intelligence, call-prep · `customer-support/` → ticket-triage, customer-research, escalation |
 | 데이터분석, 시각화, 인사이트, 통계 | Data | `agents/data.md` | `data/` → data-exploration, data-visualization, statistical-analysis, sql-queries, data-validation, data-context-extractor, interactive-dashboard-builder |
-| 계약검토, 법률자문, 규정 | Legal | `agents/legal.md` | `legal/` → contract-review, legal-risk-assessment, compliance, nda-triage, canned-responses, meeting-briefing |
+| 계약검토, 법률자문, 규정 | Legal | `agents/legal.md` | `legal/` → contract-review, legal-risk-assessment, compliance, nda-triage, canned-responses, meeting-briefing · `enterprise-search/` → search-strategy, knowledge-synthesis, source-management |
 | 컴플라이언스, 리스크, 감사 | Compliance | `agents/compliance.md` | `compliance/` → risk-management |
 | 재무분석, 예산, 투자, ROI | Finance | `agents/finance.md` | `finance/` → financial-analysis, financial-statements, variance-analysis, journal-entry-prep, reconciliation, audit-support, close-management |
 | 사업개발, 파트너십, 성장전략, M&A | BizDev | `agents/business-dev.md` | `business-dev/` → growth-strategy |
@@ -44,28 +46,65 @@
 
 ---
 
+## 요청 처리 흐름
+
+```
+요청 수신
+  │
+  ▼
+[0.5] 기존 맥락 확인 ──(context + 요구사항 존재)──→ 게이트 스킵
+  │ (없음)
+  ▼
+[1] 브레인스토밍 게이트 (2축 분류)
+  │
+  ├─ A. 모호+과업 → 전체 브레인스토밍 → 요구사항 저장
+  ├─ B. 구체+과업 → 경량 확인
+  ├─ C. 모호+사실 → 1개 질문
+  └─ D. 구체+사실 → 직접 라우팅
+  │
+  ▼
+[2-4] 도메인 분류 → 에이전트 읽기 → 스킬 읽기
+  │
+  ▼
+[4.5] 학습 지식 읽기 (knowledge/)
+  │
+  ▼
+[5] 전문가 관점 응답 (에이전트 + 스킬 + 학습 보정)
+  │
+  ▼
+[6] 담당 표시
+  │
+  ▼
+대화 중 피드백 감지 → knowledge/ 자동 저장 (RLVR)
+```
+
+---
+
 ## 폴더 구조
 ```
 business-ai-team/
 ├── .claude/commands/ # 슬래시 커맨드 (/ask, /route, /team) — 글로벌로 이동됨
 ├── agents/           # AI 에이전트 모듈 (시스템 프롬프트 + 전문 지식 원천)
 │   └── [16개 전문가 에이전트.md] # 각 도메인별 시스템 프롬프트 + 스킬 라우팅
-├── plugins/          # 18개 도메인별 플러그인 (SKILL.md = 베스트 프랙티스)
+├── plugins/          # 17개 도메인별 플러그인 (SKILL.md = 베스트 프랙티스)
 │   ├── marketing/    # brand-voice, content-creation, campaign-planning 등
 │   ├── sales/        # draft-outreach, account-research, call-prep 등
 │   ├── data/         # data-exploration, visualization, sql-queries 등
 │   ├── finance/      # financial-statements, variance-analysis, audit-support 등
 │   ├── legal/        # contract-review, legal-risk-assessment, nda-triage 등
 │   ├── product-management/  # roadmap-management, feature-spec, metrics-tracking 등
-│   └── [12개 추가 플러그인]
-├── archive/          # 사용자 요청 결과물 보관 (컨텍스트 제외 대상)
+│   └── [11개 추가 플러그인]
+├── knowledge/        # 학습 지식 (RLVR — 사용자 피드백 자동 학습)
+│   ├── _index.md     # 도메인별 학습 현황 카운트
+│   ├── [도메인].md   # 16개 도메인별 보정/노하우/주의사항
+│   └── preferences.md # 도메인 공통 선호도
+├── projects/         # 프로젝트 작업 공간 (로컬 전용, Git 제외)
 │   ├── [프로젝트명]/              # 독립 프로젝트 폴더
 │   ├── [상위프로젝트]/            # 상위 프로젝트 폴더 (하위 스쿼드/팀 포함)
 │   │   ├── _context.md          # 상위 프로젝트 개요 + 스쿼드 목록
 │   │   └── [스쿼드명]/          # 스쿼드별 하위 폴더
 │   │       └── _context.md      # 스쿼드 작업 기록
 │   └── 기타/                     # 단발성 또는 미분류 결과물
-└── docs/             # 설계 문서
 ```
 
 ## 세션 종료 의무 절차 (MANDATORY — 절대 생략 불가)
@@ -73,6 +112,11 @@ business-ai-team/
 > **이 규칙은 모든 작업 규칙보다 우선한다. 세션이 끝날 때마다 반드시 실행해야 하며, 어떠한 이유로도 건너뛸 수 없다.**
 
 ### 세션 종료 체크리스트 (순서 준수)
+
+0. **학습 지식 반영 확인**
+   - 이번 세션에서 `knowledge/`에 학습된 항목이 있는지 확인
+   - 동일 도메인 3건 이상 누적 시 → 해당 SKILL.md에 `## 실무 보정 사항` 자동 추가
+   - `feedback-learning.md` 규칙에 따라 처리
 
 1. **_context.md 업데이트**
    - 이번 세션에서 작업한 모든 프로젝트의 `_context.md` 최신화
@@ -83,8 +127,8 @@ business-ai-team/
    ```bash
    git add [변경된 파일들]  # 구체적 파일명으로 — git add . 사용 금지
    ```
-   - **archive/ 폴더는 절대 스테이징 금지** — 클라이언트 결과물은 로컬 전용, GitHub에 올리지 않음
-   - `.gitignore`에 `archive/`가 등록되어 있으나, 실수로 추가되지 않도록 주의
+   - **projects/ 폴더는 절대 스테이징 금지** — 프로젝트 결과물은 로컬 전용, GitHub에 올리지 않음
+   - `.gitignore`에 `projects/`가 등록되어 있으나, 실수로 추가되지 않도록 주의
    - 푸시 대상: 에이전트 코드, 설정 파일, CLAUDE.md 등 시스템 파일만
 
 3. **커밋 (컨벤셔널 커밋 형식)**
@@ -110,8 +154,8 @@ business-ai-team/
 
 ### 금지 사항
 - **절대 금지**: 시스템 파일 변경 후 푸시 없이 대화 종료
-- **절대 금지**: `git add .` 또는 `git add -A` 사용 (archive/ 포함 위험)
-- **절대 금지**: `archive/` 폴더를 git에 추가하거나 푸시
+- **절대 금지**: `git add .` 또는 `git add -A` 사용 (projects/ 포함 위험)
+- **절대 금지**: `projects/` 폴더를 git에 추가하거나 푸시
 - **절대 금지**: _context.md 미업데이트 상태로 종료
 
 ---
@@ -119,29 +163,29 @@ business-ai-team/
 ## 작업 규칙
 
 ### 프로젝트 폴더링 규칙
-- 사용자가 특정 클라이언트/프로젝트를 언급하면 → `archive/[프로젝트명]/` 폴더 자동 생성 후 저장
+- 사용자가 특정 클라이언트/프로젝트를 언급하면 → `projects/[프로젝트명]/` 폴더 자동 생성 후 저장
 - 프로젝트명은 클라이언트명 또는 브랜드명 기준 (예: `빈센트-스튜디오`, `antiegg`)
 - 동일 프로젝트 후속 작업은 기존 폴더에 누적 저장 (이전 결과물 맥락 유지)
-- 단발성 요청이거나 프로젝트 맥락이 없으면 → `archive/기타/`에 저장
+- 단발성 요청이거나 프로젝트 맥락이 없으면 → `projects/기타/`에 저장
 - 새 프로젝트 시작 시 사용자에게 확인 불필요 — 폴더명을 스스로 판단해 생성
 
 #### 중첩 프로젝트 구조 (상위 프로젝트가 있는 경우)
-- 스쿼드/팀이 상위 프로젝트(매거진, 조직 등)에 소속된 경우 → `archive/[상위프로젝트]/[스쿼드명]/` 중첩 구조 사용
-- 예: `archive/[매거진명]/[스쿼드명]/`, `archive/[조직명]/[팀명]/`
+- 스쿼드/팀이 상위 프로젝트(매거진, 조직 등)에 소속된 경우 → `projects/[상위프로젝트]/[스쿼드명]/` 중첩 구조 사용
+- 예: `projects/[매거진명]/[스쿼드명]/`, `projects/[조직명]/[팀명]/`
 - 상위 프로젝트 폴더에 `_context.md` 생성 — 전체 개요 + 하위 스쿼드 목록 역할
-- 새 스쿼드 추가 시 `archive/[상위프로젝트]/[신규스쿼드]/` 폴더 생성 및 `_context.md` 작성
+- 새 스쿼드 추가 시 `projects/[상위프로젝트]/[신규스쿼드]/` 폴더 생성 및 `_context.md` 작성
 - 상위 `_context.md`의 스쿼드 목록 테이블도 함께 업데이트
 
 ### 결과물 저장
-- 사용자 요청으로 생성한 리서치, 전략, 기획 문서 → `archive/[프로젝트명]/` 폴더에 저장
-- archive 폴더는 에이전트 검색/참조 대상에서 제외
+- 사용자 요청으로 생성한 리서치, 전략, 기획 문서 → `projects/[프로젝트명]/` 폴더에 저장
+- projects/ 내 결과물은 에이전트 검색/참조 대상에서 제외
 - 코드, 시스템 문서는 루트 또는 해당 폴더에 저장
 
 ### 파일명 규칙
 - **날짜 접두어 필수**: `YYYY-MM-DD_` 형식으로 작성일을 앞에 붙임
 - 한글 파일명 사용 가능
 - 내용을 명확히 알 수 있는 이름 사용 (프로젝트명 접두어 불필요 — 폴더가 맥락 역할)
-- 예: `archive/빈센트-스튜디오/2026-02-20_3월_콘텐츠_플랜.md`
+- 예: `projects/빈센트-스튜디오/2026-02-20_3월_콘텐츠_플랜.md`
 
 ### _context.md 자동 관리 규칙
 - 각 프로젝트 폴더에는 반드시 `_context.md` 유지 (`_` 접두어로 목록 최상단 노출)
@@ -164,5 +208,6 @@ business-ai-team/
 
 ## 운영 환경
 - **실행**: Claude Code CLI (별도 API 키 불필요)
-- **지식 원천**: `agents/` (시스템 프롬프트) + `plugins/` (SKILL.md)
-- **결과물 저장**: `archive/` (로컬 전용, Git 제외)
+- **지식 원천**: `agents/` (시스템 프롬프트) + `plugins/` (SKILL.md) + `knowledge/` (학습 보정)
+- **학습 지식**: `knowledge/` (RLVR — 사용자 피드백 자동 학습, `/improve`로 리뷰)
+- **결과물 저장**: `projects/` (로컬 전용, Git 제외)

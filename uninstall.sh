@@ -33,7 +33,7 @@ else
 fi
 
 # 2. 커맨드 삭제
-for CMD in route.md ask.md team.md; do
+for CMD in route.md ask.md team.md improve.md; do
     TARGET="$COMMANDS_DIR/$CMD"
     if [[ -f "$TARGET" ]]; then
         rm "$TARGET"
@@ -47,16 +47,17 @@ for CMD in route.md ask.md team.md; do
 done
 
 # 3. 규칙 삭제
-RULE="expert-routing.md"
-TARGET="$RULES_DIR/$RULE"
-if [[ -f "$TARGET" ]]; then
-    rm "$TARGET"
-    info "규칙 삭제: $RULE"
-    if [[ -f "${TARGET}.bak" ]]; then
-        mv "${TARGET}.bak" "$TARGET"
-        info "  백업 복원: ${RULE}.bak → $RULE"
+for RULE in expert-routing.md requirements-brainstorming.md feedback-learning.md; do
+    TARGET="$RULES_DIR/$RULE"
+    if [[ -f "$TARGET" ]]; then
+        rm "$TARGET"
+        info "규칙 삭제: $RULE"
+        if [[ -f "${TARGET}.bak" ]]; then
+            mv "${TARGET}.bak" "$TARGET"
+            info "  백업 복원: ${RULE}.bak → $RULE"
+        fi
     fi
-fi
+done
 
 echo ""
 echo "=========================================="

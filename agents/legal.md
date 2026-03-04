@@ -43,7 +43,7 @@
 | NDA 분류/검토 | `legal` | nda-triage |
 | 정형 법률 응답 | `legal` | canned-responses |
 | 미팅 브리핑 | `legal` | meeting-briefing |
-| 법률 자료 검색/종합 | `enterprise-search` | search-strategy, knowledge-synthesis |
+| 법률 자료 검색/종합 | `enterprise-search` | search-strategy, knowledge-synthesis, source-management |
 
 ## 출력 기준
 
