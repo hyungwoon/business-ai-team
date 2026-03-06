@@ -1,0 +1,101 @@
+# PROJECT KNOWLEDGE BASE
+
+**Generated:** 2026-03-06
+**Commit:** fa886a9
+**Branch:** main
+
+## OVERVIEW
+
+Markdown-based multi-agent expert system for business domains. 16 AI agents route requests through 18 plugin domains (56 skills) with automatic feedback learning (RLVR). No code — pure markdown architecture.
+
+## STRUCTURE
+
+```
+business-ai-team/
+├── CLAUDE.md              # Master config: agent mapping table, session rules, request flow
+├── agents/                # 16 domain agents (lightweight routers, not full prompts)
+├── plugins/               # 18 domain plugins, 56 skills (best practices + frameworks)
+├── knowledge/             # RLVR feedback storage (auto-learning from user corrections)
+├── .claude/rules/         # 3 routing rules (expert-routing, brainstorming, feedback-learning)
+├── .claude/commands/      # 4 slash commands (/ask, /route, /team, /improve)
+└── projects/              # Client deliverables (LOCAL ONLY — Git-excluded)
+```
+
+## WHERE TO LOOK
+
+| Task | Location | Notes |
+|------|----------|-------|
+| Understand request flow | `CLAUDE.md` lines 82-107 | 6-stage pipeline diagram |
+| Add/modify an agent | `agents/[domain].md` | ~50 lines: system prompt + skill routing table |
+| Add/modify a skill | `plugins/[domain]/skills/[skill]/SKILL.md` | 150-900 lines: frameworks + templates |
+| Check learned corrections | `knowledge/[domain].md` | 3 tables: corrections, tips, warnings |
+| Modify routing rules | `.claude/rules/expert-routing.md` | Mandatory procedures + forbidden actions |
+| Modify brainstorming gate | `.claude/rules/requirements-brainstorming.md` | 2-axis matrix (task/fact x vague/concrete) |
+| Modify feedback detection | `.claude/rules/feedback-learning.md` | Pattern triggers + storage procedure |
+| Review learning status | `knowledge/_index.md` | Domain counts; `/improve` command |
+| Resume a project | `projects/[name]/_context.md` | Always read first before working |
+
+## REQUEST FLOW
+
+```
+User Request
+  → [0.5] Check projects/_context.md (skip gate if continuation)
+  → [1] Brainstorming Gate (A=full, B=light, C=1 question, D=direct)
+  → [2] Domain Classification (CLAUDE.md mapping table)
+  → [3] Read agents/[domain].md (MANDATORY — never from memory)
+  → [4] Read plugins/.../SKILL.md (MANDATORY)
+  → [4.5] Read knowledge/[domain].md + preferences.md
+  → [5] Generate response (knowledge overrides SKILL.md)
+  → [6] Prepend "> **담당**: [Agent] | 참조 스킬: [Skill]"
+  → [RLVR] Auto-detect feedback → store in knowledge/
+```
+
+## CONVENTIONS
+
+- **Language**: Korean primary, English in plugin SKILL.md files
+- **Agent files**: Lightweight routing metadata (~50 lines), NOT full system prompts
+- **Skill files**: YAML frontmatter (name, description) + markdown content
+- **File naming**: `YYYY-MM-DD_[description].md` for all project deliverables
+- **Context files**: `_context.md` mandatory in every project folder (underscore prefix for sort-first)
+- **Cross-domain skills**: Agents can reference skills from other plugins (e.g., Research uses Sales's account-research)
+- **Plugin origin**: 10 from Anthropic knowledge-work-plugins, 8 custom-built
+
+## ANTI-PATTERNS (THIS PROJECT)
+
+- **NEVER** generate business response without reading `agents/[agent].md` file
+- **NEVER** provide domain expertise without reading the corresponding `SKILL.md`
+- **NEVER** deliver response without `> **담당**:` attribution header
+- **NEVER** substitute memory/estimation for reading agent files
+- **NEVER** use `git add .` — always stage specific files (projects/ leak risk)
+- **NEVER** push `projects/` folder to git
+- **NEVER** end session without updating `_context.md` for worked projects
+- **NEVER** skip session-end git push after system file changes
+- **NEVER** delete from `knowledge/` after SKILL.md reflection (preserve history)
+
+## UNIQUE STYLES
+
+- **Agents as routers**: Agents contain routing tables to skills, not full expertise
+- **Mandatory file reads**: System enforces `Read` tool calls — no memory/estimation
+- **RLVR learning**: Auto-detects user corrections ("아닌데", "실무에서는", "주의해야") → stores in knowledge/
+- **3-item threshold**: When domain accumulates 3+ feedback items → auto-reflect to SKILL.md
+- **Priority hierarchy**: knowledge/ corrections > SKILL.md best practices > agent system prompt
+- **Dual-path resolution**: Local agents/ first, falls back to `~/.claude/business-team/agents/`
+- **Brainstorming gate escape**: "바로 해줘", "알아서 해줘", "급해" → skip gate
+
+## COMMANDS
+
+```bash
+# Slash commands (in Claude Code CLI)
+/ask [question]     # Quick expert routing (simplified /route)
+/route [request]    # Full routing with brainstorming gate
+/team               # List all agents and skills
+/improve            # Review learning feedback, reflect to SKILL.md
+```
+
+## NOTES
+
+- `projects/` is in `.gitignore` but verify no accidental staging before push
+- Knowledge files are all initialized at 0 counts — system learns incrementally through use
+- Multi-agent composition: complex requests route to 2-5 agents (e.g., "시리즈A 투자 준비" → Finance + Legal + BizDev + Product)
+- Session-end checklist overrides ALL other rules — mandatory push after system changes
+- Same project, different request direction → re-run brainstorming gate
