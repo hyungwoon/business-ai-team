@@ -1,6 +1,6 @@
 # PLUGINS DIRECTORY
 
-18 domain plugins containing 56 skills. 10 from Anthropic knowledge-work-plugins, 8 custom-built.
+17 domain plugins containing 56 skills. 10 from Anthropic knowledge-work-plugins, 7 custom-built.
 
 ## STRUCTURE
 
@@ -68,4 +68,4 @@ Size range: 150-900 lines. Custom plugins tend shorter (~150-200), Anthropic plu
 
 - **NEVER** add agent-specific logic to SKILL.md — skills are domain-generic
 - **NEVER** modify SKILL.md without checking if `knowledge/` has corrections to preserve
-- Custom plugins (8) have fewer skills — extend them rather than creating new plugins
+- Custom plugins (7) have fewer skills — extend them rather than creating new plugins

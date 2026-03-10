@@ -1,12 +1,12 @@
 # PROJECT KNOWLEDGE BASE
 
-**Generated:** 2026-03-06
-**Commit:** fa886a9
+**Generated:** 2026-03-10
+**Commit:** 51c3ab8
 **Branch:** main
 
 ## OVERVIEW
 
-Markdown-based multi-agent expert system for business domains. 16 AI agents route requests through 18 plugin domains (56 skills) with automatic feedback learning (RLVR). No code — pure markdown architecture.
+Markdown-based multi-agent expert system for business domains. 16 AI agents route requests through 17 plugin domains (56 skills) with automatic feedback learning (RLVR). No code — pure markdown architecture.
 
 ## STRUCTURE
 
@@ -58,7 +58,7 @@ User Request
 - **File naming**: `YYYY-MM-DD_[description].md` for all project deliverables
 - **Context files**: `_context.md` mandatory in every project folder (underscore prefix for sort-first)
 - **Cross-domain skills**: Agents can reference skills from other plugins (e.g., Research uses Sales's account-research)
-- **Plugin origin**: 10 from Anthropic knowledge-work-plugins, 8 custom-built
+- **Plugin origin**: 10 from Anthropic knowledge-work-plugins, 7 custom-built
 
 ## ANTI-PATTERNS (THIS PROJECT)
 
@@ -95,7 +95,7 @@ User Request
 ## NOTES
 
 - `projects/` is in `.gitignore` but verify no accidental staging before push
-- Knowledge files are all initialized at 0 counts — system learns incrementally through use
+- Knowledge: Writing domain has 9 learned items (형운 voice profile), preferences has 8 items. Other domains at 0 — system learns incrementally through use
 - Multi-agent composition: complex requests route to 2-5 agents (e.g., "시리즈A 투자 준비" → Finance + Legal + BizDev + Product)
 - Session-end checklist overrides ALL other rules — mandatory push after system changes
 - Same project, different request direction → re-run brainstorming gate
