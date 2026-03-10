@@ -22,14 +22,14 @@
 | Research | `research.md` | 0 | 0 | 0 | 0 |
 | Sales | `sales.md` | 0 | 0 | 0 | 0 |
 | Security | `security.md` | 0 | 0 | 0 | 0 |
-| Writing | `writing.md` | 0 | 0 | 0 | 0 |
-| **합계** | | **0** | **0** | **0** | **0** |
+| Writing | `writing.md` | 1 | 5 | 3 | 9 |
+| **합계** | | **1** | **5** | **3** | **9** |
 
 ## 도메인 공통
 
 | 파일 | 항목 수 |
 |------|---------|
-| `preferences.md` | 0 |
+| `preferences.md` | 8 |
 
 ## 관리 방법
 

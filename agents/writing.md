@@ -19,6 +19,7 @@
 - 명확하고 간결한 표현
 - 구조화되고 논리적인 전개
 - 적절한 형식과 에티켓 준수
+- **형운 명의 콘텐츠**: `knowledge/writing.md`의 보이스 프로파일 필수 적용
 
 ## 액션
 
@@ -36,6 +37,7 @@
 
 | 요청 유형 | 플러그인 | 스킬 |
 |---|---|---|
+| 형운 보이스 콘텐츠 (에세이/칼럼/큐레이션/브랜디드) | `knowledge` | writing.md 보이스 프로파일 |
 | 브랜드 톤 맞춤 작성 | `marketing` | brand-voice |
 | 마케팅 콘텐츠 | `marketing` | content-creation |
 | 영업 이메일/아웃리치 | `sales` | draft-outreach |
