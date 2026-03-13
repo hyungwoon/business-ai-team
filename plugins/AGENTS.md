@@ -55,14 +55,14 @@ description: When to use # Trigger patterns
 [Configuration sections]
 ```
 
-Size range: 150-900 lines. Custom plugins tend shorter (~150-200), Anthropic plugins longer (300-900). PM Skills (product-management) skills are Korean, 100-400 lines each.
+Size range: 69-900 lines. Custom plugins tend shorter (~150-200), Anthropic plugins longer (300-900). PM Skills (product-management) skills are Korean, 69-275 lines each.
 
 ## CONVENTIONS
 
 - Skill names: kebab-case, action-oriented
 - SKILL.md is the ONLY file agents read — README.md and commands/ are supplementary
 - Skills degrade gracefully without MCP connectors
-- Cross-domain sharing: skills are referenced by multiple agents (competitive-analysis used by Marketing, Research, Product)
+- Cross-domain sharing: skills are referenced by multiple agents (competitive-analysis used by Marketing, Research; Product uses own competitor-analysis)
 
 ## ANTI-PATTERNS
 

@@ -1,7 +1,7 @@
 # PROJECT KNOWLEDGE BASE
 
-**Generated:** 2026-03-10
-**Commit:** 51c3ab8
+**Generated:** 2026-03-13
+**Commit:** de31eb9
 **Branch:** main
 
 ## OVERVIEW
@@ -27,9 +27,9 @@ business-ai-team/
 |------|----------|-------|
 | Understand request flow | `CLAUDE.md` lines 82-107 | 6-stage pipeline diagram |
 | Add/modify an agent | `agents/[domain].md` | ~50 lines: system prompt + skill routing table |
-| Add/modify a skill | `plugins/[domain]/skills/[skill]/SKILL.md` | 150-900 lines: frameworks + templates |
+| Add/modify a skill | `plugins/[domain]/skills/[skill]/SKILL.md` | 69-900 lines: frameworks + templates |
 | Check learned corrections | `knowledge/[domain].md` | 3 tables: corrections, tips, warnings |
-| Modify routing rules | `.claude/rules/expert-routing.md` | Mandatory procedures + forbidden actions |
+| Modify routing rules | `.claude/rules/expert-routing.md` | Mandatory procedures + forbidden actions + domain boundary routing |
 | Modify brainstorming gate | `.claude/rules/requirements-brainstorming.md` | 2-axis matrix (task/fact x vague/concrete) |
 | Modify feedback detection | `.claude/rules/feedback-learning.md` | Pattern triggers + storage procedure |
 | Review learning status | `knowledge/_index.md` | Domain counts; `/improve` command |
