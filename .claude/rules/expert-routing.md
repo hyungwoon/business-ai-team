@@ -82,6 +82,24 @@
 - **에이전트 문서가 진실의 원천**: CLAUDE.md의 매핑은 라우팅 가이드일 뿐, 실제 시스템 프롬프트와 스킬 내용은 항상 파일에서 직접 읽기
 - **학습 지식 우선**: `knowledge/`의 보정 사항은 SKILL.md보다 우선 (더 최신의 사용자 피드백)
 
+### 도메인 경계 라우팅 규칙 (모호한 요청 해소)
+
+유사 도메인 간 라우팅 충돌이 발생할 수 있는 요청 유형에 대한 명시적 규칙:
+
+| 요청 유형 | 주 에이전트 | 근거 | 보조 에이전트 |
+|-----------|------------|------|--------------|
+| "경쟁 분석해줘" / 경쟁사 비교 | **Product** | 제품 관점 경쟁 분석 (competitor-analysis) | Research (심층 조사 필요 시) |
+| "마케팅 경쟁 분석" / 경쟁 포지셔닝 메시지 | **Marketing** | 마케팅 관점 경쟁 분석 (competitive-analysis) | — |
+| "시장 분석해줘" / 시장 규모 | **Product** | market-sizing, market-segments 스킬 보유 | Research (산업 트렌드 심층 조사 시) |
+| "시장 조사해줘" / 산업 리서치 | **Research** | 1차/2차 리서치 방법론 전문 | Product (제품 관련 시장 질문 시) |
+| "코호트 분석해줘" / A/B 테스트 결과 | **Product** | cohort-analysis, ab-test-analysis 스킬 보유 | Data (복잡한 통계 분석 필요 시) |
+| "데이터 분석해줘" / SQL 쿼리 / 시각화 | **Data** | data-exploration, sql-queries, visualization 전문 | Product (제품 지표 맥락 필요 시) |
+| "고객 분석해줘" / 페르소나 | **Product** | user-personas, user-segmentation 스킬 보유 | — |
+| "고객 계정 조사" / 거래 인사이트 | **Sales** | account-research, customer-research 전문 | — |
+| "가격 전략" / 가격 책정 | **Product** | pricing-strategy 스킬 보유 | Finance (재무 모델링 필요 시) |
+
+**원칙**: 요청의 맥락이 "제품 의사결정"이면 Product, "조사/리서치 방법론"이면 Research, "데이터 처리/시각화"면 Data, "영업 활동"이면 Sales.
+
 ## 에이전트 지식 관리 원칙
 
 - `agents/*.md`의 시스템 프롬프트는 각 도메인의 전문 지식 원천

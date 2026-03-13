@@ -67,7 +67,7 @@
 | 포지셔닝 아이디어 | `product-management` | positioning-ideas |
 | 포지셔닝 문구 개발 | `product-management` | value-prop-statements |
 | 포지셔닝 이름 개발 | `product-management` | product-name |
-| 포지셔닝 경쟁 분석 | `marketing` | competitive-analysis |
+| 포지셔닝 경쟁 분석 | `product-management` | competitor-analysis |
 | 포지셔닝 5가지 힘 분석 | `product-management` | porters-five-forces |
 | 포지셔닝 앤소프 매트릭스 | `product-management` | ansoff-matrix |
 | **── 실행 ──** | | |
