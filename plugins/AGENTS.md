@@ -1,6 +1,6 @@
 # PLUGINS DIRECTORY
 
-17 domain plugins containing 56 skills. 10 from Anthropic knowledge-work-plugins, 7 custom-built.
+17 domain plugins containing 110+ skills. 10 from Anthropic knowledge-work-plugins, 7 custom-built. product-management expanded to 60 skills via PM Skills (Paweł Huryn) Korean edition.
 
 ## STRUCTURE
 
@@ -28,7 +28,7 @@
 | data | Anthropic | data-exploration, data-visualization, statistical-analysis, sql-queries, data-validation, data-context-extractor, interactive-dashboard-builder | Has scripts/ + references/ |
 | finance | Anthropic+custom | financial-analysis, financial-statements, variance-analysis, journal-entry-prep, reconciliation, audit-support, close-management | 7 skills |
 | legal | Anthropic | contract-review, legal-risk-assessment, compliance, nda-triage, canned-responses, meeting-briefing | Playbook-based review |
-| product-management | Anthropic | roadmap-management, feature-spec, user-research-synthesis, competitive-analysis, metrics-tracking, stakeholder-comms | 6 commands |
+| product-management | Anthropic + PM Skills (Paweł Huryn) | 60 skills: [Discovery] brainstorm-ideas-*, identify-assumptions-*, prioritize-*, opportunity-solution-tree, interview-*, summarize-interview [Strategy] product-strategy, lean-canvas, business-model, pricing-strategy, swot-analysis, pestle-analysis, porters-five-forces, ansoff-matrix, product-vision, value-proposition, startup-canvas, monetization-strategy [Execution] create-prd, brainstorm-okrs, outcome-roadmap, sprint-plan, retro, release-notes, pre-mortem, stakeholder-map, summarize-meeting, user-stories, job-stories, wwas, test-scenarios, dummy-dataset, prioritization-frameworks [Core] roadmap-management, metrics-tracking, stakeholder-comms [Research] user-personas, market-segments, user-segmentation, customer-journey-map, market-sizing, competitor-analysis, sentiment-analysis [GTM] gtm-strategy, beachhead-segment, ideal-customer-profile, growth-loops, gtm-motions, competitive-battlecard [Growth] positioning-ideas, value-prop-statements, product-name [Analytics] cohort-analysis, ab-test-analysis | 31 commands, 12 MCP connectors |
 | customer-support | Anthropic | ticket-triage, response-drafting, customer-research, escalation, knowledge-management | Cross-referenced by Sales |
 | productivity | Anthropic | task-management, memory-management | Persistent memory system |
 | enterprise-search | Anthropic | search-strategy, knowledge-synthesis, source-management | Source-agnostic |
@@ -55,7 +55,7 @@ description: When to use # Trigger patterns
 [Configuration sections]
 ```
 
-Size range: 150-900 lines. Custom plugins tend shorter (~150-200), Anthropic plugins longer (300-900).
+Size range: 150-900 lines. Custom plugins tend shorter (~150-200), Anthropic plugins longer (300-900). PM Skills (product-management) skills are Korean, 100-400 lines each.
 
 ## CONVENTIONS
 

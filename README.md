@@ -149,7 +149,7 @@ business-ai-team/
 
 ## 플러그인 스킬 목록
 
-10개 플러그인은 [Anthropic knowledge-work-plugins](https://github.com/anthropics/knowledge-work-plugins)에서 가져왔으며, 7개는 이 프로젝트에서 자체 생성했습니다.
+10개 플러그인은 [Anthropic knowledge-work-plugins](https://github.com/anthropics/knowledge-work-plugins)에서 가져왔으며, 7개는 이 프로젝트에서 자체 생성했습니다. product-management 플러그인은 [PM Skills (Paweł Huryn)](https://github.com/lucas-flatwhite/pm-skills-ko) 한국어판을 통합하여 60개 스킬로 확장되었습니다.
 
 | 플러그인 | 출처 | 스킬 |
 |---------|------|------|
@@ -158,7 +158,7 @@ business-ai-team/
 | data | Anthropic | data-exploration, data-visualization, statistical-analysis, sql-queries, data-validation, data-context-extractor, interactive-dashboard-builder |
 | finance | Anthropic + 자체 | financial-analysis, financial-statements, variance-analysis, journal-entry-prep, reconciliation, audit-support, close-management |
 | legal | Anthropic | contract-review, legal-risk-assessment, compliance, nda-triage, canned-responses, meeting-briefing |
-| product-management | Anthropic | roadmap-management, feature-spec, user-research-synthesis, competitive-analysis, metrics-tracking, stakeholder-comms |
+| product-management | Anthropic + PM Skills | **60개 스킬** — [Discovery] brainstorm-ideas-*, identify-assumptions-*, prioritize-*, opportunity-solution-tree, interview-* [Strategy] product-strategy, lean-canvas, business-model, pricing-strategy, swot/pestle/porters [Execution] create-prd, okrs, roadmap, sprint, retro, user-stories [Core] roadmap-management, metrics-tracking, stakeholder-comms [Research] personas, segments, journey-map, market-sizing [GTM] gtm-strategy, beachhead, growth-loops, battlecard [Analytics] cohort, ab-test |
 | productivity | Anthropic | task-management, memory-management |
 | customer-support | Anthropic | ticket-triage, response-drafting, customer-research, escalation, knowledge-management |
 | enterprise-search | Anthropic | search-strategy, knowledge-synthesis, source-management |

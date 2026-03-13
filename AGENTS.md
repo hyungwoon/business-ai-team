@@ -6,7 +6,7 @@
 
 ## OVERVIEW
 
-Markdown-based multi-agent expert system for business domains. 16 AI agents route requests through 17 plugin domains (56 skills) with automatic feedback learning (RLVR). No code — pure markdown architecture.
+Markdown-based multi-agent expert system for business domains. 16 AI agents route requests through 17 plugin domains (110+ skills) with automatic feedback learning (RLVR). No code — pure markdown architecture.
 
 ## STRUCTURE
 
@@ -14,7 +14,7 @@ Markdown-based multi-agent expert system for business domains. 16 AI agents rout
 business-ai-team/
 ├── CLAUDE.md              # Master config: agent mapping table, session rules, request flow
 ├── agents/                # 16 domain agents (lightweight routers, not full prompts)
-├── plugins/               # 18 domain plugins, 56 skills (best practices + frameworks)
+├── plugins/               # 17 domain plugins, 110+ skills (best practices + frameworks)
 ├── knowledge/             # RLVR feedback storage (auto-learning from user corrections)
 ├── .claude/rules/         # 3 routing rules (expert-routing, brainstorming, feedback-learning)
 ├── .claude/commands/      # 4 slash commands (/ask, /route, /team, /improve)
@@ -52,13 +52,14 @@ User Request
 
 ## CONVENTIONS
 
-- **Language**: Korean primary, English in plugin SKILL.md files
-- **Agent files**: Lightweight routing metadata (~50 lines), NOT full system prompts
+- **Language**: Korean primary, English/Korean mixed in plugin SKILL.md files (product-management is Korean)
+- **Agent files**: Lightweight routing metadata (~50-120 lines), NOT full system prompts
 - **Skill files**: YAML frontmatter (name, description) + markdown content
 - **File naming**: `YYYY-MM-DD_[description].md` for all project deliverables
 - **Context files**: `_context.md` mandatory in every project folder (underscore prefix for sort-first)
 - **Cross-domain skills**: Agents can reference skills from other plugins (e.g., Research uses Sales's account-research)
 - **Plugin origin**: 10 from Anthropic knowledge-work-plugins, 7 custom-built
+- **PM Skills**: product-management plugin expanded to 60 skills via PM Skills (Paweł Huryn) Korean edition integration
 
 ## ANTI-PATTERNS (THIS PROJECT)
 

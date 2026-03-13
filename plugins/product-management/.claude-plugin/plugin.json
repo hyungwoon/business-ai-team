@@ -1,8 +1,9 @@
 {
   "name": "product-management",
-  "version": "1.0.0",
-  "description": "Write feature specs, plan roadmaps, and synthesize user research faster. Keep stakeholders updated and stay ahead of the competitive landscape.",
+  "version": "2.0.0",
+  "description": "제품 관리 종합 플러그인: 디스커버리, 전략, 실행, 시장조사, GTM, 성장까지 PM 전체 라이프사이클을 60개 스킬로 지원합니다. Anthropic product-management + PM Skills (Paweł Huryn) 통합.",
   "author": {
-    "name": "Anthropic"
+    "name": "Anthropic + Paweł Huryn (PM Skills)",
+    "url": "https://www.productcompass.pm"
   }
 }
