@@ -13,8 +13,8 @@ allowed-tools: Read, Write, Glob
 
 | 요청 유형 | 참조 파일 |
 |---|---|
-| 메모리 및 컨텍스트 관리 | [references/memory-management.md] |
-| 작업 관리 및 우선순위 | [references/task-management.md] |
+| 메모리 및 컨텍스트 관리 | [plugins/productivity/skills/memory-management/SKILL.md] |
+| 작업 관리 및 우선순위 | [plugins/productivity/skills/task-management/SKILL.md] |
 
 ## 사용법
 

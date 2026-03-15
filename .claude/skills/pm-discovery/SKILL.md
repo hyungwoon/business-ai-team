@@ -13,18 +13,18 @@ allowed-tools: Read, Write, Glob, WebSearch
 
 | 요청 유형 | 참조 파일 |
 |---|---|
-| 기존 제품 아이디어 브레인스토밍 | [references/brainstorm-ideas-existing.md] |
-| 신규 제품 아이디어 브레인스토밍 | [references/brainstorm-ideas-new.md] |
-| 기존 제품 실험 설계 | [references/brainstorm-experiments-existing.md] |
-| 신규 제품 실험 설계 | [references/brainstorm-experiments-new.md] |
-| 기존 제품 가정 식별 | [references/identify-assumptions-existing.md] |
-| 신규 제품 가정 식별 | [references/identify-assumptions-new.md] |
-| 가정 우선순위화 | [references/prioritize-assumptions.md] |
-| 기능 우선순위화 | [references/prioritize-features.md] |
-| 기능 요청 분석 | [references/analyze-feature-requests.md] |
-| 기회-솔루션 트리 | [references/opportunity-solution-tree.md] |
-| 인터뷰 스크립트 작성 | [references/interview-script.md] |
-| 인터뷰 요약 | [references/summarize-interview.md] |
+| 기존 제품 아이디어 브레인스토밍 | [plugins/product-management/skills/brainstorm-ideas-existing/SKILL.md] |
+| 신규 제품 아이디어 브레인스토밍 | [plugins/product-management/skills/brainstorm-ideas-new/SKILL.md] |
+| 기존 제품 실험 설계 | [plugins/product-management/skills/brainstorm-experiments-existing/SKILL.md] |
+| 신규 제품 실험 설계 | [plugins/product-management/skills/brainstorm-experiments-new/SKILL.md] |
+| 기존 제품 가정 식별 | [plugins/product-management/skills/identify-assumptions-existing/SKILL.md] |
+| 신규 제품 가정 식별 | [plugins/product-management/skills/identify-assumptions-new/SKILL.md] |
+| 가정 우선순위화 | [plugins/product-management/skills/prioritize-assumptions/SKILL.md] |
+| 기능 우선순위화 | [plugins/product-management/skills/prioritize-features/SKILL.md] |
+| 기능 요청 분석 | [plugins/product-management/skills/analyze-feature-requests/SKILL.md] |
+| 기회-솔루션 트리 | [plugins/product-management/skills/opportunity-solution-tree/SKILL.md] |
+| 인터뷰 스크립트 작성 | [plugins/product-management/skills/interview-script/SKILL.md] |
+| 인터뷰 요약 | [plugins/product-management/skills/summarize-interview/SKILL.md] |
 
 ## 사용법
 

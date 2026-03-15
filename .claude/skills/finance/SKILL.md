@@ -13,13 +13,13 @@ allowed-tools: Read, Write, Glob
 
 | 요청 유형 | 참조 파일 |
 |---|---|
-| 감사 지원 | [references/audit-support.md] |
-| 결산 관리 | [references/close-management.md] |
-| 재무 분석 | [references/financial-analysis.md] |
-| 재무제표 작성 | [references/financial-statements.md] |
-| 분개 준비 | [references/journal-entry-prep.md] |
-| 계정 조정 | [references/reconciliation.md] |
-| 차이 분석 | [references/variance-analysis.md] |
+| 감사 지원 | [plugins/finance/skills/audit-support/SKILL.md] |
+| 결산 관리 | [plugins/finance/skills/close-management/SKILL.md] |
+| 재무 분석 | [plugins/finance/skills/financial-analysis/SKILL.md] |
+| 재무제표 작성 | [plugins/finance/skills/financial-statements/SKILL.md] |
+| 분개 준비 | [plugins/finance/skills/journal-entry-prep/SKILL.md] |
+| 계정 조정 | [plugins/finance/skills/reconciliation/SKILL.md] |
+| 차이 분석 | [plugins/finance/skills/variance-analysis/SKILL.md] |
 
 ## 사용법
 

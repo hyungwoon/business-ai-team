@@ -13,11 +13,11 @@ allowed-tools: Read, Write, Glob, WebSearch
 
 | 요청 유형 | 참조 파일 |
 |---|---|
-| 브랜드 보이스 정의 및 적용 | [references/brand-voice.md] |
-| 캠페인 기획 | [references/campaign-planning.md] |
-| 경쟁사 분석 | [references/competitive-analysis.md] |
-| 콘텐츠 제작 | [references/content-creation.md] |
-| 퍼포먼스 분석 | [references/performance-analytics.md] |
+| 브랜드 보이스 정의 및 적용 | [plugins/marketing/skills/brand-voice/SKILL.md] |
+| 캠페인 기획 | [plugins/marketing/skills/campaign-planning/SKILL.md] |
+| 경쟁사 분석 | [plugins/marketing/skills/competitive-analysis/SKILL.md] |
+| 콘텐츠 제작 | [plugins/marketing/skills/content-creation/SKILL.md] |
+| 퍼포먼스 분석 | [plugins/marketing/skills/performance-analytics/SKILL.md] |
 
 ## 사용법
 

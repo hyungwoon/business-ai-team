@@ -13,13 +13,13 @@ allowed-tools: Read, Write, Glob, Bash
 
 | 요청 유형 | 참조 파일 |
 |---|---|
-| 데이터 컨텍스트 추출 | [references/data-context-extractor.md] |
-| 데이터 탐색 및 EDA | [references/data-exploration.md] |
-| 데이터 검증 및 품질 확인 | [references/data-validation.md] |
-| 데이터 시각화 및 차트 | [references/data-visualization.md] |
-| 인터랙티브 대시보드 제작 | [references/interactive-dashboard-builder.md] |
-| SQL 쿼리 작성 | [references/sql-queries.md] |
-| 통계 분석 | [references/statistical-analysis.md] |
+| 데이터 컨텍스트 추출 | [plugins/data/skills/data-context-extractor/SKILL.md] |
+| 데이터 탐색 및 EDA | [plugins/data/skills/data-exploration/SKILL.md] |
+| 데이터 검증 및 품질 확인 | [plugins/data/skills/data-validation/SKILL.md] |
+| 데이터 시각화 및 차트 | [plugins/data/skills/data-visualization/SKILL.md] |
+| 인터랙티브 대시보드 제작 | [plugins/data/skills/interactive-dashboard-builder/SKILL.md] |
+| SQL 쿼리 작성 | [plugins/data/skills/sql-queries/SKILL.md] |
+| 통계 분석 | [plugins/data/skills/statistical-analysis/SKILL.md] |
 
 ## 사용법
 

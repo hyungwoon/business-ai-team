@@ -13,12 +13,12 @@ allowed-tools: Read, Write, Glob
 
 | 요청 유형 | 참조 파일 |
 |---|---|
-| 법률 답변 템플릿 | [references/canned-responses.md] |
-| 컴플라이언스 검토 | [references/compliance.md] |
-| 계약서 검토 | [references/contract-review.md] |
-| 법적 리스크 평가 | [references/legal-risk-assessment.md] |
-| 미팅 브리핑 준비 | [references/meeting-briefing.md] |
-| NDA 분류 및 검토 | [references/nda-triage.md] |
+| 법률 답변 템플릿 | [plugins/legal/skills/canned-responses/SKILL.md] |
+| 컴플라이언스 검토 | [plugins/legal/skills/compliance/SKILL.md] |
+| 계약서 검토 | [plugins/legal/skills/contract-review/SKILL.md] |
+| 법적 리스크 평가 | [plugins/legal/skills/legal-risk-assessment/SKILL.md] |
+| 미팅 브리핑 준비 | [plugins/legal/skills/meeting-briefing/SKILL.md] |
+| NDA 분류 및 검토 | [plugins/legal/skills/nda-triage/SKILL.md] |
 
 ## 사용법
 

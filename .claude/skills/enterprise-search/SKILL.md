@@ -13,9 +13,9 @@ allowed-tools: Read, Write, Glob, WebSearch
 
 | 요청 유형 | 참조 파일 |
 |---|---|
-| 지식 종합 및 정리 | [references/knowledge-synthesis.md] |
-| 검색 전략 수립 | [references/search-strategy.md] |
-| 소스 관리 | [references/source-management.md] |
+| 지식 종합 및 정리 | [plugins/enterprise-search/skills/knowledge-synthesis/SKILL.md] |
+| 검색 전략 수립 | [plugins/enterprise-search/skills/search-strategy/SKILL.md] |
+| 소스 관리 | [plugins/enterprise-search/skills/source-management/SKILL.md] |
 
 ## 사용법
 

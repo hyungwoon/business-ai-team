@@ -13,11 +13,11 @@ allowed-tools: Read, Write, Glob
 
 | 요청 유형 | 참조 파일 |
 |---|---|
-| 티켓 분류 및 우선순위 설정 | [references/ticket-triage.md] |
-| 고객 응답 초안 작성 | [references/response-drafting.md] |
-| 고객 조사 및 분석 | [references/customer-research.md] |
-| 에스컬레이션 처리 | [references/escalation.md] |
-| 지식베이스 관리 | [references/knowledge-management.md] |
+| 티켓 분류 및 우선순위 설정 | [plugins/customer-support/skills/ticket-triage/SKILL.md] |
+| 고객 응답 초안 작성 | [plugins/customer-support/skills/response-drafting/SKILL.md] |
+| 고객 조사 및 분석 | [plugins/customer-support/skills/customer-research/SKILL.md] |
+| 에스컬레이션 처리 | [plugins/customer-support/skills/escalation/SKILL.md] |
+| 지식베이스 관리 | [plugins/customer-support/skills/knowledge-management/SKILL.md] |
 
 ## 사용법
 

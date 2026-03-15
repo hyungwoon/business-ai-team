@@ -13,8 +13,8 @@ allowed-tools: Read, Write, Glob
 
 | 요청 유형 | 참조 파일 |
 |---|---|
-| 코호트 리텐션/이탈 분석 | [references/cohort-analysis.md] |
-| A/B 테스트 결과 해석 | [references/ab-test-analysis.md] |
+| 코호트 리텐션/이탈 분석 | [plugins/product-management/skills/cohort-analysis/SKILL.md] |
+| A/B 테스트 결과 해석 | [plugins/product-management/skills/ab-test-analysis/SKILL.md] |
 
 ## 사용법
 

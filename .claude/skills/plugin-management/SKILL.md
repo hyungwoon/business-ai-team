@@ -13,8 +13,8 @@ allowed-tools: Read, Write, Glob, Bash
 
 | 요청 유형 | 참조 파일 |
 |---|---|
-| 기존 플러그인 커스터마이징 | [references/cowork-plugin-customizer.md] |
-| 신규 플러그인 생성 | [references/create-cowork-plugin.md] |
+| 기존 플러그인 커스터마이징 | [plugins/cowork-plugin-management/skills/cowork-plugin-customizer/SKILL.md] |
+| 신규 플러그인 생성 | [plugins/cowork-plugin-management/skills/create-cowork-plugin/SKILL.md] |
 
 ## 사용법
 

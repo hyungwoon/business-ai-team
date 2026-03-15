@@ -13,13 +13,13 @@ allowed-tools: Read, Write, Glob, WebSearch
 
 | 요청 유형 | 참조 파일 |
 |---|---|
-| 사용자 페르소나 작성 | [references/user-personas.md] |
-| 시장 세그먼트 분석 | [references/market-segments.md] |
-| 고객 세분화 | [references/user-segmentation.md] |
-| 고객 여정 지도 | [references/customer-journey-map.md] |
-| 시장 규모 산정(TAM/SAM/SOM) | [references/market-sizing.md] |
-| 경쟁사 분석 | [references/competitor-analysis.md] |
-| 감성/리뷰 분석 | [references/sentiment-analysis.md] |
+| 사용자 페르소나 작성 | [plugins/product-management/skills/user-personas/SKILL.md] |
+| 시장 세그먼트 분석 | [plugins/product-management/skills/market-segments/SKILL.md] |
+| 고객 세분화 | [plugins/product-management/skills/user-segmentation/SKILL.md] |
+| 고객 여정 지도 | [plugins/product-management/skills/customer-journey-map/SKILL.md] |
+| 시장 규모 산정(TAM/SAM/SOM) | [plugins/product-management/skills/market-sizing/SKILL.md] |
+| 경쟁사 분석 | [plugins/product-management/skills/competitor-analysis/SKILL.md] |
+| 감성/리뷰 분석 | [plugins/product-management/skills/sentiment-analysis/SKILL.md] |
 
 ## 사용법
 

@@ -13,21 +13,21 @@ allowed-tools: Read, Write, Glob
 
 | 요청 유형 | 참조 파일 |
 |---|---|
-| PRD 작성 | [references/create-prd.md] |
-| OKR 설정 | [references/brainstorm-okrs.md] |
-| 아웃컴 로드맵 전환 | [references/outcome-roadmap.md] |
-| 스프린트 계획 | [references/sprint-plan.md] |
-| 스프린트 회고 | [references/retro.md] |
-| 릴리스 노트 작성 | [references/release-notes.md] |
-| 사전 부검 (Pre-mortem) | [references/pre-mortem.md] |
-| 이해관계자 맵 | [references/stakeholder-map.md] |
-| 회의록 요약 | [references/summarize-meeting.md] |
-| 유저 스토리 작성 | [references/user-stories.md] |
-| 잡 스토리 작성 | [references/job-stories.md] |
-| WWAS 분석 | [references/wwas.md] |
-| 테스트 시나리오 설계 | [references/test-scenarios.md] |
-| 더미 데이터 생성 | [references/dummy-dataset.md] |
-| 우선순위 프레임워크 | [references/prioritization-frameworks.md] |
+| PRD 작성 | [plugins/product-management/skills/create-prd/SKILL.md] |
+| OKR 설정 | [plugins/product-management/skills/brainstorm-okrs/SKILL.md] |
+| 아웃컴 로드맵 전환 | [plugins/product-management/skills/outcome-roadmap/SKILL.md] |
+| 스프린트 계획 | [plugins/product-management/skills/sprint-plan/SKILL.md] |
+| 스프린트 회고 | [plugins/product-management/skills/retro/SKILL.md] |
+| 릴리스 노트 작성 | [plugins/product-management/skills/release-notes/SKILL.md] |
+| 사전 부검 (Pre-mortem) | [plugins/product-management/skills/pre-mortem/SKILL.md] |
+| 이해관계자 맵 | [plugins/product-management/skills/stakeholder-map/SKILL.md] |
+| 회의록 요약 | [plugins/product-management/skills/summarize-meeting/SKILL.md] |
+| 유저 스토리 작성 | [plugins/product-management/skills/user-stories/SKILL.md] |
+| 잡 스토리 작성 | [plugins/product-management/skills/job-stories/SKILL.md] |
+| WWAS 분석 | [plugins/product-management/skills/wwas/SKILL.md] |
+| 테스트 시나리오 설계 | [plugins/product-management/skills/test-scenarios/SKILL.md] |
+| 더미 데이터 생성 | [plugins/product-management/skills/dummy-dataset/SKILL.md] |
+| 우선순위 프레임워크 | [plugins/product-management/skills/prioritization-frameworks/SKILL.md] |
 
 ## 사용법
 

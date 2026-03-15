@@ -13,9 +13,9 @@ allowed-tools: Read, Write, Glob
 
 | 요청 유형 | 참조 파일 |
 |---|---|
-| 로드맵 관리/우선순위화 | [references/roadmap-management.md] |
-| 제품 지표 정의/추적/분석 | [references/metrics-tracking.md] |
-| 이해관계자 업데이트/커뮤니케이션 | [references/stakeholder-comms.md] |
+| 로드맵 관리/우선순위화 | [plugins/product-management/skills/roadmap-management/SKILL.md] |
+| 제품 지표 정의/추적/분석 | [plugins/product-management/skills/metrics-tracking/SKILL.md] |
+| 이해관계자 업데이트/커뮤니케이션 | [plugins/product-management/skills/stakeholder-comms/SKILL.md] |
 
 ## 사용법
 

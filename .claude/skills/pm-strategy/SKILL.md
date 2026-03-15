@@ -13,21 +13,21 @@ allowed-tools: Read, Write, Glob, WebSearch
 
 | 요청 유형 | 참조 파일 |
 |---|---|
-| 제품 전략 수립 | [references/product-strategy.md] |
-| 스타트업 캔버스 | [references/startup-canvas.md] |
-| 제품 비전 작성 | [references/product-vision.md] |
-| 가치 제안 설계 | [references/value-proposition.md] |
-| 린 캔버스 | [references/lean-canvas.md] |
-| 비즈니스 모델 설계 | [references/business-model.md] |
-| 수익화 전략 | [references/monetization-strategy.md] |
-| 가격 전략 | [references/pricing-strategy.md] |
-| SWOT 분석 | [references/swot-analysis.md] |
-| PESTLE 분석 | [references/pestle-analysis.md] |
-| Porter의 5가지 힘 | [references/porters-five-forces.md] |
-| Ansoff 매트릭스 | [references/ansoff-matrix.md] |
-| 포지셔닝 아이디어 | [references/positioning-ideas.md] |
-| 가치 제안 문구 작성 | [references/value-prop-statements.md] |
-| 제품명 아이디에이션 | [references/product-name.md] |
+| 제품 전략 수립 | [plugins/product-management/skills/product-strategy/SKILL.md] |
+| 스타트업 캔버스 | [plugins/product-management/skills/startup-canvas/SKILL.md] |
+| 제품 비전 작성 | [plugins/product-management/skills/product-vision/SKILL.md] |
+| 가치 제안 설계 | [plugins/product-management/skills/value-proposition/SKILL.md] |
+| 린 캔버스 | [plugins/product-management/skills/lean-canvas/SKILL.md] |
+| 비즈니스 모델 설계 | [plugins/product-management/skills/business-model/SKILL.md] |
+| 수익화 전략 | [plugins/product-management/skills/monetization-strategy/SKILL.md] |
+| 가격 전략 | [plugins/product-management/skills/pricing-strategy/SKILL.md] |
+| SWOT 분석 | [plugins/product-management/skills/swot-analysis/SKILL.md] |
+| PESTLE 분석 | [plugins/product-management/skills/pestle-analysis/SKILL.md] |
+| Porter의 5가지 힘 | [plugins/product-management/skills/porters-five-forces/SKILL.md] |
+| Ansoff 매트릭스 | [plugins/product-management/skills/ansoff-matrix/SKILL.md] |
+| 포지셔닝 아이디어 | [plugins/product-management/skills/positioning-ideas/SKILL.md] |
+| 가치 제안 문구 작성 | [plugins/product-management/skills/value-prop-statements/SKILL.md] |
+| 제품명 아이디에이션 | [plugins/product-management/skills/product-name/SKILL.md] |
 
 ## 사용법
 

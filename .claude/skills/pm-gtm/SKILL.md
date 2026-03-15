@@ -13,12 +13,12 @@ allowed-tools: Read, Write, Glob, WebSearch
 
 | 요청 유형 | 참조 파일 |
 |---|---|
-| GTM 전략 수립 | [references/gtm-strategy.md] |
-| 교두보 시장 선정 | [references/beachhead-segment.md] |
-| ICP(이상적 고객 프로필) 정의 | [references/ideal-customer-profile.md] |
-| 성장 루프 설계 | [references/growth-loops.md] |
-| GTM 모션 선택 | [references/gtm-motions.md] |
-| 경쟁 배틀카드 작성 | [references/competitive-battlecard.md] |
+| GTM 전략 수립 | [plugins/product-management/skills/gtm-strategy/SKILL.md] |
+| 교두보 시장 선정 | [plugins/product-management/skills/beachhead-segment/SKILL.md] |
+| ICP(이상적 고객 프로필) 정의 | [plugins/product-management/skills/ideal-customer-profile/SKILL.md] |
+| 성장 루프 설계 | [plugins/product-management/skills/growth-loops/SKILL.md] |
+| GTM 모션 선택 | [plugins/product-management/skills/gtm-motions/SKILL.md] |
+| 경쟁 배틀카드 작성 | [plugins/product-management/skills/competitive-battlecard/SKILL.md] |
 
 ## 사용법
 

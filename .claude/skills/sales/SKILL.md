@@ -13,12 +13,12 @@ allowed-tools: Read, Write, Glob, WebSearch
 
 | 요청 유형 | 참조 파일 |
 |---|---|
-| 어카운트 리서치 | [references/account-research.md] |
-| 콜 준비 | [references/call-prep.md] |
-| 경쟁 인텔리전스 | [references/competitive-intelligence.md] |
-| 영업 자료 제작 | [references/create-an-asset.md] |
-| 데일리 브리핑 | [references/daily-briefing.md] |
-| 아웃리치 초안 작성 | [references/draft-outreach.md] |
+| 어카운트 리서치 | [plugins/sales/skills/account-research/SKILL.md] |
+| 콜 준비 | [plugins/sales/skills/call-prep/SKILL.md] |
+| 경쟁 인텔리전스 | [plugins/sales/skills/competitive-intelligence/SKILL.md] |
+| 영업 자료 제작 | [plugins/sales/skills/create-an-asset/SKILL.md] |
+| 데일리 브리핑 | [plugins/sales/skills/daily-briefing/SKILL.md] |
+| 아웃리치 초안 작성 | [plugins/sales/skills/draft-outreach/SKILL.md] |
 
 ## 사용법
 
