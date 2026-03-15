@@ -2,7 +2,7 @@
 
 당신의 비즈니스를 돕는 범용 AI 전문가 팀.
 
-마케팅, 리서치, 전략 수립, 문서 작성 등 비즈니스 전 분야를 16명의 AI 전문가가 지원합니다.
+마케팅, 리서치, 전략 수립, 문서 작성 등 비즈니스 전 분야를 16명의 AI 전문가가 지원합니다. Claude Code 네이티브 스킬 시스템으로 31개 메가-스킬을 자동 발견하고, 능동적 학습 루프로 사용할수록 정확해집니다.
 
 ---
 
@@ -57,6 +57,7 @@ claude
 | `/route [요청]` | 비즈니스 요청을 전문가 에이전트에 라우팅하여 전문 관점으로 응답 |
 | `/team` | 현재 사용 가능한 전문가 에이전트 팀과 보유 스킬 목록 표시 |
 | `/improve` | 학습 지식 리뷰 — 누적된 피드백 현황 확인 및 SKILL.md 반영 |
+| `/health` | 프로젝트 건강도 진단 — 스킬 크기, 중복, 학습 현황, 구조 점수(A-F) |
 
 일반 대화에서도 비즈니스 요청 시 자동으로 해당 전문가에게 라우팅됩니다.
 
@@ -127,21 +128,19 @@ claude
 business-ai-team/
 ├── CLAUDE.md                # 시스템 설정 + 전문가 라우팅 테이블
 ├── agents/                  # 16개 전문가 에이전트 (시스템 프롬프트 + 스킬 라우팅)
-│   ├── marketing.md
-│   ├── research.md
-│   ├── sales.md
-│   └── ... (13개 추가 에이전트)
-├── .claude/commands/        # 슬래시 커맨드 (/ask, /route, /team, /improve)
-├── .claude/rules/           # 라우팅 규칙 (expert-routing, brainstorming, feedback-learning)
-├── plugins/                 # 17개 도메인별 플러그인 스킬
-│   ├── marketing/skills/    # brand-voice, content-creation 등
-│   ├── sales/skills/        # draft-outreach, account-research 등
-│   ├── data/skills/         # data-exploration, visualization 등
-│   └── ... (14개 추가 플러그인)
-├── knowledge/               # 학습 지식 (RLVR — 사용자 피드백 자동 학습)
-│   ├── _index.md            # 도메인별 학습 현황 카운트
-│   ├── [도메인].md          # 16개 도메인별 보정/노하우/주의사항
-│   └── preferences.md      # 도메인 공통 선호도
+├── .claude/skills/          # 31개 네이티브 스킬 (Claude Code 자동 발견)
+│   ├── pm-discovery/        # 라우터형 (35줄 + 12 references)
+│   ├── pm-strategy/         # 라우터형 (38줄 + 15 references)
+│   ├── browse/              # 자체 완결형 (243줄 + 빌드 인프라)
+│   ├── review/              # 자체 완결형 (111줄)
+│   └── ... (27개 추가 스킬)
+├── .claude/rules/           # 4개 규칙 (expert-routing, brainstorming, feedback-learning, session-reminder)
+├── .claude/commands/        # 5개 커맨드 (/ask, /route, /team, /improve, /health)
+├── plugins/                 # 17개 도메인 플러그인 (원본 스킬 보존)
+├── knowledge/               # RLVR 학습 지식 (자동 학습 + 자동 생성)
+│   ├── _index.md            # 도메인별 학습 현황
+│   ├── preferences.md       # 도메인 공통 선호도
+│   └── [도메인].md          # 첫 학습 시 자동 생성
 └── projects/                # 프로젝트 작업 공간 (Git 제외)
 ```
 
@@ -177,6 +176,26 @@ business-ai-team/
 
 대화 중 사용자의 보정 피드백을 자동 감지하여 `knowledge/` 디렉토리에 저장합니다.
 
-- **자동 학습**: "아닌데", "실무에서는", "주의해야" 등의 패턴 감지 시 자동 기록
+- **수동 감지**: "아닌데", "실무에서는", "주의해야" 등의 패턴 감지 시 자동 기록
+- **능동적 학습**: 암묵적 만족도 판단, 반복 패턴 감지, 교차 도메인 학습
 - **누적 반영**: 동일 도메인 3건 이상 누적 시 해당 SKILL.md에 자동 반영
+- **긴급 반영**: "이건 꼭 기억해" 등 강조 시 즉시 반영 후보 표시
+- **세션 리마인드**: 세션 시작 시 선호도/맥락/학습 자동 로드
 - **수동 리뷰**: `/improve` 커맨드로 전체 학습 지식 리뷰 및 SKILL.md 반영
+- **건강도 진단**: `/health` 커맨드로 스킬 크기, 중복, 학습 현황, 구조 점수 확인
+
+## 엔지니어링 워크플로우
+
+[garrytan/gstack](https://github.com/garrytan/gstack) 기반 엔지니어링 스킬이 통합되어 있습니다.
+
+| 커맨드 | 용도 |
+|---|---|
+| `/plan-ceo-review` | CEO/파운더 모드 플랜 리뷰 |
+| `/plan-eng-review` | 엔지니어링 매니저 모드 설계 리뷰 |
+| `/review` | 코드 리뷰 (프로덕션 버그 탐지) |
+| `/ship` | 릴리스 자동화 (main 동기화 → 테스트 → PR) |
+| `/browse` | 헤드리스 브라우저 QA 테스트 |
+| `/qa` | git diff 기반 체계적 QA |
+| `/eng-retro` | git 커밋 기반 주간 엔지니어링 회고 |
+
+브라우저 스킬 최초 사용 시: `cd .claude/skills/browse && ./setup` (Bun 필요)
