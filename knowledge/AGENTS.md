@@ -8,7 +8,8 @@ RLVR (Reinforcement Learning from Verbal Reasoning) feedback storage. Auto-learn
 knowledge/
 ├── _index.md         # Learning counts per domain (corrections | tips | warnings | total)
 ├── preferences.md    # Cross-domain user preferences (format, style, language)
-└── [domain].md       # 16 domain files (1:1 mirror of agents/)
+├── writing.md        # Writing domain (pre-existing with learned content)
+└── [domain].md       # Other domain files (auto-created on first learning detection)
 ```
 
 ## HOW IT WORKS
@@ -39,4 +40,5 @@ knowledge/[domain].md  >  SKILL.md best practices  >  agents/[agent].md system p
 - **NEVER** delete items from knowledge/ after reflecting to SKILL.md (preserve audit trail)
 - **NEVER** skip reading knowledge/ files during response generation
 - Duplicate check: same content → skip; conflicting info → update existing row
-- Current state: all domains at 0 counts (system learns incrementally)
+- **NEVER** pre-create domain files — let them auto-generate on first learning detection
+- Current state: writing.md has 9 learned items; other domains created on demand (system learns incrementally)
