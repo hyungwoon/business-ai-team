@@ -38,6 +38,15 @@
 | 기술 데이터 탐색/분석 | `data` | data-exploration |
 | 플러그인 커스터마이징 | `cowork-plugin-management` | cowork-plugin-customizer |
 | 플러그인 신규 생성 | `cowork-plugin-management` | create-cowork-plugin |
+| **── gstack 워크플로우 ──** | | |
+| 플랜/제품 방향 리뷰 (CEO 모드) | `gstack` | /plan-ceo-review |
+| 아키텍처/설계 리뷰 (Eng 모드) | `gstack` | /plan-eng-review |
+| 코드 리뷰 (프로덕션 버그 탐지) | `gstack` | /review |
+| 릴리스 자동화 (PR 생성) | `gstack` | /ship |
+| 브라우저 QA 테스트 | `gstack` | /browse |
+| 체계적 QA (diff 기반 자동 테스트) | `gstack` | /qa |
+| 브라우저 쿠키 가져오기 | `gstack` | /setup-browser-cookies |
+| 엔지니어링 주간 회고 | `gstack` | /eng-retro |
 
 ## 출력 기준
 

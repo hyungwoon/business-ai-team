@@ -15,10 +15,16 @@
 # Projects (프로젝트 작업 공간, 버전 관리 제외)
 projects/
 
-# Claude Code 로컬 설정 (commands/, rules/는 공유)
+# Claude Code 로컬 설정 (commands/, rules/, skills/는 공유)
 .claude/*
 !.claude/commands/
 !.claude/rules/
+!.claude/skills/
+
+# browse 스킬 빌드 산출물 (팀원은 cd .claude/skills/browse && ./setup으로 로컬 빌드)
+.claude/skills/browse/node_modules/
+.claude/skills/browse/dist/
+.claude/skills/browse/bun.lock
 
 # Logs
 *.log
