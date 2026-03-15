@@ -1,24 +1,25 @@
 # PROJECT KNOWLEDGE BASE
 
-**Generated:** 2026-03-13
-**Commit:** de31eb9
+**Generated:** 2026-03-15
+**Commit:** latest
 **Branch:** main
 
 ## OVERVIEW
 
-Markdown-based multi-agent expert system for business domains. 16 AI agents route requests through 17 plugin domains (110+ skills) with automatic feedback learning (RLVR). No code — pure markdown architecture.
+16 AI agents + 31 Claude Code 네이티브 스킬(.claude/skills/). 110+ plugin skills + gstack 엔지니어링 워크플로우. RLVR 능동적 학습 + 세션 리마인드.
 
 ## STRUCTURE
 
 ```
 business-ai-team/
-├── CLAUDE.md              # Master config: agent mapping table, session rules, request flow
-├── agents/                # 16 domain agents (lightweight routers, not full prompts)
-├── plugins/               # 17 domain plugins, 110+ skills (best practices + frameworks)
-├── knowledge/             # RLVR feedback storage (auto-learning from user corrections)
-├── .claude/rules/         # 3 routing rules (expert-routing, brainstorming, feedback-learning)
-├── .claude/commands/      # 4 slash commands (/ask, /route, /team, /improve)
-└── projects/              # Client deliverables (LOCAL ONLY — Git-excluded)
+├── CLAUDE.md              # Master config: agent mapping table, session rules
+├── agents/                # 16 domain agents (lightweight routers)
+├── plugins/               # 17 domain plugins, 110+ skills (best practices)
+├── knowledge/             # RLVR feedback storage (auto-learning)
+├── .claude/skills/        # 31 native skills (23 business + 8 engineering)
+├── .claude/rules/         # 4 rules (expert-routing, brainstorming, feedback-learning, session-reminder)
+├── .claude/commands/      # 5 commands (/ask, /route, /team, /improve, /health)
+└── projects/              # Client deliverables (LOCAL ONLY)
 ```
 
 ## WHERE TO LOOK
@@ -34,6 +35,9 @@ business-ai-team/
 | Modify feedback detection | `.claude/rules/feedback-learning.md` | Pattern triggers + storage procedure |
 | Review learning status | `knowledge/_index.md` | Domain counts; `/improve` command |
 | Resume a project | `projects/[name]/_context.md` | Always read first before working |
+| Use native skills | `.claude/skills/[name]/SKILL.md` | 31 mega-skills with references/ |
+| Check project health | `/health` command | Size, duplicates, learning status, structure |
+| Configure session reminders | `.claude/rules/session-reminder.md` | Auto-load preferences, context, learning at session start |
 
 ## REQUEST FLOW
 
@@ -60,6 +64,8 @@ User Request
 - **Cross-domain skills**: Agents can reference skills from other plugins (e.g., Research uses Sales's account-research)
 - **Plugin origin**: 10 from Anthropic knowledge-work-plugins, 7 custom-built
 - **PM Skills**: product-management plugin expanded to 60 skills via PM Skills (Paweł Huryn) Korean edition integration
+- **Native skills**: `.claude/skills/` — 23 business mega-skills (router + references/) + 8 engineering skills (gstack-based)
+- **PM Skills**: 60 skills grouped into 7 mega-skills (pm-discovery, pm-strategy, pm-execution, pm-core, pm-research, pm-gtm, pm-analytics)
 
 ## ANTI-PATTERNS (THIS PROJECT)
 
@@ -91,6 +97,7 @@ User Request
 /route [request]    # Full routing with brainstorming gate
 /team               # List all agents and skills
 /improve            # Review learning feedback, reflect to SKILL.md
+/health             # Project health dashboard (size, duplicates, structure)
 ```
 
 ## NOTES
