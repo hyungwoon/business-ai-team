@@ -85,7 +85,7 @@
 ```
 business-ai-team/
 ├── .claude/skills/   # 31개 네이티브 스킬 (Claude Code 자동 발견)
-│   ├── pm-discovery/ # 라우터형 (12 references)
+│   ├── pm-discovery/ # 라우터형 (plugins/ 직접 참조)
 │   ├── browse/       # 자체 완결형 (빌드 인프라 포함)
 │   └── ...           # 23 비즈니스 + 8 엔지니어링
 ├── .claude/rules/    # 4개 규칙 (expert-routing, brainstorming, feedback-learning, session-reminder)

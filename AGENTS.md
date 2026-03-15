@@ -1,7 +1,7 @@
 # PROJECT KNOWLEDGE BASE
 
 **Generated:** 2026-03-15
-**Commit:** aff338c
+**Commit:** fb48154
 **Branch:** main
 
 ## OVERVIEW
@@ -35,7 +35,7 @@ business-ai-team/
 | Modify feedback detection | `.claude/rules/feedback-learning.md` | Pattern triggers + storage procedure |
 | Review learning status | `knowledge/_index.md` | Domain counts; `/improve` command |
 | Resume a project | `projects/[name]/_context.md` | Always read first before working |
-| Use native skills | `.claude/skills/[name]/SKILL.md` | 31 mega-skills with references/ |
+| Use native skills | `.claude/skills/[name]/SKILL.md` | 31 mega-skills — 비즈니스 라우터는 plugins/ 직접 참조, gstack은 자체 완결 |
 | Check project health | `/health` command | Size, duplicates, learning status, structure |
 | Configure session reminders | `.claude/rules/session-reminder.md` | Auto-load preferences, context, learning at session start |
 
@@ -64,7 +64,7 @@ User Request
 - **Cross-domain skills**: Agents can reference skills from other plugins (e.g., Research uses Sales's account-research)
 - **Plugin origin**: 10 from Anthropic knowledge-work-plugins, 7 custom-built
 - **PM Skills**: product-management plugin expanded to 62 skills via PM Skills (Paweł Huryn) Korean edition integration
-- **Native skills**: `.claude/skills/` — 23 business mega-skills (router + references/) + 8 engineering skills (gstack-based)
+- **Native skills**: `.claude/skills/` — 23 business mega-skills (router → plugins/ 직접 참조) + 8 engineering skills (gstack-based, 자체 완결)
 - **PM mega-skills**: 62 skills grouped into 7 mega-skills (pm-discovery, pm-strategy, pm-execution, pm-core, pm-research, pm-gtm, pm-analytics)
 
 ## ANTI-PATTERNS (THIS PROJECT)

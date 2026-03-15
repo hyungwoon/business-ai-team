@@ -129,8 +129,8 @@ business-ai-team/
 ├── CLAUDE.md                # 시스템 설정 + 전문가 라우팅 테이블
 ├── agents/                  # 16개 전문가 에이전트 (시스템 프롬프트 + 스킬 라우팅)
 ├── .claude/skills/          # 31개 네이티브 스킬 (Claude Code 자동 발견)
-│   ├── pm-discovery/        # 라우터형 (35줄 + 12 references)
-│   ├── pm-strategy/         # 라우터형 (38줄 + 15 references)
+│   ├── pm-discovery/        # 라우터형 (35줄 → plugins/ 직접 참조)
+│   ├── pm-strategy/         # 라우터형 (38줄 → plugins/ 직접 참조)
 │   ├── browse/              # 자체 완결형 (243줄 + 빌드 인프라)
 │   ├── review/              # 자체 완결형 (111줄)
 │   └── ... (27개 추가 스킬)
