@@ -1,0 +1,26 @@
+---
+name: enterprise-search
+description: "엔터프라이즈 검색. 검색 전략, 지식 종합, 소스 관리. 정보 검색, 지식 정리, 소스 관리 요청 시 사용."
+allowed-tools: Read, Write, Glob, WebSearch
+---
+
+# 엔터프라이즈 검색 (Enterprise Search)
+
+사용자 요청에 따라 아래 프레임워크 중 적절한 것을 선택하여 적용합니다.
+`knowledge/enterprise-search.md`가 존재하면 먼저 읽어 보정 사항을 반영합니다.
+
+## 스킬 라우팅
+
+| 요청 유형 | 참조 파일 |
+|---|---|
+| 지식 종합 및 정리 | [references/knowledge-synthesis.md] |
+| 검색 전략 수립 | [references/search-strategy.md] |
+| 소스 관리 | [references/source-management.md] |
+
+## 사용법
+
+1. 사용자의 요청을 위 라우팅 테이블에서 매칭
+2. 해당 `references/` 파일을 Read
+3. 파일의 프레임워크와 지시사항에 따라 실행
+4. 검색 범위나 지식 도메인이 불명확하면 사용자에게 확인
+5. 결과물은 마크다운 문서로 저장

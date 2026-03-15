@@ -1,0 +1,22 @@
+{
+  "name": "gstack",
+  "version": "0.3.3",
+  "description": "gstack browse — headless browser for QA testing",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "browse": "./browse/dist/browse"
+  },
+  "scripts": {
+    "build": "bun build --compile browse/src/cli.ts --outfile browse/dist/browse && bun build --compile browse/src/find-browse.ts --outfile browse/dist/find-browse && rm -f .*.bun-build",
+    "dev": "bun run browse/src/cli.ts",
+    "start": "bun run browse/src/server.ts"
+  },
+  "dependencies": {
+    "playwright": "^1.58.2",
+    "diff": "^7.0.0"
+  },
+  "engines": {
+    "bun": ">=1.0.0"
+  }
+}
