@@ -11,6 +11,7 @@
 | `/route [요청]` | 비즈니스 요청을 전문가 에이전트에 라우팅하여 전문 관점으로 응답 |
 | `/team` | 현재 사용 가능한 전문가 에이전트 팀과 보유 스킬 목록 표시 |
 | `/improve` | 학습 지식 리뷰 — 누적된 피드백 현황 확인 및 SKILL.md 반영 |
+| `/health` | 프로젝트 건강도 진단 — 스킬 크기, 중복, 학습 현황, 구조 점수(A-F) |
 
 ## 에이전트 매핑 테이블 (라우팅 힌트)
 
@@ -83,21 +84,20 @@
 ## 폴더 구조
 ```
 business-ai-team/
-├── .claude/commands/ # 슬래시 커맨드 (/ask, /route, /team) — 글로벌로 이동됨
-├── agents/           # AI 에이전트 모듈 (시스템 프롬프트 + 전문 지식 원천)
-│   └── [16개 전문가 에이전트.md] # 각 도메인별 시스템 프롬프트 + 스킬 라우팅
-├── plugins/          # 17개 도메인별 플러그인 (SKILL.md = 베스트 프랙티스)
-│   ├── marketing/    # brand-voice, content-creation, campaign-planning 등
-│   ├── sales/        # draft-outreach, account-research, call-prep 등
-│   ├── data/         # data-exploration, visualization, sql-queries 등
-│   ├── finance/      # financial-statements, variance-analysis, audit-support 등
-│   ├── legal/        # contract-review, legal-risk-assessment, nda-triage 등
-│   ├── product-management/  # roadmap-management, feature-spec, metrics-tracking 등
-│   └── [11개 추가 플러그인]
-├── knowledge/        # 학습 지식 (RLVR — 사용자 피드백 자동 학습)
+├── .claude/skills/   # 31개 네이티브 스킬 (Claude Code 자동 발견)
+│   ├── pm-discovery/ # 라우터형 (12 references)
+│   ├── browse/       # 자체 완결형 (빌드 인프라 포함)
+│   └── ...           # 23 비즈니스 + 8 엔지니어링
+├── .claude/rules/    # 4개 규칙 (expert-routing, brainstorming, feedback-learning, session-reminder)
+├── .claude/commands/ # 5개 커맨드 (/ask, /route, /team, /improve, /health)
+├── agents/           # 16개 전문가 에이전트 (시스템 프롬프트 + 스킬 라우팅)
+├── plugins/          # 17개 도메인별 플러그인 (112개 스킬, 원본 보존)
+│   ├── product-management/  # 62개 스킬 (7개 메가-스킬로 그루핑)
+│   └── [16개 추가 플러그인]
+├── knowledge/        # RLVR 학습 지식 (자동 학습 + 자동 생성)
 │   ├── _index.md     # 도메인별 학습 현황 카운트
-│   ├── [도메인].md   # 16개 도메인별 보정/노하우/주의사항
-│   └── preferences.md # 도메인 공통 선호도
+│   ├── preferences.md # 도메인 공통 선호도
+│   └── [도메인].md   # 첫 학습 시 자동 생성
 ├── projects/         # 프로젝트 작업 공간 (로컬 전용, Git 제외)
 │   ├── [프로젝트명]/              # 독립 프로젝트 폴더
 │   ├── [상위프로젝트]/            # 상위 프로젝트 폴더 (하위 스쿼드/팀 포함)

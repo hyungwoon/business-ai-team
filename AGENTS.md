@@ -1,7 +1,7 @@
 # PROJECT KNOWLEDGE BASE
 
 **Generated:** 2026-03-15
-**Commit:** latest
+**Commit:** aff338c
 **Branch:** main
 
 ## OVERVIEW
@@ -63,9 +63,9 @@ User Request
 - **Context files**: `_context.md` mandatory in every project folder (underscore prefix for sort-first)
 - **Cross-domain skills**: Agents can reference skills from other plugins (e.g., Research uses Sales's account-research)
 - **Plugin origin**: 10 from Anthropic knowledge-work-plugins, 7 custom-built
-- **PM Skills**: product-management plugin expanded to 60 skills via PM Skills (Paweł Huryn) Korean edition integration
+- **PM Skills**: product-management plugin expanded to 62 skills via PM Skills (Paweł Huryn) Korean edition integration
 - **Native skills**: `.claude/skills/` — 23 business mega-skills (router + references/) + 8 engineering skills (gstack-based)
-- **PM Skills**: 60 skills grouped into 7 mega-skills (pm-discovery, pm-strategy, pm-execution, pm-core, pm-research, pm-gtm, pm-analytics)
+- **PM mega-skills**: 62 skills grouped into 7 mega-skills (pm-discovery, pm-strategy, pm-execution, pm-core, pm-research, pm-gtm, pm-analytics)
 
 ## ANTI-PATTERNS (THIS PROJECT)
 
