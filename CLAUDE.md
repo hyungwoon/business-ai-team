@@ -27,15 +27,15 @@
 | 영업, 파이프라인, 제안서, CRM | Sales | `agents/sales.md` | `sales/` → draft-outreach, create-an-asset, daily-briefing, account-research, competitive-intelligence, call-prep · `customer-support/` → ticket-triage, customer-research, escalation |
 | 데이터분석, 시각화, 인사이트, 통계 | Data | `agents/data.md` | `data/` → data-exploration, data-visualization, statistical-analysis, sql-queries, data-validation, data-context-extractor, interactive-dashboard-builder |
 | 계약검토, 법률자문, 규정 | Legal | `agents/legal.md` | `legal/` → contract-review, legal-risk-assessment, compliance, nda-triage, canned-responses, meeting-briefing · `enterprise-search/` → search-strategy, knowledge-synthesis, source-management |
-| 컴플라이언스, 리스크, 감사 | Compliance | `agents/compliance.md` | `compliance/` → risk-management |
-| 재무분석, 예산, 투자, ROI | Finance | `agents/finance.md` | `finance/` → financial-analysis, financial-statements, variance-analysis, journal-entry-prep, reconciliation, audit-support, close-management |
-| 사업개발, 파트너십, 성장전략, M&A | BizDev | `agents/business-dev.md` | `business-dev/` → growth-strategy |
+| 컴플라이언스, 리스크, 감사 | Compliance | `agents/compliance.md` | `compliance/` → risk-management · `data/` → data-exploration, data-validation |
+| 재무분석, 예산, 투자, ROI | Finance | `agents/finance.md` | `finance/` → financial-analysis, financial-statements, variance-analysis, journal-entry-prep, reconciliation, audit-support, close-management · `data/` → data-exploration, statistical-analysis |
+| 사업개발, 파트너십, 성장전략, M&A | BizDev | `agents/business-dev.md` | `business-dev/` → growth-strategy · `marketing/` → competitive-analysis, campaign-planning · `sales/` → account-research |
 | 제품전략, 로드맵, 기능스펙, PM, PRD, 디스커버리, 가정검증, OKR, 스프린트, GTM, 가격전략, 비즈니스모델, 사용자리서치, 경쟁분석, 시장분석, 코호트, A/B테스트, 포지셔닝, 배틀카드, 페르소나, 여정맵, 지표, 성장루프, 시장규모 | Product | `agents/product.md` | `product-management/` → [Discovery] brainstorm-ideas-*, identify-assumptions-*, prioritize-*, opportunity-solution-tree, interview-*, [Strategy] product-strategy, lean-canvas, business-model, pricing-strategy, swot-analysis, pestle-analysis, porters-five-forces, [Execution] create-prd, brainstorm-okrs, outcome-roadmap, sprint-plan, retro, release-notes, pre-mortem, user-stories, [Core] roadmap-management, metrics-tracking, stakeholder-comms, [Research] user-personas, market-sizing, competitor-analysis, customer-journey-map, [GTM] gtm-strategy, beachhead-segment, growth-loops, competitive-battlecard, [Growth] positioning-ideas, value-prop-statements, [Analytics] cohort-analysis, ab-test-analysis |
 | 기술아키텍처, 개발프로세스, CTO, 플러그인관리 | Development | `agents/development.md` | `development/` → tech-leadership · `cowork-plugin-management/` → cowork-plugin-customizer, create-cowork-plugin |
-| UX/UI, 브랜드가이드, 디자인시스템 | Design | `agents/design.md` | `design/` → ux-design |
-| 채용, 조직문화, 성과관리, HR | HR | `agents/hr.md` | `hr/` → talent-management |
-| 보도자료, 위기관리, 미디어전략 | PR | `agents/pr.md` | `pr/` → communications |
-| 보안평가, 보안정책, 사이버보안 | Security | `agents/security.md` | `security/` → cybersecurity |
+| UX/UI, 브랜드가이드, 디자인시스템 | Design | `agents/design.md` | `design/` → ux-design · `marketing/` → brand-voice |
+| 채용, 조직문화, 성과관리, HR | HR | `agents/hr.md` | `hr/` → talent-management · `productivity/` → task-management |
+| 보도자료, 위기관리, 미디어전략 | PR | `agents/pr.md` | `pr/` → communications · `marketing/` → content-creation, brand-voice |
+| 보안평가, 보안정책, 사이버보안 | Security | `agents/security.md` | `security/` → cybersecurity · `data/` → data-exploration |
 
 ### 복합 요청 라우팅 예시
 
@@ -58,7 +58,7 @@
   ▼
 [1] 브레인스토밍 게이트 (2축 분류)
   │
-  ├─ A. 모호+과업 → 전체 브레인스토밍 → 요구사항 저장
+  ├─ A. 모호+과업 → 심층 인터뷰 → 요구사항 저장
   ├─ B. 구체+과업 → 경량 확인
   ├─ C. 모호+사실 → 1개 질문
   └─ D. 구체+사실 → 직접 라우팅
@@ -91,7 +91,7 @@ business-ai-team/
 ├── .claude/rules/    # 4개 규칙 (expert-routing, brainstorming, feedback-learning, session-reminder)
 ├── .claude/commands/ # 5개 커맨드 (/ask, /route, /team, /improve, /health)
 ├── agents/           # 16개 전문가 에이전트 (시스템 프롬프트 + 스킬 라우팅)
-├── plugins/          # 17개 도메인별 플러그인 (112개 스킬, 원본 보존)
+├── plugins/          # 17개 도메인별 플러그인 (110개 스킬, 원본 보존)
 │   ├── product-management/  # 62개 스킬 (7개 메가-스킬로 그루핑)
 │   └── [16개 추가 플러그인]
 ├── knowledge/        # RLVR 학습 지식 (자동 학습 + 자동 생성)

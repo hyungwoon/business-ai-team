@@ -228,3 +228,13 @@ Questions competitors might encourage prospects to ask you, with prepared respon
 - Update immediately after major competitor announcements
 - Incorporate win/loss feedback from sales team
 - Track which objection-handling responses are most effective
+
+---
+
+## 관련 스킬
+
+| 스킬 | 플러그인 | 관계 |
+|------|----------|------|
+| competitor-analysis | product-management | 제품 관점의 경쟁사 분석 (기능 비교, 포지셔닝) |
+| competitive-intelligence | sales | 영업 관점의 경쟁 인텔리전스 (가격, 윈/로스) |
+| competitive-battlecard | product-management | 경쟁사 대응 배틀카드 작성 |

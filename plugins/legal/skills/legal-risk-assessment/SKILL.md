@@ -263,3 +263,13 @@ When recommending outside counsel engagement, suggest the user consider:
 - Budget expectations and fee arrangements (hourly, fixed fee, blended rates, success fees)
 - Diversity and inclusion considerations
 - Existing relationships (panel firms, prior engagements)
+
+---
+
+## 관련 스킬
+
+| 스킬 | 플러그인 | 관계 |
+|------|----------|------|
+| risk-management | compliance | 전사 컴플라이언스/운영 리스크 |
+| contract-review | legal | 계약 조항별 리스크 분석 |
+| cybersecurity | security | 보안 관련 법적 리스크 (PIPA, 정보통신망법) |

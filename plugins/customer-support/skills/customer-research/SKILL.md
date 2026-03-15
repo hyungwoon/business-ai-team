@@ -224,3 +224,13 @@ When conducting customer research:
 5. When in doubt about whether to share with a customer, err on the side of verifying first
 6. Document your research for future team benefit
 7. If the research reveals a gap in your knowledge base, flag it for documentation
+
+---
+
+## 관련 스킬
+
+| 스킬 | 플러그인 | 관계 |
+|------|----------|------|
+| account-research | sales | 영업 관점의 어카운트 리서치 |
+| user-personas | product-management | 제품 개발을 위한 사용자 페르소나 |
+| customer-journey-map | product-management | 고객 여정 전체 맵핑 |

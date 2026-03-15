@@ -229,3 +229,13 @@ When exploring an unfamiliar data environment:
 3. Identify raw/staging/mart layers
 4. Map the transformation chain from raw data to analytical tables
 5. Note where data is enriched, filtered, or aggregated
+
+---
+
+## 관련 스킬
+
+| 스킬 | 플러그인 | 관계 |
+|------|----------|------|
+| metrics-tracking | product-management | 제품 지표 정의 및 추적 |
+| cohort-analysis | product-management | 코호트 기반 사용자 분석 |
+| performance-analytics | marketing | 마케팅 성과 데이터 분석 |

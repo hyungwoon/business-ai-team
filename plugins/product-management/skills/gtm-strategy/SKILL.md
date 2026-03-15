@@ -92,3 +92,13 @@ $ARGUMENTS를 통해 다음을 전달합니다:
 - [Product-Led Growth 101, Part 1/2](https://www.productcompass.pm/p/product-led-growth-101-12)
 - [How to Design a Value Proposition Customers Can't Resist?](https://www.productcompass.pm/p/how-to-design-value-proposition-template)
 - [How to Achieve Product-Market Fit? Part I: Market and Value Proposition](https://www.productcompass.pm/p/how-to-achieve-the-product-market)
+
+---
+
+## 관련 스킬
+
+| 스킬 | 플러그인 | 관계 |
+|------|----------|------|
+| growth-strategy | business-dev | 사업개발 관점의 GTM (파트너십, 채널) |
+| campaign-planning | marketing | GTM 실행을 위한 마케팅 캠페인 기획 |
+| beachhead-segment | product-management | GTM의 첫 타겟 시장 선정 |

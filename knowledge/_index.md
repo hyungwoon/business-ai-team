@@ -5,25 +5,25 @@
 
 ## 도메인별 학습 현황
 
-| 도메인 | 파일 | 정보 보정 | 실무 노하우 | 주의사항 | 합계 |
-|--------|------|-----------|-------------|----------|------|
-| Business Dev | `business-dev.md` | 0 | 0 | 0 | 0 |
-| Compliance | `compliance.md` | 0 | 0 | 0 | 0 |
-| Data | `data.md` | 0 | 0 | 0 | 0 |
-| Design | `design.md` | 0 | 0 | 0 | 0 |
-| Development | `development.md` | 0 | 0 | 0 | 0 |
-| Finance | `finance.md` | 0 | 0 | 0 | 0 |
-| HR | `hr.md` | 0 | 0 | 0 | 0 |
-| Legal | `legal.md` | 0 | 0 | 0 | 0 |
-| Marketing | `marketing.md` | 0 | 0 | 0 | 0 |
-| PR | `pr.md` | 0 | 0 | 0 | 0 |
-| Product | `product.md` | 0 | 0 | 0 | 0 |
-| Productivity | `productivity.md` | 0 | 0 | 0 | 0 |
-| Research | `research.md` | 0 | 0 | 0 | 0 |
-| Sales | `sales.md` | 0 | 0 | 0 | 0 |
-| Security | `security.md` | 0 | 0 | 0 | 0 |
-| Writing | `writing.md` | 1 | 5 | 3 | 9 |
-| **합계** | | **1** | **5** | **3** | **9** |
+| 도메인 | 파일 | 정보 보정 | 실무 노하우 | 주의사항 | 거부 기록 | 합계 |
+|--------|------|-----------|-------------|----------|----------|------|
+| Business Dev | `business-dev.md` | 0 | 0 | 0 | 0 | 0 |
+| Compliance | `compliance.md` | 0 | 0 | 0 | 0 | 0 |
+| Data | `data.md` | 0 | 0 | 0 | 0 | 0 |
+| Design | `design.md` | 0 | 0 | 0 | 0 | 0 |
+| Development | `development.md` | 0 | 0 | 0 | 0 | 0 |
+| Finance | `finance.md` | 0 | 0 | 0 | 0 | 0 |
+| HR | `hr.md` | 0 | 0 | 0 | 0 | 0 |
+| Legal | `legal.md` | 0 | 0 | 0 | 0 | 0 |
+| Marketing | `marketing.md` | 0 | 0 | 0 | 0 | 0 |
+| PR | `pr.md` | 0 | 0 | 0 | 0 | 0 |
+| Product | `product.md` | 0 | 0 | 0 | 0 | 0 |
+| Productivity | `productivity.md` | 0 | 0 | 0 | 0 | 0 |
+| Research | `research.md` | 0 | 0 | 0 | 0 | 0 |
+| Sales | `sales.md` | 0 | 0 | 0 | 0 | 0 |
+| Security | `security.md` | 0 | 0 | 0 | 0 | 0 |
+| Writing | `writing.md` | 1 | 5 | 3 | 0 | 9 |
+| **합계** | | **1** | **5** | **3** | **0** | **9** |
 
 ## 도메인 공통
 

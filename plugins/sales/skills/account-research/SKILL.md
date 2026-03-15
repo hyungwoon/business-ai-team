@@ -280,8 +280,12 @@ Focus on: Attendee backgrounds, recent news, relationship history
 
 ---
 
-## Related Skills
+---
 
-- **call-prep** — Full meeting prep with this research plus context
-- **draft-outreach** — Write personalized message based on research
-- **prospecting** — Qualify and prioritize research targets
+## 관련 스킬
+
+| 스킬 | 플러그인 | 관계 |
+|------|----------|------|
+| customer-research | customer-support | 고객 지원 관점의 고객 조사 |
+| user-personas | product-management | 제품 관점의 사용자 페르소나 |
+| data-exploration | data | 데이터 기반 고객 분석 |

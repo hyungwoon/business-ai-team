@@ -1,6 +1,6 @@
 # PLUGINS DIRECTORY
 
-17 domain plugins containing 112 skills. 10 from Anthropic knowledge-work-plugins, 7 custom-built. product-management expanded to 62 skills (competitive-analysis + competitor-analysis merged) via PM Skills (Paweł Huryn) Korean edition. Plugin skills are also available as native mega-skills via `.claude/skills/` for Claude Code auto-discovery.
+17 domain plugins containing 110 skills. 10 from Anthropic knowledge-work-plugins, 7 custom-built. product-management expanded to 62 skills (competitive-analysis + competitor-analysis merged) via PM Skills (Paweł Huryn) Korean edition. Plugin skills are also available as native mega-skills via `.claude/skills/` for Claude Code auto-discovery.
 
 ## STRUCTURE
 
@@ -55,7 +55,7 @@ description: When to use # Trigger patterns
 [Configuration sections]
 ```
 
-Size range: 69-900 lines. Custom plugins tend shorter (~150-200), Anthropic plugins longer (300-900). PM Skills (product-management) skills are Korean, 69-275 lines each.
+Size range: 69-867 lines. Custom plugins v2.0 expanded to 504-642 lines (was ~150-200), Anthropic plugins 156-867 lines. PM Skills (product-management) skills are Korean, 69-303 lines each.
 
 ## CONVENTIONS
 

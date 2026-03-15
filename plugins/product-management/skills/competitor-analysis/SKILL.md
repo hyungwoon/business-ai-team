@@ -291,3 +291,13 @@ Win/Loss 분석은 실제로 딜을 이기고 지는 이유를 밝혀줍니다. 
 
 - [Market Research: Advanced Techniques](https://www.productcompass.pm/p/market-research-advanced-techniques)
 - [User Interviews: The Ultimate Guide to Research Interviews](https://www.productcompass.pm/p/interviewing-customers-the-ultimate)
+
+---
+
+## 관련 스킬
+
+| 스킬 | 플러그인 | 관계 |
+|------|----------|------|
+| competitive-analysis | marketing | 마케팅 관점의 경쟁 분석 (브랜드, 메시지) |
+| competitive-intelligence | sales | 영업 현장의 경쟁 인사이트 |
+| market-sizing | product-management | 경쟁사 분석의 기반이 되는 시장 규모 추정 |
