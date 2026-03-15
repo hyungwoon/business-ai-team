@@ -1,6 +1,6 @@
 ---
 name: pm-research
-description: "시장 리서치. 사용자 페르소나, 시장 세그먼트, 고객 세분화, 고객 여정 지도, 시장 규모(TAM/SAM/SOM), 경쟁사 분석, 감성 분석. 사용자 조사, 시장 분석, 경쟁 분석, 페르소나 요청 시 사용."
+description: "사용자/시장 리서치. 페르소나, 세그먼트, 고객 여정 지도, TAM/SAM/SOM 시장 규모, 경쟁사 프로파일링, 감성 분석. 사용자 조사, 시장 규모, 경쟁사, 페르소나 요청 시 사용."
 allowed-tools: Read, Write, Glob, WebSearch
 ---
 

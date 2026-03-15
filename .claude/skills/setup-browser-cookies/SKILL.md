@@ -1,10 +1,7 @@
 ---
 name: setup-browser-cookies
 version: 1.0.0
-description: |
-  Import cookies from your real browser (Comet, Chrome, Arc, Brave, Edge) into the
-  headless browse session. Opens an interactive picker UI where you select which
-  cookie domains to import. Use before QA testing authenticated pages.
+description: "브라우저 쿠키 가져오기. Chrome, Arc, Brave 등 실제 브라우저에서 쿠키를 headless 세션으로 임포트. 로그인된 상태로 테스트 필요 시 사용."
 allowed-tools:
   - Bash
   - Read

@@ -1,10 +1,7 @@
 ---
 name: plan-eng-review
 version: 1.0.0
-description: |
-  Eng manager-mode plan review. Lock in the execution plan — architecture,
-  data flow, diagrams, edge cases, test coverage, performance. Walks through
-  issues interactively with opinionated recommendations.
+description: "엔지니어링 매니저 모드 플랜 리뷰. 아키텍처, 데이터 흐름, 다이어그램, 엣지 케이스, 테스트 커버리지, 성능. 기술 설계 리뷰 요청 시 사용."
 allowed-tools:
   - Read
   - Grep

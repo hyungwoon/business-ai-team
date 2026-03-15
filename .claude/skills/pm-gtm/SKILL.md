@@ -1,6 +1,6 @@
 ---
 name: pm-gtm
-description: "Go-to-Market 전략. GTM 전략 수립, 교두보 시장 선정, ICP(이상적 고객 프로필), 성장 루프, GTM 모션, 경쟁 배틀카드. 출시 전략, 시장 진입, 성장, 배틀카드 요청 시 사용."
+description: "Go-to-Market 출시 전략. GTM 수립, 교두보 시장(beachhead), ICP 정의, 성장 루프(바이럴/PLG), GTM 모션(인바운드/아웃바운드), 배틀카드. 출시, 시장 진입, ICP, 배틀카드 요청 시 사용."
 allowed-tools: Read, Write, Glob, WebSearch
 ---
 

@@ -1,12 +1,7 @@
 ---
 name: browse
 version: 1.1.0
-description: |
-  Fast headless browser for QA testing and site dogfooding. Navigate any URL, interact with
-  elements, verify page state, diff before/after actions, take annotated screenshots, check
-  responsive layouts, test forms and uploads, handle dialogs, and assert element states.
-  ~100ms per command. Use when you need to test a feature, verify a deployment, dogfood a
-  user flow, or file a bug with evidence.
+description: "헤드리스 브라우저 QA 테스트. 페이지 이동, 클릭, 스크린샷, 콘솔 에러 확인, 폼 테스트. Fast headless Chromium ~100ms/cmd. 브라우저, 사이트 테스트, 스크린샷, 페이지 확인 요청 시 사용."
 allowed-tools:
   - Bash
   - Read

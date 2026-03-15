@@ -1,6 +1,6 @@
 ---
 name: data-analysis
-description: "데이터 분석. 데이터 탐색, 시각화, 통계 분석, SQL 쿼리, 데이터 검증, 인터랙티브 대시보드. 데이터 조회, 차트, SQL, 대시보드 요청 시 사용."
+description: "범용 데이터 분석. SQL 쿼리, 데이터 탐색/검증/시각화, 통계 분석, 인터랙티브 대시보드. 데이터 조회, SQL, 차트, 대시보드, 통계 요청 시 사용."
 allowed-tools: Read, Write, Glob, Bash
 ---
 

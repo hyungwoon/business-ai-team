@@ -1,10 +1,7 @@
 ---
 name: eng-retro
 version: 2.0.0
-description: |
-  Weekly engineering retrospective. Analyzes commit history, work patterns,
-  and code quality metrics with persistent history and trend tracking.
-  Team-aware: breaks down per-person contributions with praise and growth areas.
+description: "엔지니어링 주간 회고. git 커밋 히스토리 분석, 작업 패턴, 코드 품질 메트릭 추적. 회고, 주간 리뷰, 개발 현황 분석 요청 시 사용."
 allowed-tools:
   - Bash
   - Read

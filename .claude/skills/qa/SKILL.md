@@ -1,12 +1,7 @@
 ---
 name: qa
 version: 1.0.0
-description: |
-  Systematically QA test a web application. Use when asked to "qa", "QA", "test this site",
-  "find bugs", "dogfood", or review quality. Four modes: diff-aware (automatic on feature
-  branches — analyzes git diff, identifies affected pages, tests them), full (systematic
-  exploration), quick (30-second smoke test), regression (compare against baseline). Produces
-  structured report with health score, screenshots, and repro steps.
+description: "체계적 웹앱 QA. git diff 분석 → 영향 페이지 자동 테스트 → 건강도 점수 리포트. QA, 테스트, 버그 찾기, 품질 확인 요청 시 사용."
 allowed-tools:
   - Bash
   - Read

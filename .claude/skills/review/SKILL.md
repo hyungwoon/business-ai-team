@@ -1,9 +1,7 @@
 ---
 name: review
 version: 1.0.0
-description: |
-  Pre-landing PR review. Analyzes diff against main for SQL safety, LLM trust
-  boundary violations, conditional side effects, and other structural issues.
+description: "코드 리뷰. PR diff 분석 — SQL 안전성, LLM 신뢰 경계, 조건부 부작용, 구조적 이슈 탐지. 코드 리뷰, PR 리뷰, 코드 검토 요청 시 사용."
 allowed-tools:
   - Bash
   - Read

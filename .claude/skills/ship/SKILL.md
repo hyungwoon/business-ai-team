@@ -1,8 +1,7 @@
 ---
 name: ship
 version: 1.0.0
-description: |
-  Ship workflow: merge main, run tests, review diff, bump VERSION, update CHANGELOG, commit, push, create PR.
+description: "릴리스 자동화. main 동기화 → 테스트 → diff 리뷰 → VERSION 범프 → CHANGELOG → 커밋 → 푸시 → PR 생성. 배포, 릴리스, PR, 푸시 요청 시 사용."
 allowed-tools:
   - Bash
   - Read

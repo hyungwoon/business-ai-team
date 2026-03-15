@@ -1,11 +1,7 @@
 ---
 name: plan-ceo-review
 version: 1.0.0
-description: |
-  CEO/founder-mode plan review. Rethink the problem, find the 10-star product,
-  challenge premises, expand scope when it creates a better product. Three modes:
-  SCOPE EXPANSION (dream big), HOLD SCOPE (maximum rigor), SCOPE REDUCTION
-  (strip to essentials).
+description: "CEO/파운더 모드 플랜 리뷰. 문제 재정의, 10-star product 발견, 전제 도전, 스코프 확장/유지/축소. 제품 전략 리뷰, 플랜 검토 요청 시 사용."
 allowed-tools:
   - Read
   - Grep
