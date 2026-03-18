@@ -1,5 +1,6 @@
 ---
 name: pm-gtm
+version: 1.0.0
 description: "Go-to-Market 출시 전략. GTM 수립, 교두보 시장(beachhead), ICP 정의, 성장 루프(바이럴/PLG), GTM 모션(인바운드/아웃바운드), 배틀카드. 출시, 시장 진입, ICP, 배틀카드 요청 시 사용."
 allowed-tools: Read, Write, Glob, WebSearch
 ---

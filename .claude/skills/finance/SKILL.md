@@ -1,5 +1,6 @@
 ---
 name: finance
+version: 1.0.0
 description: "재무/회계. 재무제표 분석, 차이 분석(variance), 분개 준비, 계정 조정(reconciliation), 감사 지원, 결산 관리. 재무, 회계, 결산, 감사, 예산 요청 시 사용."
 allowed-tools: Read, Write, Glob
 ---

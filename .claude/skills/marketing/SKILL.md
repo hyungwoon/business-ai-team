@@ -1,5 +1,6 @@
 ---
 name: marketing
+version: 1.0.0
 description: "마케팅. 브랜드 보이스, 캠페인 기획, 경쟁 분석, 콘텐츠 제작, 퍼포먼스 분석. 마케팅 전략, 캠페인, 콘텐츠, 광고 성과 요청 시 사용."
 allowed-tools: Read, Write, Glob, WebSearch
 ---

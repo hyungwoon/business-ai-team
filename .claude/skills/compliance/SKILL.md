@@ -1,5 +1,6 @@
 ---
 name: compliance
+version: 1.0.0
 description: "컴플라이언스/리스크 관리. 규제 리스크 식별/평가/완화, 컴플라이언스 프로그램 구축, 감사 대응, 내부 통제 설계. 리스크 평가, 규정 준수, 감사 요청 시 사용."
 allowed-tools: Read, Write, Glob, WebSearch
 ---

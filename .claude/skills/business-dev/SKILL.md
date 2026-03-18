@@ -1,5 +1,6 @@
 ---
 name: business-dev
+version: 1.0.0
 description: "사업개발. GTM 전략, 파트너십 프레임워크, 신규 사업 기회 평가, 성장 플레이북. 신규 시장 진출, 파트너십 구조화, 투자 자료 준비, BD 파이프라인 구축 시 사용."
 allowed-tools: Read, Write, Glob, WebSearch
 ---

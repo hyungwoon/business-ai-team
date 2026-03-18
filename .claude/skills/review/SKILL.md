@@ -107,3 +107,10 @@ After outputting your own findings, if Greptile comments were classified in Step
 - **Read-only by default.** Only modify files if the user explicitly chooses "Fix it now" on a critical issue. Never commit, push, or create PRs.
 - **Be terse.** One line problem, one line fix. No preamble.
 - **Only flag real problems.** Skip anything that's fine.
+
+## Gotchas
+
+- `gh pr diff` 실패 시 PR이 없는 상태 — 로컬 diff로 폴백하지만 커버리지 낮음
+- Greptile API 무응답 시 Step 2.5 자동 스킵 — false positive 필터링 없이 진행됨
+- 대형 PR (500+ lines) 시 체크리스트 전체 적용하면 노이즈 과다 — critical만 집중
+- SQL injection 패턴은 ORM 사용 코드에서도 raw query 혼용 시 놓칠 수 있음

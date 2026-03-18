@@ -1,5 +1,6 @@
 ---
 name: customer-support
+version: 1.0.0
 description: "고객 지원. 티켓 분류, 응답 작성, 고객 조사, 에스컬레이션, 지식 관리. 고객 문의 대응, 지원 프로세스, 지식베이스 관리 요청 시 사용."
 allowed-tools: Read, Write, Glob
 ---

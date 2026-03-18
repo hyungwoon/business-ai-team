@@ -1,5 +1,6 @@
 ---
 name: pm-core
+version: 1.0.0
 description: "핵심 PM 운영. 로드맵 관리(Now/Next/Later, RICE, MoSCoW), 제품 지표 정의/추적/분석, 이해관계자 커뮤니케이션. 로드맵, 지표, 대시보드, 이해관계자 업데이트 요청 시 사용."
 allowed-tools: Read, Write, Glob
 ---

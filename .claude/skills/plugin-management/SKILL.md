@@ -1,5 +1,6 @@
 ---
 name: plugin-management
+version: 1.0.0
 description: "플러그인 관리. 기존 플러그인 커스터마이징, 신규 플러그인 생성. 플러그인 수정, 새 플러그인 만들기 요청 시 사용."
 allowed-tools: Read, Write, Glob, Bash
 ---

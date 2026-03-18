@@ -1,5 +1,6 @@
 ---
 name: enterprise-search
+version: 1.0.0
 description: "엔터프라이즈 검색. 검색 전략, 지식 종합, 소스 관리. 정보 검색, 지식 정리, 소스 관리 요청 시 사용."
 allowed-tools: Read, Write, Glob, WebSearch
 ---

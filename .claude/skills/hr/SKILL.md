@@ -1,5 +1,6 @@
 ---
 name: hr
+version: 1.0.0
 description: "인사/인재 관리. 채용 프로세스, 성과 관리, 보상 체계, 조직 문화. 채용 공고, 면접 구조화, 성과 리뷰, 인력 계획, 직원 참여도 요청 시 사용."
 allowed-tools: Read, Write, Glob, WebSearch
 ---

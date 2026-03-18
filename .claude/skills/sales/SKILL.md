@@ -1,5 +1,6 @@
 ---
 name: sales
+version: 1.0.0
 description: "영업. 아웃리치 작성, 영업 자료 제작, 데일리 브리핑, 어카운트 리서치, 경쟁 인텔리전스, 콜 준비. 영업 전략, 제안서, 고객 분석 요청 시 사용."
 allowed-tools: Read, Write, Glob, WebSearch
 ---

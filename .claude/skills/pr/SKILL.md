@@ -1,5 +1,6 @@
 ---
 name: pr
+version: 1.0.0
 description: "PR/커뮤니케이션. 보도자료, 미디어 관계, 위기 커뮤니케이션, PR 전략. 발표문, 대변인 브리핑, 부정적 보도 대응, 미디어 리스트 요청 시 사용."
 allowed-tools: Read, Write, Glob, WebSearch
 ---

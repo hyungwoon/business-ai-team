@@ -1,5 +1,6 @@
 ---
 name: security
+version: 1.0.0
 description: "사이버보안. 보안 태세 평가, 보안 정책, 인시던트 대응, 보안 인식 프로그램. 리스크 평가, 보안 아키텍처, 보안 정책, 인시던트 대응 요청 시 사용."
 allowed-tools: Read, Write, Glob, WebSearch
 ---

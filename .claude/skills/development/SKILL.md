@@ -1,5 +1,6 @@
 ---
 name: development
+version: 1.0.0
 description: "기술 리더십. 기술 전략, 아키텍처 의사결정, 엔지니어링 팀 관리, 기술 로드맵. 기술 스택 평가, 시스템 아키텍처, 기술 부채, 엔지니어링 문화 요청 시 사용."
 allowed-tools: Read, Write, Glob, WebSearch
 ---

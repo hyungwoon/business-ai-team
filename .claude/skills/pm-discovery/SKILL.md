@@ -1,5 +1,6 @@
 ---
 name: pm-discovery
+version: 1.0.0
 description: "제품 디스커버리. 아이디어 브레인스토밍, 가정 식별/우선순위화, 실험 설계, 기회-솔루션 트리, 고객 인터뷰. 기존/신규 제품 모두 지원. 디스커버리, 아이디에이션, 가정 검증, 실험 설계, 인터뷰 스크립트 요청 시 사용."
 allowed-tools: Read, Write, Glob, WebSearch
 ---

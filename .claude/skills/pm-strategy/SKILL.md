@@ -1,5 +1,6 @@
 ---
 name: pm-strategy
+version: 1.0.0
 description: "제품 전략 수립. Product Strategy Canvas, Lean Canvas, Business Model Canvas, 가격 전략, SWOT/PESTLE/Porter/Ansoff 분석, 비전, 가치 제안, 수익화 전략, 포지셔닝. 전략, 비즈니스 모델, 캔버스, 가격, 분석 프레임워크 요청 시 사용."
 allowed-tools: Read, Write, Glob, WebSearch
 ---

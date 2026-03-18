@@ -439,3 +439,10 @@ When the user runs `/retro compare` (or `/retro compare 14d`):
 - Treat merge commits as PR boundaries
 - Do not read CLAUDE.md or other docs — this skill is self-contained
 - On first run (no prior retros), skip comparison sections gracefully
+
+## Gotchas
+
+- git author 이름이 불일치하면 (영문/한글 혼용) 같은 사람이 별도 집계됨
+- `.context/retros/` 디렉토리 미존재 시 첫 실행에서 자동 생성하지만 비교 모드는 "이전 데이터 없음" 출력
+- Greptile 히스토리가 비어있으면 greptile 필드 자체가 JSON에서 누락 — 파싱 시 주의
+- 주말/공휴일 커밋이 포함되면 "일 평균" 메트릭이 왜곡 — 영업일 기준 보정 필요

@@ -1,5 +1,6 @@
 ---
 name: pm-research
+version: 1.0.0
 description: "사용자/시장 리서치. 페르소나, 세그먼트, 고객 여정 지도, TAM/SAM/SOM 시장 규모, 경쟁사 프로파일링, 감성 분석. 사용자 조사, 시장 규모, 경쟁사, 페르소나 요청 시 사용."
 allowed-tools: Read, Write, Glob, WebSearch
 ---

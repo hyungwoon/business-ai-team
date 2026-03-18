@@ -1,5 +1,6 @@
 ---
 name: legal
+version: 1.0.0
 description: "법무. 계약 검토, 법적 리스크 평가, 컴플라이언스, NDA 분류, 법률 답변 템플릿, 미팅 브리핑. 계약서, 법적 리스크, NDA, 법률 자문 요청 시 사용."
 allowed-tools: Read, Write, Glob
 ---

@@ -339,3 +339,10 @@ EOF
 - **Date format in CHANGELOG:** `YYYY-MM-DD`
 - **Split commits for bisectability** — each commit = one logical change.
 - **The goal is: user says `/ship`, next thing they see is the review + PR URL.**
+
+## Gotchas
+
+- `main` 브랜치와 동기화 안 된 상태에서 실행 시 merge conflict 발생 가능 — 사전 rebase 권장
+- VERSION 파일 없으면 자동 생성하지만 초기값이 0.0.0 — 의도와 다를 수 있음
+- CHANGELOG.md 포맷이 Keep a Changelog 아니면 파싱 실패 — 수동 수정 필요
+- `--no-verify` 없이 push하므로 pre-push hook에 의한 차단 가능

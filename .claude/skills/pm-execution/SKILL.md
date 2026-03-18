@@ -1,5 +1,6 @@
 ---
 name: pm-execution
+version: 1.0.0
 description: "제품 실행. PRD 작성, OKR 설정, 로드맵 전환, 스프린트 계획/회고, 릴리스 노트, 사전 부검, 이해관계자 맵, 회의록, 유저 스토리/잡 스토리, 테스트 시나리오, 더미 데이터, 우선순위 프레임워크. 실행, 문서 작성, 스프린트, PRD 요청 시 사용."
 allowed-tools: Read, Write, Glob
 ---

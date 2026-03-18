@@ -344,3 +344,10 @@ Minimum 0 per category.
 ```
 
 Report filenames use the domain and date: `qa-report-myapp-com-2026-03-12.md`
+
+## Gotchas
+
+- `git diff` 없는 상태에서 full 모드 미지정 시 "변경 없음"으로 종료
+- Next.js App Router의 `loading.tsx`/`error.tsx` 는 자동 감지 안 됨 — 수동 포함 필요
+- 헤드리스 브라우저 미설치 상태에서 실행 시 `browse` 스킬 setup 먼저 필요
+- 점수 산정 시 severity:critical 1개 = severity:low 10개보다 점수 하락 큼

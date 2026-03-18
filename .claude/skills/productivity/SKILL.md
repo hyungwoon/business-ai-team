@@ -1,5 +1,6 @@
 ---
 name: productivity
+version: 1.0.0
 description: "생산성. 작업 관리, 메모리/컨텍스트 관리. 할 일 관리, 기억 저장, 컨텍스트 유지 요청 시 사용."
 allowed-tools: Read, Write, Glob
 ---

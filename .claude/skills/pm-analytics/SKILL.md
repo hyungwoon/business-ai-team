@@ -1,5 +1,6 @@
 ---
 name: pm-analytics
+version: 1.0.0
 description: "제품 코호트/A/B 테스트 분석. 코호트별 리텐션/이탈 패턴, A/B 테스트 통계적 유의성/신뢰구간/출시 권고. 코호트, A/B 테스트, 리텐션 분석 요청 시 사용."
 allowed-tools: Read, Write, Glob
 ---

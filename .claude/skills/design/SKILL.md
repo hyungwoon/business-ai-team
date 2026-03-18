@@ -1,5 +1,6 @@
 ---
 name: design
+version: 1.0.0
 description: "UX 디자인. 사용자 리서치, 정보 설계, 인터랙션 디자인, 사용성 원칙. 디자인 리뷰, UX 스펙, 사용성 평가, 디자인 시스템 요청 시 사용."
 allowed-tools: Read, Write, Glob, WebSearch
 ---

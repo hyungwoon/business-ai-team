@@ -236,3 +236,11 @@ Refs are invalidated on navigation — run `snapshot` again after `goto`.
 | `restart` | Restart server |
 | `status` | Health check |
 | `stop` | Shutdown server |
+
+## Gotchas
+
+- `./setup` 미실행 시 모든 명령 실패 — 첫 사용 전 반드시 실행
+- Notion/Google Docs 등 SPA는 `networkidle` 대기 필요 (`waitUntil: 'networkidle'`)
+- 스크린샷 경로에 한글 포함 시 일부 환경에서 깨짐 — 영문 경로 권장
+- `page.click()` 전에 `waitForSelector` 필수 — 요소 미로드 상태에서 클릭 시 silent fail
+- 쿠키 임포트 후 리다이렉트 루프 발생 시 `setup-browser-cookies` 스킬과 조합
