@@ -20,7 +20,7 @@
 | Product | `product.md` | 0 | 0 | 0 | 0 | 0 |
 | Productivity | `productivity.md` | 0 | 0 | 0 | 0 | 0 |
 | Research | `research.md` | 0 | 0 | 0 | 0 | 0 |
-| Sales | `sales.md` | 0 | 0 | 0 | 0 | 0 |
+| Sales | `sales.md` | 1 | 0 | 0 | 0 | 1 |
 | Security | `security.md` | 0 | 0 | 0 | 0 | 0 |
 | Writing | `writing.md` | 1 | 5 | 3 | 0 | 9 |
 | **합계** | | **1** | **5** | **3** | **0** | **9** |

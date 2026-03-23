@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>business-ai-team — Skill Dashboard</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0a0a0a; color: #e0e0e0; padding: 40px 20px; }
+  .container { max-width: 1200px; margin: 0 auto; }
+  h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; color: #fff; }
+  .subtitle { color: #888; font-size: 14px; margin-bottom: 32px; }
+  .stats { display: flex; gap: 16px; margin-bottom: 32px; flex-wrap: wrap; }
+  .stat { background: #161616; border: 1px solid #252525; border-radius: 12px; padding: 16px 24px; flex: 1; min-width: 140px; }
+  .stat-value { font-size: 28px; font-weight: 700; color: #fff; }
+  .stat-label { font-size: 12px; color: #888; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .section { margin-bottom: 32px; }
+  .section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+  .section-title { font-size: 16px; font-weight: 600; color: #fff; }
+  .section-badge { font-size: 11px; padding: 3px 10px; border-radius: 12px; font-weight: 500; }
+  .badge-eng { background: #1a1a2e; color: #7c83ff; border: 1px solid #2a2a4e; }
+  .badge-biz { background: #1a2e1a; color: #7cff83; border: 1px solid #2a4e2a; }
+  .badge-sys { background: #2e1a1a; color: #ff7c83; border: 1px solid #4e2a2a; }
+  .badge-rule { background: #2e2a1a; color: #ffc77c; border: 1px solid #4e3a2a; }
+  .grid { display: grid; gap: 8px; }
+  .grid-eng { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+  .grid-biz { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+  .grid-sys { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+  .card { background: #161616; border: 1px solid #252525; border-radius: 10px; padding: 14px 16px; transition: border-color 0.2s, background 0.2s; cursor: default; }
+  .card:hover { border-color: #404040; background: #1a1a1a; }
+  .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+  .card-name { font-size: 14px; font-weight: 600; color: #fff; font-family: 'SF Mono', 'Fira Code', monospace; }
+  .card-size { font-size: 11px; color: #666; font-family: 'SF Mono', monospace; }
+  .card-desc { font-size: 12px; color: #999; line-height: 1.5; }
+  .card-tags { display: flex; gap: 4px; margin-top: 8px; flex-wrap: wrap; }
+  .tag { font-size: 10px; padding: 2px 8px; border-radius: 6px; background: #1e1e1e; color: #777; border: 1px solid #2a2a2a; }
+  .tag-router { background: #1a2e1a; color: #7cff83; border-color: #2a4e2a; }
+  .tag-self { background: #1a1a2e; color: #7c83ff; border-color: #2a2a4e; }
+  .tag-build { background: #2e1a1a; color: #ff7c83; border-color: #4e2a2a; }
+  .divider { height: 1px; background: #202020; margin: 8px 0; }
+  .subsection { font-size: 11px; color: #555; text-transform: uppercase; letter-spacing: 1px; margin: 16px 0 8px; font-weight: 600; }
+  .card { cursor: pointer; }
+  .card:hover { border-color: #505050; background: #1e1e1e; transform: translateY(-1px); }
+  .card:active { transform: translateY(0); }
+  .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; justify-content: center; align-items: flex-start; padding: 40px 20px; overflow-y: auto; }
+  .modal-overlay.active { display: flex; }
+  .modal { background: #161616; border: 1px solid #333; border-radius: 16px; width: 100%; max-width: 900px; max-height: 85vh; overflow: hidden; display: flex; flex-direction: column; }
+  .modal-header { display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; border-bottom: 1px solid #252525; flex-shrink: 0; }
+  .modal-title { font-size: 18px; font-weight: 700; color: #fff; font-family: 'SF Mono', monospace; }
+  .modal-close { background: none; border: 1px solid #333; color: #888; font-size: 14px; cursor: pointer; padding: 6px 14px; border-radius: 8px; transition: all 0.2s; }
+  .modal-close:hover { color: #fff; border-color: #555; }
+  .modal-body { padding: 24px; overflow-y: auto; flex: 1; }
+  .modal-body pre { white-space: pre-wrap; word-wrap: break-word; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 13px; line-height: 1.7; color: #ccc; }
+  .modal-body pre code { color: #ccc; }
+  .modal-body .yaml { color: #7c83ff; }
+  .modal-body .heading { color: #fff; font-weight: 700; }
+  .modal-body .table-line { color: #999; }
+  .modal-body .code-block { background: #0e0e0e; border: 1px solid #252525; border-radius: 8px; padding: 12px 16px; margin: 8px 0; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>business-ai-team</h1>
+  <div class="subtitle">Claude Code 네이티브 스킬 대시보드 — 비즈니스 + 엔지니어링 통합</div>
+
+  <div class="stats">
+    <div class="stat"><div class="stat-value">31</div><div class="stat-label">네이티브 스킬</div></div>
+    <div class="stat"><div class="stat-value">112</div><div class="stat-label">Plugin 스킬</div></div>
+    <div class="stat"><div class="stat-value">5</div><div class="stat-label">커맨드</div></div>
+    <div class="stat"><div class="stat-value">4</div><div class="stat-label">자동 규칙</div></div>
+    <div class="stat"><div class="stat-value">17%</div><div class="stat-label">Description 예산</div></div>
+  </div>
+
+  <!-- Engineering -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-title">엔지니어링 워크플로우</span>
+      <span class="section-badge badge-eng">8개 · gstack 기반 · 자체 완결</span>
+    </div>
+    <div class="grid grid-eng">
+      <div class="card">
+        <div class="card-header"><span class="card-name">/browse</span><span class="card-size">238줄</span></div>
+        <div class="card-desc">헤드리스 브라우저 QA. 페이지 이동, 클릭, 스크린샷, 콘솔 에러 확인, 폼 테스트. ~100ms/cmd.</div>
+        <div class="card-tags"><span class="tag tag-self">자체 완결</span><span class="tag tag-build">빌드 필요</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="card-name">/qa</span><span class="card-size">346줄</span></div>
+        <div class="card-desc">체계적 웹앱 QA. git diff 분석 → 영향 페이지 자동 테스트 → 건강도 점수 리포트.</div>
+        <div class="card-tags"><span class="tag tag-self">자체 완결</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="card-name">/review</span><span class="card-size">109줄</span></div>
+        <div class="card-desc">PR diff 코드 리뷰. SQL 안전성, LLM 신뢰 경계, 조건부 부작용, 구조적 이슈 탐지.</div>
+        <div class="card-tags"><span class="tag tag-self">자체 완결</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="card-name">/ship</span><span class="card-size">341줄</span></div>
+        <div class="card-desc">릴리스 자동화. main 동기화 → 테스트 → diff 리뷰 → VERSION 범프 → PR 생성.</div>
+        <div class="card-tags"><span class="tag tag-self">자체 완결</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="card-name">/plan-ceo-review</span><span class="card-size">479줄</span></div>
+        <div class="card-desc">CEO/파운더 모드 플랜 리뷰. 문제 재정의, 10-star product, 스코프 확장/유지/축소.</div>
+        <div class="card-tags"><span class="tag tag-self">자체 완결</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="card-name">/plan-eng-review</span><span class="card-size">159줄</span></div>
+        <div class="card-desc">엔지니어링 매니저 모드. 아키텍처, 데이터 흐름, 보안, 배포 전략 심층 리뷰.</div>
+        <div class="card-tags"><span class="tag tag-self">자체 완결</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="card-name">/eng-retro</span><span class="card-size">441줄</span></div>
+        <div class="card-desc">git 커밋 히스토리 분석 기반 주간 엔지니어링 회고. 작업 패턴, 코드 품질 메트릭.</div>
+        <div class="card-tags"><span class="tag tag-self">자체 완결</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="card-name">/setup-browser-cookies</span><span class="card-size">84줄</span></div>
+        <div class="card-desc">Chrome, Arc, Brave 등 실제 브라우저에서 쿠키를 headless 세션으로 임포트.</div>
+        <div class="card-tags"><span class="tag tag-self">자체 완결</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Business — PM -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-title">비즈니스 도메인</span>
+      <span class="section-badge badge-biz">23개 · 라우터 → plugins/ 직접 참조</span>
+    </div>
+
+    <div class="subsection">Product Management (62개 스킬 → 7개 메가-스킬)</div>
+    <div class="grid grid-biz">
+      <div class="card">
+        <div class="card-header"><span class="card-name">pm-discovery</span><span class="card-size">35줄 → 12 스킬</span></div>
+        <div class="card-desc">아이디어 브레인스토밍, 가정 식별/우선순위화, 실험 설계, 기회-솔루션 트리, 고객 인터뷰</div>
+        <div class="card-tags"><span class="tag tag-router">라우터</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="card-name">pm-strategy</span><span class="card-size">38줄 → 15 스킬</span></div>
+        <div class="card-desc">Product Strategy Canvas, Lean Canvas, Business Model, 가격, SWOT/PESTLE/Porter/Ansoff</div>
+        <div class="card-tags"><span class="tag tag-router">라우터</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="card-name">pm-execution</span><span class="card-size">38줄 → 15 스킬</span></div>
+        <div class="card-desc">PRD, OKR, 로드맵, 스프린트, 회고, 릴리스 노트, 사전 부검, 유저/잡 스토리</div>
+        <div class="card-tags"><span class="tag tag-router">라우터</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="card-name">pm-core</span><span class="card-size">25줄 → 3 스킬</span></div>
+        <div class="card-desc">로드맵 관리 (Now/Next/Later, RICE), 제품 지표 추적, 이해관계자 커뮤니케이션</div>
+        <div class="card-tags"><span class="tag tag-router">라우터</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="card-name">pm-research</span><span class="card-size">29줄 → 7 스킬</span></div>
+        <div class="card-desc">페르소나, 세그먼트, 고객 여정, TAM/SAM/SOM, 경쟁사, 감성 분석</div>
+        <div class="card-tags"><span class="tag tag-router">라우터</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="card-name">pm-gtm</span><span class="card-size">28줄 → 6 스킬</span></div>
+        <div class="card-desc">GTM 전략, 교두보 시장, ICP, 성장 루프, GTM 모션, 배틀카드</div>
+        <div class="card-tags"><span class="tag tag-router">라우터</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="card-name">pm-analytics</span><span class="card-size">24줄 → 2 스킬</span></div>
+        <div class="card-desc">코호트별 리텐션/이탈, A/B 테스트 통계적 유의성/신뢰구간</div>
+        <div class="card-tags"><span class="tag tag-router">라우터</span></div>
+      </div>
+    </div>
+
+    <div class="subsection">기능 도메인 (50개 스킬 → 9개 메가-스킬)</div>
+    <div class="grid grid-biz">
+      <div class="card">
+        <div class="card-header"><span class="card-name">marketing</span><span class="card-size">28줄 → 5 스킬</span></div>
+        <div class="card-desc">브랜드 보이스, 캠페인 기획, 경쟁 분석, 콘텐츠 제작, 퍼포먼스 분석</div>
+        <div class="card-tags"><span class="tag tag-router">라우터</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="card-name">sales</span><span class="card-size">29줄 → 6 스킬</span></div>
+        <div class="card-desc">아웃리치, 영업 자료, 데일리 브리핑, 어카운트 리서치, 경쟁 인텔, 콜 준비</div>
+        <div class="card-tags"><span class="tag tag-router">라우터</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="card-name">finance</span><span class="card-size">30줄 → 7 스킬</span></div>
+        <div class="card-desc">재무제표, 차이 분석, 분개 준비, 계정 조정, 감사 지원, 결산 관리</div>
+        <div class="card-tags"><span class="tag tag-router">라우터</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="card-name">legal</span><span class="card-size">29줄 → 6 스킬</span></div>
+        <div class="card-desc">계약 검토, 법적 리스크, 컴플라이언스, NDA 분류, 법률 답변, 미팅 브리핑</div>
+        <div class="card-tags"><span class="tag tag-router">라우터</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="card-name">data-analysis</span><span class="card-size">30줄 → 7 스킬</span></div>
+        <div class="card-desc">SQL, 데이터 탐색/검증/시각화, 통계 분석, 인터랙티브 대시보드</div>
+        <div class="card-tags"><span class="tag tag-router">라우터</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="card-name">customer-support</span><span class="card-size">28줄 → 5 스킬</span></div>
+        <div class="card-desc">티켓 분류, 응답 작성, 고객 조사, 에스컬레이션, 지식 관리</div>
+        <div class="card-tags"><span class="tag tag-router">라우터</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="card-name">enterprise-search</span><span class="card-size">26줄 → 3 스킬</span></div>
+        <div class="card-desc">검색 전략, 지식 종합, 소스 관리</div>
+        <div class="card-tags"><span class="tag tag-router">라우터</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="card-name">productivity</span><span class="card-size">25줄 → 2 스킬</span></div>
+        <div class="card-desc">작업 관리, 메모리/컨텍스트 관리</div>
+        <div class="card-tags"><span class="tag tag-router">라우터</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="card-name">plugin-management</span><span class="card-size">25줄 → 2 스킬</span></div>
+        <div class="card-desc">기존 플러그인 커스터마이징, 신규 플러그인 생성</div>
+        <div class="card-tags"><span class="tag tag-router">라우터</span></div>
+      </div>
+    </div>
+
+    <div class="subsection">단일 도메인 (7개 · 자체 완결)</div>
+    <div class="grid grid-biz">
+      <div class="card">
+        <div class="card-header"><span class="card-name">business-dev</span><span class="card-size">161줄</span></div>
+        <div class="card-desc">GTM 전략, 파트너십, 신규 사업 기회 평가, 성장 플레이북</div>
+        <div class="card-tags"><span class="tag tag-self">자체 완결</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="card-name">compliance</span><span class="card-size">167줄</span></div>
+        <div class="card-desc">규제 리스크 식별/평가/완화, 컴플라이언스 프로그램, 감사 대응</div>
+        <div class="card-tags"><span class="tag tag-self">자체 완결</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="card-name">design</span><span class="card-size">182줄</span></div>
+        <div class="card-desc">사용자 리서치, 정보 설계, 인터랙션 디자인, 사용성 원칙</div>
+        <div class="card-tags"><span class="tag tag-self">자체 완결</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="card-name">development</span><span class="card-size">205줄</span></div>
+        <div class="card-desc">기술 전략, 아키텍처 의사결정, 엔지니어링 팀 관리, 기술 로드맵</div>
+        <div class="card-tags"><span class="tag tag-self">자체 완결</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="card-name">hr</span><span class="card-size">185줄</span></div>
+        <div class="card-desc">채용 프로세스, 성과 관리, 보상 체계, 조직 문화</div>
+        <div class="card-tags"><span class="tag tag-self">자체 완결</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="card-name">pr</span><span class="card-size">171줄</span></div>
+        <div class="card-desc">보도자료, 미디어 관계, 위기 커뮤니케이션, PR 전략</div>
+        <div class="card-tags"><span class="tag tag-self">자체 완결</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="card-name">security</span><span class="card-size">173줄</span></div>
+        <div class="card-desc">보안 태세 평가, 보안 정책, 인시던트 대응, 보안 인식 프로그램</div>
+        <div class="card-tags"><span class="tag tag-self">자체 완결</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- System Commands -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-title">시스템 커맨드</span>
+      <span class="section-badge badge-sys">5개 · /슬래시 명령</span>
+    </div>
+    <div class="grid grid-sys">
+      <div class="card">
+        <div class="card-header"><span class="card-name">/ask</span></div>
+        <div class="card-desc">비즈니스+엔지니어링 전문가 답변 (간편 라우팅)</div>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="card-name">/route</span></div>
+        <div class="card-desc">브레인스토밍 게이트 + 전문가 라우팅 (정식)</div>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="card-name">/team</span></div>
+        <div class="card-desc">전문가 팀 + 스킬 목록 표시</div>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="card-name">/improve</span></div>
+        <div class="card-desc">학습 지식 리뷰, SKILL.md 반영</div>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="card-name">/health</span></div>
+        <div class="card-desc">프로젝트 건강도 (크기/중복/학습/구조 A-F)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Auto Rules -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-title">자동 규칙</span>
+      <span class="section-badge badge-rule">4개 · 매 세션 자동 로드</span>
+    </div>
+    <div class="grid grid-sys">
+      <div class="card">
+        <div class="card-header"><span class="card-name">expert-routing</span></div>
+        <div class="card-desc">에이전트→스킬 필수 Read + 담당 표시 강제</div>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="card-name">brainstorming</span></div>
+        <div class="card-desc">2축 게이트 (과업/사실 × 모호/구체) → 4가지 분류</div>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="card-name">feedback-learning</span></div>
+        <div class="card-desc">RLVR 수동+능동 학습 + knowledge/ 저장</div>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="card-name">session-reminder</span></div>
+        <div class="card-desc">세션 시작 시 선호도/맥락/학습 자동 로드</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="modal-overlay" id="modal" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-title" id="modal-title"></span>
+      <button class="modal-close" onclick="closeModal()">ESC</button>
+    </div>
+    <div class="modal-body">
+      <pre id="modal-content"></pre>
+    </div>
+  </div>
+</div>
+
+<script src="skill-data.js"></script>
+<script src="skill-tree.js"></script>
+<script>
+function openSkill(name) {
+  const raw = name.replace(/^\//, '');
+  const content = SKILL_DATA[raw];
+  if (!content) { alert('스킬 데이터 없음: ' + raw); return; }
+  document.getElementById('modal-title').textContent = name;
+  const pre = document.getElementById('modal-content');
+  
+  const subs = SKILL_TREE[raw] || [];
+  let subHtml = '';
+  if (subs.length > 0) {
+    subHtml = '<div style="background:#111;border:1px solid #2a2a2a;border-radius:10px;padding:16px;margin-bottom:20px">';
+    subHtml += '<div style="font-size:13px;font-weight:600;color:#7cff83;margin-bottom:12px">라우팅 대상: ' + subs.length + '개 서브스킬 (plugins/)</div>';
+    subHtml += '<table style="width:100%;border-collapse:collapse;font-size:12px">';
+    subHtml += '<tr style="color:#666;border-bottom:1px solid #222"><td style="padding:6px 8px">스킬</td><td style="padding:6px 8px">크기</td><td style="padding:6px 8px">설명</td></tr>';
+    subs.forEach(s => {
+      subHtml += '<tr style="border-bottom:1px solid #1a1a1a">';
+      subHtml += '<td style="padding:6px 8px;color:#fff;font-family:monospace;white-space:nowrap">' + s.skill + '</td>';
+      subHtml += '<td style="padding:6px 8px;color:#666;white-space:nowrap">' + s.lines + '줄</td>';
+      subHtml += '<td style="padding:6px 8px;color:#999">' + s.desc + '</td>';
+      subHtml += '</tr>';
+    });
+    subHtml += '</table></div>';
+  }
+  
+  pre.innerHTML = subHtml + highlightMd(content);
+  document.getElementById('modal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('modal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+function highlightMd(text) {
+  return text
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/^(#{1,3} .+)$/gm, '<span class="heading">$1</span>')
+    .replace(/^(---[\s\S]*?---)/m, '<span class="yaml">$1</span>')
+    .replace(/^(\|.+)$/gm, '<span class="table-line">$1</span>')
+    .replace(/```[\s\S]*?```/g, m => '<span class="code-block">' + m + '</span>');
+}
+document.querySelectorAll('.card').forEach(card => {
+  const nameEl = card.querySelector('.card-name');
+  if (nameEl) {
+    card.onclick = () => openSkill(nameEl.textContent.trim());
+  }
+});
+</script>
+</body>
+</html>

@@ -68,7 +68,7 @@ info "  agents: ${AGENT_COUNT}개, skills: ${SKILL_COUNT}개 설치 완료"
 info "슬래시 커맨드 설치 중..."
 mkdir -p "$COMMANDS_DIR"
 
-for CMD in route.md ask.md team.md improve.md; do
+for CMD in route.md ask.md team.md improve.md health.md; do
     SRC="$COMMANDS_DIR/$CMD"
     CMD_SRC="$SCRIPT_DIR/.claude/commands/$CMD"
     if [[ ! -f "$CMD_SRC" ]]; then
@@ -123,7 +123,7 @@ echo ""
 echo "설치 경로:"
 echo "  에이전트/스킬: $INSTALL_DIR/"
 echo "  학습 지식:    $INSTALL_DIR/knowledge/"
-echo "  커맨드:       $COMMANDS_DIR/{route,ask,team,improve}.md"
+echo "  커맨드:       $COMMANDS_DIR/{route,ask,team,improve,health}.md"
 echo "  규칙:         $RULES_DIR/{expert-routing,requirements-brainstorming,feedback-learning}.md"
 echo ""
 echo "사용법:"
@@ -132,6 +132,7 @@ echo "    /route [비즈니스 요청]  — 전문가 라우팅 (브레인스토
 echo "    /ask [질문]            — 간편 전문가 질문"
 echo "    /team                  — 팀 목록 확인"
 echo "    /improve               — 학습 지식 리뷰 & SKILL.md 반영"
+echo "    /health                — 프로젝트 건강도 진단"
 echo ""
 echo "학습 시스템:"
 echo "  대화 중 피드백 → knowledge/ 자동 저장 (RLVR)"
