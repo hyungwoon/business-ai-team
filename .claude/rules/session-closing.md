@@ -9,6 +9,22 @@
    - 동일 도메인 3건 이상 누적 시 → 해당 SKILL.md에 `## 실무 보정 사항` 자동 추가
    - `feedback-learning.md` 규칙에 따라 처리
 
+0.5. **엔트로피 정리** ← `entropy-cleanup.md` 규칙 참조
+   - fresh-context 에이전트를 스폰하여 이번 세션의 변경사항 정합성 검사
+   - 스테일 주석, 미사용 임포트, 문서 불일치 자동 수정
+   - 호출자 불일치, 중복 코드 등 위험 항목은 플래그하여 사용자에게 보고
+   - 자동 수정분은 별도 커밋 (`chore: 세션 후 엔트로피 정리`)
+
+0.7. **텔레메트리 기록** ← `telemetry-rubrics.md` 규칙 참조
+   - `.omc/telemetry/{YYYY-MM-DD}.jsonl`에 세션 레코드 추가
+   - 루브릭 기준으로 점수 산정: plan_adherence, verification_quality, context_efficiency, entropy_delta, code_quality
+   - 사용자 피드백 신호 감지 시 user_feedback 필드 기록
+
+0.8. **핸드오프 프롬프트 생성** (미완료 태스크 존재 시) ← `context-compaction.md` 규칙 참조
+   - 미완료 태스크가 있으면 `.omc/state/handoff-{sessionId}.md` 생성
+   - 의도, 진행상황, 핵심 결정, 주의사항, 다음 액션 포함
+   - 다음 세션 시작 시 자동 주입됨
+
 1. **_context.md 업데이트**
    - 이번 세션에서 작업한 모든 프로젝트의 `_context.md` 최신화
    - 작업 히스토리 테이블에 새 행 추가 (날짜 | 파일명 | 내용)

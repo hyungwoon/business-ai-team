@@ -26,5 +26,8 @@ projects/
 .claude/skills/browse/dist/
 .claude/skills/browse/bun.lock
 
+# OMC state & telemetry (로컬 전용)
+.omc/
+
 # Logs
 *.log

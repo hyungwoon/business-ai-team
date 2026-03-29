@@ -47,6 +47,36 @@
 
 ---
 
+## 실행 품질 보장 시스템
+
+> 장시간 자율 에이전트 워크플로우의 8가지 실패 모드를 체계적으로 방지하는 규칙 세트.
+> 모든 규칙은 `.claude/rules/`에 위치하며, 에이전트 모드(autopilot, ralph, ultrawork)와 자동 연동된다.
+
+| 단계 | 실패 모드 | 대응 규칙 | 핵심 메커니즘 |
+|------|-----------|-----------|-------------|
+| 계획 | 단기적 사고 | `plan-compete.md` | 3개 플랜 병렬 생성 → 적대적 평가 → 최적안 선택 |
+| 실행 | 컨텍스트 불안 | `context-compaction.md` | 75% 도달 시 핸드오프 프롬프트 자동 생성 |
+| 실행 | 계획 이탈 | `contract-enforcement.md` | 매 N 태스크마다 fresh-context 검증 → ALIGNED/DRIFTED 판정 |
+| 실행 | 복잡성 공포 | `complexity-decomposer.md` | 복잡 태스크 자동 분해 + 스텁/TODO 하드 블록 |
+| 사후 | 검증 게으름 | `fresh-context-verification.md` | 독립 에이전트가 fresh context에서 검증 → PASS/FAIL |
+| 사후 | 엔트로피 증가 | `entropy-cleanup.md` | 세션 종료 시 blast radius 분석 + 자동 정리 |
+| 메타 | 측정 불가 | `telemetry-rubrics.md` | 5개 지표 0-5점 루브릭 + 주간 트렌드 분석 |
+
+### 실행 순서 (자동)
+
+```
+요구사항 정제 (requirements-brainstorming.md)
+  → 복잡도 분류 (complexity-decomposer.md)
+  → 플랜 경쟁 (plan-compete.md) — Complex만
+  → 실행 + 주기적 계약 검증 (contract-enforcement.md)
+  → 태스크 완료 시 독립 검증 (fresh-context-verification.md)
+  → 세션 종료 시 엔트로피 정리 (entropy-cleanup.md)
+  → 텔레메트리 기록 (telemetry-rubrics.md)
+  → 핸드오프 생성 (context-compaction.md) — 미완료 시
+```
+
+---
+
 ## 압축(Compaction) 시 보존 지시
 컨텍스트 압축 시 반드시 보존할 정보: 현재 로드된 에이전트명, 참조 중인 SKILL.md 경로, 활성 프로젝트의 _context.md 내용, 진행 중인 브레인스토밍/인터뷰 상태, knowledge/ 학습 항목.
 
