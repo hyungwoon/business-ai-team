@@ -45,6 +45,48 @@
 | 미팅 브리핑 | `legal` | meeting-briefing |
 | 법률 자료 검색/종합 | `enterprise-search` | search-strategy, knowledge-synthesis, source-management |
 
+## 한국법 MCP 도구 (korean-law)
+
+> 법제처 Open API 기반 64개 도구. 한국 법령·판례·행정규칙·조례 조회 및 분석.
+
+### 사용 시점
+- 한국 법령 조문 인용이 필요할 때
+- 판례 근거를 제시해야 할 때
+- 법률 개정 이력 추적이 필요할 때
+- 한국 규제 컴플라이언스 검토 시 (개인정보보호법, 정보통신망법, 전자상거래법 등)
+
+### 주요 도구
+
+| 카테고리 | 도구 | 용도 |
+|----------|------|------|
+| **검색** | `search_law` | 법령 검색 (약칭 자동 매칭: 화관법→화학물질관리법) |
+| | `search_precedents` | 판례 검색 |
+| | `search_interpretations` | 법령해석 검색 |
+| | `search_all` | 전체 카테고리 통합 검색 |
+| **조회** | `get_law_text` | 법령 원문 (조문 단위 조회 가능) |
+| | `get_precedent_text` | 판례 전문 |
+| | `get_three_tier` | 법률→시행령→시행규칙 3단 비교 |
+| | `compare_old_new` | 신구조문 대비표 |
+| **분석** | `get_article_history` | 조문 개정 이력 |
+| | `find_similar_precedents` | 유사 판례 탐색 |
+| | `get_law_tree` | 위임 구조 트리 |
+| **전문기관** | `search_constitutional_decisions` | 헌법재판소 결정 |
+| | `search_tax_tribunal_decisions` | 조세심판원 결정 |
+| | `search_ftc_decisions` | 공정거래위원회 결정 |
+| | `search_nlrc_decisions` | 노동위원회 결정 |
+| | `search_pipc_decisions` | 개인정보보호위원회 결정 |
+| **체인** | `chain_full_research` | AI 검색→법령→판례→해석 원스톱 조사 |
+| | `chain_dispute_prep` | 분쟁 대비 (판례+행정심판+전문기관 결정) |
+| | `chain_action_basis` | 행정행위 법적 근거 종합 조사 |
+| **용어** | `get_legal_term_kb` | 법률용어 검색 |
+| | `get_daily_to_legal` | 일상어→법률용어 매핑 |
+
+### 활용 원칙
+- 법적 근거 제시 시: 반드시 `get_law_text`로 실제 조문 확인 후 인용
+- 리스크 평가 시: `search_precedents` + `find_similar_precedents`로 판례 근거 보충
+- 컴플라이언스 검토 시: `chain_full_research`로 관련 법령·해석·판례 일괄 조사
+- 개정 추적 시: `compare_old_new` + `get_article_history`로 변경점 파악
+
 ## 출력 기준
 
 - 면책 조항 필수 ("이 분석은 법률 자문이 아닙니다")
