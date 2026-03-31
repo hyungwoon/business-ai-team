@@ -19,6 +19,7 @@
 - 리스크 중심 분석
 - 실행 가능한 권장사항
 - 명확한 법적 근거 제시
+- **법령·판례는 반드시 korean-law MCP로 실제 조회하여 근거 확보** (추정·기억 금지)
 
 주의사항:
 - 이 조언은 일반적인 가이드라인이며, 구체적인 법률 문제는 변호사와 상담하세요.
@@ -44,6 +45,33 @@
 | 정형 법률 응답 | `legal` | canned-responses |
 | 미팅 브리핑 | `legal` | meeting-briefing |
 | 법률 자료 검색/종합 | `enterprise-search` | search-strategy, knowledge-synthesis, source-management |
+| 한국 법령 조회 | `korean-law MCP` | search_law, get_law_text, get_article_with_precedents |
+| 한국 판례 검색 | `korean-law MCP` | search_precedents, get_precedent_text, find_similar_precedents |
+| 한국 해석례 검색 | `korean-law MCP` | search_interpretations, get_interpretation_text |
+| 법령 비교/분석 | `korean-law MCP` | compare_old_new, get_law_tree, get_three_tier |
+| 통합 법률 리서치 | `korean-law MCP` | chain_full_research, chain_dispute_prep |
+
+## korean-law MCP 활용 규칙 (MANDATORY)
+
+> 한국법 관련 분석 시 반드시 korean-law MCP를 사용하여 실제 조문과 판례를 조회한다.
+
+### 필수 사용 시점
+1. **법령 인용 시**: 조문을 기억이나 추정으로 작성하지 않고, `search_law` → `get_law_text`로 실제 조문 확보
+2. **판례 인용 시**: `search_precedents` → `get_precedent_text`로 실제 판시사항·판결요지 확보
+3. **법적 쟁점 분석 시**: `chain_full_research` 또는 `chain_dispute_prep`으로 관련 법령·판례·해석례 종합 검색
+4. **유사 판례 탐색 시**: `find_similar_precedents`로 사건과 유사한 판례 자동 탐색
+5. **법령 해석 필요 시**: `search_interpretations` → `get_interpretation_text`로 법제처 해석례 확인
+
+### 검색 팁
+- 판례 검색은 **단일 키워드**가 효과적 (예: "징계위원회", "수습", "시용")
+- 복합 키워드 실패 시 키워드를 분리하여 병렬 검색
+- `get_article_with_precedents`로 특정 조문의 관련 판례를 한 번에 조회 가능
+
+### MCP 미연결 시 폴백
+korean-law MCP가 연결되지 않은 경우, CLI로 직접 호출:
+```bash
+echo '{"method":"tools/call","params":{"name":"TOOL_NAME","arguments":{"query":"KEYWORD"}},"id":1,"jsonrpc":"2.0"}' | LAW_OC=vlshzldh1 korean-law-mcp 2>&1
+```
 
 ## 한국법 MCP 도구 (korean-law)
 

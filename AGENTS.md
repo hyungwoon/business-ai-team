@@ -1,7 +1,6 @@
 # PROJECT KNOWLEDGE BASE
 
-**Generated:** 2026-03-15
-**Commit:** fb48154
+**Generated:** 2026-03-31
 **Branch:** main
 
 ## OVERVIEW
@@ -17,7 +16,7 @@ business-ai-team/
 ├── plugins/               # 17 domain plugins, 110+ skills (best practices)
 ├── knowledge/             # RLVR feedback storage (auto-learning)
 ├── .claude/skills/        # 31 native skills (23 business + 8 engineering)
-├── .claude/rules/         # 4 rules (expert-routing, brainstorming, feedback-learning, session-reminder)
+├── .claude/rules/         # 14 rules (expert-routing, requirements-brainstorming, feedback-learning, session-reminder, session-closing, project-workspace, eng-workflow, plan-compete, contract-enforcement, complexity-decomposer, context-compaction, entropy-cleanup, fresh-context-verification, telemetry-rubrics)
 ├── .claude/commands/      # 5 commands (/ask, /route, /team, /improve, /health)
 └── projects/              # Client deliverables (LOCAL ONLY)
 ```
@@ -26,13 +25,16 @@ business-ai-team/
 
 | Task | Location | Notes |
 |------|----------|-------|
-| Understand request flow | `CLAUDE.md` lines 82-107 | 6-stage pipeline diagram |
+| Understand request flow | `CLAUDE.md` "실행 품질 보장 시스템" section | 8-stage pipeline diagram |
 | Add/modify an agent | `agents/[domain].md` | ~50 lines: system prompt + skill routing table |
 | Add/modify a skill | `plugins/[domain]/skills/[skill]/SKILL.md` | 69-900 lines: frameworks + templates |
 | Check learned corrections | `knowledge/[domain].md` | 4 tables: corrections, tips, warnings, rejections |
 | Modify routing rules | `.claude/rules/expert-routing.md` | Mandatory procedures + forbidden actions + domain boundary routing |
 | Modify brainstorming gate | `.claude/rules/requirements-brainstorming.md` | 심층 인터뷰 게이트 (2축 분류 + 7개 인터뷰 기법, 질문 수 무제한) |
 | Modify feedback detection | `.claude/rules/feedback-learning.md` | 5종 감지 패턴 (정보 보정, 실무 노하우, 주의사항, 거부 기록, 선호도) |
+| Quality assurance rules | `.claude/rules/plan-compete.md` + 6 more | 8가지 실패 모드 대응 (plan-compete, contract-enforcement, complexity-decomposer, context-compaction, entropy-cleanup, fresh-context-verification, telemetry-rubrics) |
+| Session lifecycle | `.claude/rules/session-closing.md`, `project-workspace.md` | 세션 종료 체크리스트, 프로젝트 폴더링 규칙 |
+| Engineering workflow | `.claude/rules/eng-workflow.md` | gstack 기반 엔지니어링 스킬 가이드 |
 | Review learning status | `knowledge/_index.md` | Domain counts; `/improve` command |
 | Resume a project | `projects/[name]/_context.md` | Always read first before working |
 | Use native skills | `.claude/skills/[name]/SKILL.md` | 31 mega-skills — 비즈니스 라우터는 plugins/ 직접 참조, gstack은 자체 완결 |
@@ -63,9 +65,9 @@ User Request
 - **Context files**: `_context.md` mandatory in every project folder (underscore prefix for sort-first)
 - **Cross-domain skills**: Agents can reference skills from other plugins (e.g., Research uses Sales's account-research)
 - **Plugin origin**: 10 from Anthropic knowledge-work-plugins, 7 custom-built
-- **PM Skills**: product-management plugin expanded to 62 skills via PM Skills (Paweł Huryn) Korean edition integration
+- **PM Skills**: product-management plugin expanded to 60 skills via PM Skills (Paweł Huryn) Korean edition integration
 - **Native skills**: `.claude/skills/` — 23 business mega-skills (router → plugins/ 직접 참조) + 8 engineering skills (gstack-based, 자체 완결)
-- **PM mega-skills**: 62 skills grouped into 7 mega-skills (pm-discovery, pm-strategy, pm-execution, pm-core, pm-research, pm-gtm, pm-analytics)
+- **PM mega-skills**: 60 skills grouped into 7 mega-skills (pm-discovery, pm-strategy, pm-execution, pm-core, pm-research, pm-gtm, pm-analytics)
 
 ## ANTI-PATTERNS (THIS PROJECT)
 
@@ -103,7 +105,7 @@ User Request
 ## NOTES
 
 - `projects/` is in `.gitignore` but verify no accidental staging before push
-- Knowledge: Writing domain has 9 learned items (형운 voice profile), preferences has 8 items. Other domains at 0 — system learns incrementally through use
+- Knowledge: Writing domain has 9 learned items (형운 voice profile), Sales has 1 item, preferences has 8 items. Other domains at 0 — system learns incrementally through use
 - Multi-agent composition: complex requests route to 2-5 agents (e.g., "시리즈A 투자 준비" → Finance + Legal + BizDev + Product)
 - Session-end checklist overrides ALL other rules — mandatory push after system changes
 - Same project, different request direction → re-run brainstorming gate

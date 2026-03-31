@@ -134,7 +134,7 @@ business-ai-team/
 │   ├── browse/              # 자체 완결형 (243줄 + 빌드 인프라)
 │   ├── review/              # 자체 완결형 (111줄)
 │   └── ... (27개 추가 스킬)
-├── .claude/rules/           # 4개 규칙 (expert-routing, brainstorming, feedback-learning, session-reminder)
+├── .claude/rules/           # 14개 규칙 (라우팅, 브레인스토밍, 학습, 세션, 품질 보장 시스템)
 ├── .claude/commands/        # 5개 커맨드 (/ask, /route, /team, /improve, /health)
 ├── plugins/                 # 17개 도메인 플러그인 (원본 스킬 보존)
 ├── knowledge/               # RLVR 학습 지식 (자동 학습 + 자동 생성)

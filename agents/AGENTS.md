@@ -24,7 +24,7 @@ All files are flat `[domain].md` — no subdirectories. Each agent file contains
 | data | Analysis, visualization, SQL | — |
 | finance | Financial analysis, budgets | — |
 | legal | Contracts, risk, compliance | enterprise-search (search-strategy) |
-| product | Discovery, strategy, execution, roadmap, GTM, metrics (62 skills) | — |
+| product | Discovery, strategy, execution, roadmap, GTM, metrics (60 skills) | — |
 | productivity | Task management, scheduling | — |
 | hr | Talent, culture, performance | — |
 | design | UX/UI, brand guidelines | — |
