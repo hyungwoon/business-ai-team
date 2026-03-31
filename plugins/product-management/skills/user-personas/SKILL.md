@@ -1,6 +1,9 @@
 ---
+
 name: user-personas
 description: "리서치 데이터를 기반으로 정제된 사용자 페르소나 작성 — JTBD, 페인 포인트, 이점, 예상치 못한 인사이트를 포함한 3개의 페르소나. 설문 데이터로 페르소나를 구축하거나, 리서치를 통해 사용자 프로필을 작성하거나, 제품 결정을 위해 사용자를 세분화할 때 활용하세요."
+when_to_use: "product management 도메인에서 user personas 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 # 사용자 페르소나

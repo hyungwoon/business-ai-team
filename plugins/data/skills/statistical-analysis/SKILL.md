@@ -1,6 +1,9 @@
 ---
+
 name: statistical-analysis
 description: Apply statistical methods including descriptive stats, trend analysis, outlier detection, and hypothesis testing. Use when analyzing distributions, testing for significance, detecting anomalies, computing correlations, or interpreting statistical results.
+when_to_use: "Use when analyzing distributions, testing for significance, detecting anomalies, computing correlations, or interpreting statistical results."
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 # Statistical Analysis Skill

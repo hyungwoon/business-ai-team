@@ -1,6 +1,9 @@
 ---
+
 name: prioritization-frameworks
 description: "공식, 사용 시기 가이드, 템플릿이 포함된 9가지 우선순위 프레임워크 참고 자료 — RICE, ICE, Kano, MoSCoW, Opportunity Score 등. 우선순위 결정 방법 선택 시, RICE vs ICE 등 프레임워크 비교 시, 또는 다양한 우선순위 결정 방식 학습 시 사용하세요."
+when_to_use: "product management 도메인에서 prioritization frameworks 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 ## 우선순위 프레임워크 참고 자료

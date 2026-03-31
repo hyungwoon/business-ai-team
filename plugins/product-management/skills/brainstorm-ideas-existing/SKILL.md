@@ -1,6 +1,9 @@
 ---
+
 name: brainstorm-ideas-existing
 description: "PM, 디자이너, 엔지니어 시각을 활용한 다각적 아이디에이션으로 기존 제품의 아이디어를 도출합니다. 새로운 기능 아이디어 생성, 식별된 기회에 대한 솔루션 브레인스토밍, 또는 프로덕트 트리오와 아이디에이션 시 사용합니다."
+when_to_use: "product management 도메인에서 brainstorm ideas existing 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 ## 제품 아이디어 도출 (기존 제품)

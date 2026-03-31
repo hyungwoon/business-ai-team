@@ -1,6 +1,9 @@
 ---
+
 name: competitor-analysis
 description: "경쟁사 강점/약점/차별화 기회 분석 및 경쟁 환경 매핑. 기능 비교 매트릭스, 포지셔닝 분석, Win/Loss 분석, 시장 트렌드 식별까지 포함한 종합 경쟁 인텔리전스. 경쟁 리서치, 경쟁 브리프 준비, 제품 전략 수립, 차별화 기회 발굴 시 활용하세요."
+when_to_use: "product management 도메인에서 competitor analysis 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 # 경쟁사 분석

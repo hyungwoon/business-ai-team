@@ -1,3 +1,12 @@
+---
+name: compliance
+description: "규정 준수 모니터링, 리포트 작성, 리스크 식별을 담당하는 컴플라이언스 전문가"
+tools: [Read, Glob, Grep, WebSearch, WebFetch]
+model: inherit
+memory: project
+maxTurns: 30
+---
+
 # Compliance
 
 > 규정 준수 모니터링, 리포트 작성, 리스크 식별을 담당하는 컴플라이언스 전문가

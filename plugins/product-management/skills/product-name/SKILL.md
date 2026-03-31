@@ -1,6 +1,9 @@
 ---
+
 name: product-name
 description: "브랜드 가치와 타깃 고객에 부합하는 독창적이고 기억에 남는 제품명 5가지와 근거를 브레인스토밍합니다. 신제품 네이밍, 리브랜딩, 또는 제품명 아이디어 탐색 시 사용하세요."
+when_to_use: "product management 도메인에서 product name 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 # 제품명
 

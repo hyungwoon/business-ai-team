@@ -1,6 +1,9 @@
 ---
+
 name: product-vision
 description: "팀에게 동기를 부여하고 이해관계자를 정렬하는 영감을 주고 달성 가능하며 감성적인 제품 비전을 구상합니다. 제품 비전을 정의하거나 다듬을 때, 비전 문장을 만들 때, 또는 팀을 공통 방향으로 정렬할 때 사용하세요."
+when_to_use: "product management 도메인에서 product vision 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 # Product Vision
 

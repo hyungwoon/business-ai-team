@@ -1,6 +1,9 @@
 ---
+
 name: daily-briefing
 description: Start your day with a prioritized sales briefing. Works standalone when you tell me your meetings and priorities, supercharged when you connect your calendar, CRM, and email. Trigger with "morning briefing", "daily brief", "what's on my plate today", "prep my day", or "start my day".
+when_to_use: "Trigger with 'morning briefing', 'daily brief', 'what's on my plate today', 'prep my day', or 'start my day'."
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 # Daily Sales Briefing

@@ -1,4 +1,5 @@
 ---
+
 name: data-context-extractor
 description: >
   Generate or improve a company-specific data analysis skill by extracting tribal knowledge from analysts.
@@ -13,6 +14,8 @@ description: >
 
   Use when data analysts want Claude to understand their company's specific data warehouse,
   terminology, metrics definitions, and common query patterns.
+when_to_use: "data 도메인에서 data context extractor 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 # Data Context Extractor

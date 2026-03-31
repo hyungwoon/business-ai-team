@@ -1,6 +1,9 @@
 ---
+
 name: create-an-asset
 description: Generate tailored sales assets (landing pages, decks, one-pagers, workflow demos) from your deal context. Describe your prospect, audience, and goal — get a polished, branded asset ready to share with customers.
+when_to_use: "sales 도메인에서 create an asset 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 # Create an Asset

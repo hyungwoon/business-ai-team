@@ -1,6 +1,9 @@
 ---
+
 name: sprint-plan
 description: "역량 추정, 스토리 선택, 의존성 매핑, 리스크 식별을 통해 스프린트를 계획합니다. 스프린트 계획 준비, 팀 역량 추정, 스토리 선택, 또는 속도에 맞게 스프린트 범위를 균형 있게 조정할 때 사용하세요."
+when_to_use: "product management 도메인에서 sprint plan 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 ## 스프린트 계획

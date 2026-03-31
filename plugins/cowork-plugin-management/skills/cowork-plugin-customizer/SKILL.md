@@ -1,10 +1,13 @@
 ---
+
 name: cowork-plugin-customizer
 description: >
   Customize a Claude Code plugin for a specific organization's tools and workflows.
   Use when: customize plugin, set up plugin, configure plugin, tailor plugin, adjust plugin settings,
   customize plugin connectors, customize plugin skill, customize plugin command, tweak plugin, modify plugin configuration.
 compatibility: Requires Cowork desktop app environment with access to mounted plugin directories (mnt/.local-plugins, mnt/.plugins).
+when_to_use: "cowork plugin management 도메인에서 cowork plugin customizer 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 # Cowork Plugin Customization

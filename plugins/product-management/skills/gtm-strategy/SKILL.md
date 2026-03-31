@@ -1,6 +1,9 @@
 ---
+
 name: gtm-strategy
 description: "마케팅 채널, 메시징, 성공 지표, 출시 타임라인을 포함한 GTM 전략을 수립합니다. 제품 출시를 계획하거나, 처음부터 GTM 계획을 작성하거나, 새로운 시장을 위한 출시 전략을 정의할 때 활용합니다."
+when_to_use: "product management 도메인에서 gtm strategy 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 # GTM 전략 (GTM Strategy)
 

@@ -1,6 +1,9 @@
 ---
+
 name: source-management
 description: Manages connected MCP sources for enterprise search. Detects available sources, guides users to connect new ones, handles source priority ordering, and manages rate limiting awareness.
+when_to_use: "enterprise search 도메인에서 source management 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 # Source Management

@@ -1,6 +1,9 @@
 ---
+
 name: stakeholder-comms
 description: Draft stakeholder updates tailored to audience — executives, engineering, customers, or cross-functional partners. Use when writing weekly status updates, monthly reports, launch announcements, risk communications, or decision documentation.
+when_to_use: "Use when writing weekly status updates, monthly reports, launch announcements, risk communications, or decision documentation."
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 # Stakeholder Communications Skill

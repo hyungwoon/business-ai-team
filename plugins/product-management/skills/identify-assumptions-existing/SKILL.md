@@ -1,6 +1,9 @@
 ---
+
 name: identify-assumptions-existing
 description: "기존 제품의 기능 아이디어에 대한 가치, 사용성, 실행 가능성, 기술 타당성 측면의 위험 가정을 식별합니다. 다각적 악마의 변호인 사고를 활용합니다. 기능 아이디어 검증, 위험 평가, 또는 가정 매핑 준비 시 사용합니다."
+when_to_use: "product management 도메인에서 identify assumptions existing 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 ## 가정 식별 (기존 제품)

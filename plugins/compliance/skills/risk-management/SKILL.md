@@ -1,8 +1,11 @@
 ---
+
 name: risk-management
 description: Identify, assess, and mitigate compliance and operational risks using structured frameworks. Use when conducting risk assessments, building compliance programs, reviewing regulatory requirements, preparing audit responses, or designing internal controls.
 version: 2.0.0
 last-updated: 2026-03-15
+when_to_use: "Use when conducting risk assessments, building compliance programs, reviewing regulatory requirements, preparing audit responses, or designing internal controls."
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 # Risk Management Skill

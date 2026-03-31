@@ -1,6 +1,9 @@
 ---
+
 name: close-management
 description: Manage the month-end close process with task sequencing, dependencies, and status tracking. Use when planning the close calendar, tracking close progress, identifying blockers, or sequencing close activities by day.
+when_to_use: "Use when planning the close calendar, tracking close progress, identifying blockers, or sequencing close activities by day."
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 # Close Management

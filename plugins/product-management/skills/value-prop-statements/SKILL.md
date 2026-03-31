@@ -1,6 +1,9 @@
 ---
+
 name: value-prop-statements
 description: "기존 가치 제안으로부터 마케팅, 영업, 온보딩용 가치 제안 문장을 생성합니다. 마케팅 카피 작성, 영업 메시지 제작, 또는 온보딩 메시지 작성 시 사용하세요."
+when_to_use: "product management 도메인에서 value prop statements 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 # 가치 제안 문장
 

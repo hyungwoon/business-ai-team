@@ -1,6 +1,9 @@
 ---
+
 name: escalation
 description: Structure and package support escalations for engineering, product, or leadership with full context, reproduction steps, and business impact. Use when an issue needs to go beyond support, when writing an escalation brief, or when assessing whether an issue warrants escalation.
+when_to_use: "Use when an issue needs to go beyond support, when writing an escalation brief, or when assessing whether an issue warrants escalation."
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 # Escalation Skill

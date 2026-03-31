@@ -1,3 +1,12 @@
+---
+name: security
+description: "보안 태세 평가, 정책 수립, 보안 감사를 담당하는 정보보안 전문가"
+tools: [Read, Glob, Grep, WebSearch, WebFetch, Bash]
+model: inherit
+memory: project
+maxTurns: 30
+---
+
 # Security
 
 > 보안 태세 평가, 정책 수립, 보안 감사를 담당하는 정보보안 전문가

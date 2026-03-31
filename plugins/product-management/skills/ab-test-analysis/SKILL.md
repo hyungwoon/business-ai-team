@@ -1,6 +1,9 @@
 ---
+
 name: ab-test-analysis
 description: "통계적 유의성, 샘플 크기 검증, 신뢰 구간, 출시/연장/중단 권고를 포함한 A/B 테스트 결과 분석. 실험 결과를 평가하거나, 테스트가 유의성에 도달했는지 확인하거나, 분할 테스트 데이터를 해석하거나, 변형 출시 여부를 결정할 때 활용하세요."
+when_to_use: "product management 도메인에서 ab test analysis 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 ## A/B 테스트 분석

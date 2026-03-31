@@ -1,6 +1,9 @@
 ---
+
 name: interview-script
 description: "JTBD 탐색 질문, 워밍업, 핵심 탐색, 마무리 섹션을 포함한 구조화된 고객 인터뷰 스크립트를 작성합니다. 엄마 테스트 원칙을 따릅니다 — 유도 질문 없음, 홍보 없음, 과거 행동에 집중. 사용자 인터뷰 준비, 인터뷰 가이드 작성, 또는 디스커버리 리서치 계획 시 사용합니다."
+when_to_use: "product management 도메인에서 interview script 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 ## 고객 인터뷰 스크립트

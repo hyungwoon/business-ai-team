@@ -1,6 +1,9 @@
 ---
+
 name: brainstorm-experiments-new
 description: "신규 제품을 위한 린 스타트업 실험(프리토타입)을 설계합니다. XYZ 가설을 수립하고 랜딩 페이지, 설명 영상, 사전 주문 같은 저비용 검증 방법을 제안합니다. 신규 제품 아이디어 검증, 프리토타입 제작, 또는 시장 수요 테스트 시 사용합니다."
+when_to_use: "product management 도메인에서 brainstorm experiments new 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 ## 린 스타트업 실험 설계 (신규 제품)

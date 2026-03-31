@@ -1,6 +1,9 @@
 ---
+
 name: pre-mortem
 description: "PRD 또는 출시 계획에 대한 사전 부검(pre-mortem) 리스크 분석을 수행합니다. 리스크를 Tigers(실제 문제), Paper Tigers(과장된 우려), Elephants(묵인된 걱정)로 분류하고, 출시 차단·빠른 후속 조치·모니터링으로 구분합니다. 출시 준비 시, 제품 계획의 취약점 점검 시, 또는 잠재적 실패 요인 파악 시 사용하세요."
+when_to_use: "product management 도메인에서 pre mortem 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 # Pre-Mortem: 제품 출시 리스크 분석

@@ -1,6 +1,9 @@
 ---
+
 name: response-drafting
 description: Draft professional, empathetic customer-facing responses adapted to the situation, urgency, and channel. Use when responding to customer tickets, escalations, outage notifications, bug reports, feature requests, or any customer-facing communication.
+when_to_use: "Use when responding to customer tickets, escalations, outage notifications, bug reports, feature requests, or any customer-facing communication."
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 # Response Drafting Skill

@@ -1,6 +1,9 @@
 ---
+
 name: pestle-analysis
 description: "정치적, 경제적, 사회적, 기술적, 법적, 환경적 요인을 포함하는 PESTLE 분석을 수행합니다. 거시 환경 평가, 전략 기획, 또는 비즈니스에 영향을 미치는 외부 요인 평가 시 사용하세요."
+when_to_use: "product management 도메인에서 pestle analysis 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 # PESTLE 분석
 

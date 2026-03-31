@@ -1,0 +1,20 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|hashline_edit",
+        "command": ".claude/hooks/complexity-check.sh"
+      },
+      {
+        "matcher": "",
+        "command": ".claude/hooks/contract-check.sh"
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "command": ".claude/hooks/entropy-reminder.sh"
+      }
+    ]
+  }
+}

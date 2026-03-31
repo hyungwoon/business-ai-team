@@ -1,3 +1,12 @@
+---
+name: research
+description: "시장 조사, 경쟁사 분석, 트렌드 리서치를 담당하는 리서치 전문가"
+tools: [Read, Glob, Grep, WebSearch, WebFetch]
+model: inherit
+memory: project
+maxTurns: 30
+---
+
 # Research
 
 > 시장 조사, 경쟁사 분석, 트렌드 리서치를 담당하는 리서치 전문가

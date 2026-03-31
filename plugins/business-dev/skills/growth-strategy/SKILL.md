@@ -1,8 +1,11 @@
 ---
+
 name: growth-strategy
 description: Develop go-to-market strategies, partnership frameworks, new business opportunity assessments, and growth playbooks. Use when evaluating new markets, structuring partnerships, preparing investor materials, or building a business development pipeline.
 version: 2.0.0
 last-updated: 2026-03-15
+when_to_use: "Use when evaluating new markets, structuring partnerships, preparing investor materials, or building a business development pipeline."
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 # Growth Strategy Skill

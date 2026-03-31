@@ -1,6 +1,9 @@
 ---
+
 name: ideal-customer-profile
 description: "인구통계, 행동 패턴, JTBD, 니즈를 포함하여 리서치 데이터를 기반으로 이상적인 고객 프로필(ICP)을 파악합니다. ICP를 정의하거나, PMF 설문 데이터를 분석하거나, 최고의 고객이 누구인지 파악할 때 활용합니다."
+when_to_use: "product management 도메인에서 ideal customer profile 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 # 이상적인 고객 프로필 (Ideal Customer Profile)
 

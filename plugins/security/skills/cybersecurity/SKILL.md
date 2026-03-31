@@ -1,8 +1,11 @@
 ---
+
 name: cybersecurity
 description: Assess cybersecurity posture, design security policies, respond to incidents, and build security awareness programs. Use when conducting risk assessments, reviewing security architecture, drafting security policies, planning incident response, or evaluating vendor security.
 version: 2.0.0
 last-updated: 2026-03-15
+when_to_use: "Use when conducting risk assessments, reviewing security architecture, drafting security policies, planning incident response, or evaluating vendor security."
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 # Cybersecurity Skill

@@ -1,6 +1,9 @@
 ---
+
 name: ansoff-matrix
 description: "시장 침투, 시장 개발, 제품 개발, 다각화 전략을 매핑하는 Ansoff Matrix 분석을 생성합니다. 성장 옵션을 고려하거나 시장 확장을 계획하거나 전략적 성장 경로를 평가할 때 사용하세요."
+when_to_use: "product management 도메인에서 ansoff matrix 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 # Ansoff Matrix
 

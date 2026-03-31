@@ -1,6 +1,9 @@
 ---
+
 name: product-strategy
 description: "비전, 세그먼트, 비용, 가치 제안, 트레이드오프, 지표, 성장, 역량, 방어성을 포함한 9개 섹션의 Product Strategy Canvas를 사용하여 종합적인 제품 전략을 수립합니다. 제품 전략 구축, 전략 계획 수립, 또는 제품 방향 정의 시 사용하세요."
+when_to_use: "product management 도메인에서 product strategy 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 # Product Strategy Canvas
 

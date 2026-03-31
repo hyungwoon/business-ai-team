@@ -1,6 +1,9 @@
 ---
+
 name: roadmap-management
 description: Plan and prioritize product roadmaps using frameworks like RICE, MoSCoW, and ICE. Use when creating a roadmap, reprioritizing features, mapping dependencies, choosing between Now/Next/Later or quarterly formats, or presenting roadmap tradeoffs to stakeholders.
+when_to_use: "Use when creating a roadmap, reprioritizing features, mapping dependencies, choosing between Now/Next/Later or quarterly formats, or presenting roadmap tradeoffs to stakeholders."
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 # Roadmap Management Skill

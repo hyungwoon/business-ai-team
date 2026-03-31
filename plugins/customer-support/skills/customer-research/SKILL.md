@@ -1,6 +1,9 @@
 ---
+
 name: customer-research
 description: Research customer questions by searching across documentation, knowledge bases, and connected sources, then synthesize a confidence-scored answer. Use when a customer asks a question you need to investigate, when building background on a customer situation, or when you need account context.
+when_to_use: "Use when a customer asks a question you need to investigate, when building background on a customer situation, or when you need account context."
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 # Customer Research Skill

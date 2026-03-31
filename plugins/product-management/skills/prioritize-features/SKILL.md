@@ -1,6 +1,9 @@
 ---
+
 name: prioritize-features
 description: "영향도, 노력, 리스크, 전략적 정합성을 기준으로 기능 아이디어 백로그를 우선순위화하고 상위 5개를 추천합니다. 기능 백로그 우선순위 결정, 범위 조정, 제품 아이디어 순위 산정 시 활용하세요."
+when_to_use: "product management 도메인에서 prioritize features 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 ## 기능 백로그 우선순위화

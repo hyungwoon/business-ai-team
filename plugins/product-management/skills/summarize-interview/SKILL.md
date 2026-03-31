@@ -1,6 +1,9 @@
 ---
+
 name: summarize-interview
 description: "고객 인터뷰 트랜스크립트를 JTBD, 만족도 신호, 액션 아이템이 포함된 구조화된 템플릿으로 요약합니다. 인터뷰 녹음 또는 트랜스크립트 처리, 디스커버리 인터뷰 종합, 인터뷰 요약본 작성 시 활용하세요."
+when_to_use: "product management 도메인에서 summarize interview 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 ## 고객 인터뷰 요약

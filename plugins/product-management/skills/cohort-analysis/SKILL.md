@@ -1,6 +1,9 @@
 ---
+
 name: cohort-analysis
 description: "사용자 참여 데이터에 대한 코호트 분석 수행 — 리텐션 곡선, 기능 도입 트렌드, 세그먼트 수준 인사이트. 코호트별 사용자 리텐션 분석, 시간에 따른 기능 도입 연구, 이탈 패턴 조사, 또는 참여 트렌드 식별 시 활용하세요."
+when_to_use: "product management 도메인에서 cohort analysis 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 # 코호트 분석 & 리텐션 탐색기

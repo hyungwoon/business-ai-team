@@ -1,6 +1,9 @@
 ---
+
 name: positioning-ideas
 description: "경쟁사와 차별화된 제품 포지셔닝 아이디어를 브레인스토밍합니다. 주요 경쟁사를 파악하고 포지셔닝 문장과 근거를 생성합니다. 제품 포지셔닝 개발, 경쟁사 차별화, 또는 브랜드 포지셔닝 전략 수립 시 사용하세요."
+when_to_use: "product management 도메인에서 positioning ideas 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 # 포지셔닝 아이디어
 

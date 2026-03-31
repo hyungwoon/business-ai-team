@@ -1,6 +1,9 @@
 ---
+
 name: ticket-triage
 description: Triage incoming support tickets by categorizing issues, assigning priority (P1-P4), and recommending routing. Use when a new ticket or customer issue comes in, when assessing severity, or when deciding which team should handle an issue.
+when_to_use: "Use when a new ticket or customer issue comes in, when assessing severity, or when deciding which team should handle an issue."
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 # Ticket Triage Skill

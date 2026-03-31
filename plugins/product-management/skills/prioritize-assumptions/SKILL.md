@@ -1,6 +1,9 @@
 ---
+
 name: prioritize-assumptions
 description: "Impact × Risk 매트릭스를 활용해 가정을 우선순위화하고 각 가정에 대한 실험을 제안합니다. 가정 목록을 분류하거나, 무엇을 먼저 테스트할지 결정하거나, 가정 우선순위화 캔버스를 적용할 때 활용하세요."
+when_to_use: "product management 도메인에서 prioritize assumptions 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 ## 가정 우선순위화

@@ -20,6 +20,9 @@ projects/
 !.claude/commands/
 !.claude/rules/
 !.claude/skills/
+!.claude/agent-memory/
+!.claude/hooks/
+!.claude/hooks-config-example.json
 
 # browse 스킬 빌드 산출물 (팀원은 cd .claude/skills/browse && ./setup으로 로컬 빌드)
 .claude/skills/browse/node_modules/

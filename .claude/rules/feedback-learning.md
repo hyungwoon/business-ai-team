@@ -7,10 +7,11 @@
 
 `knowledge/` 디렉토리 경로는 라우팅 규칙과 동일한 순서로 결정:
 
-1. **로컬**: `knowledge/` (현재 프로젝트에 존재하면)
-2. **글로벌**: `~/.claude/business-team/knowledge/` (로컬에 없으면)
+1. **네이티브**: `.claude/agent-memory/<도메인>/` (Claude Code 호환 — 에이전트 프롬프트에 자동 주입)
+2. **레거시**: `knowledge/` (현재 프로젝트에 존재하면)
+3. **글로벌**: `~/.claude/business-team/knowledge/` (로컬에 없으면)
 
-이하 `KNOWLEDGE_DIR`은 위 규칙으로 결정된 실제 경로.
+이하 `KNOWLEDGE_DIR`은 위 규칙으로 결정된 실제 경로. 네이티브 경로가 존재하면 우선 사용한다.
 
 ---
 

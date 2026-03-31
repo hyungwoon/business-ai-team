@@ -1,6 +1,9 @@
 ---
+
 name: pricing-strategy
 description: "가격 모델, 경쟁사 가격 분석, 지불 의사 추정, 가격 탄력성 등 가격 전략을 분석하고 설계합니다. 가격 책정, 가격 모델 평가, 가격 변경 준비, 또는 freemium과 유료 방식 비교 시 사용하세요."
+when_to_use: "product management 도메인에서 pricing strategy 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 ## Pricing Strategy

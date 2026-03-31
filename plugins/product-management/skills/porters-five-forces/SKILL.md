@@ -1,6 +1,9 @@
 ---
+
 name: porters-five-forces
 description: "경쟁 강도, 공급자 교섭력, 구매자 교섭력, 대체재 위협, 신규 진입 위협을 평가하는 Porter's Five Forces 분석을 수행합니다. 산업 역학 분석, 경쟁 역량 평가, 또는 시장 매력도 평가 시 사용하세요."
+when_to_use: "product management 도메인에서 porters five forces 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 # Porter's Five Forces
 

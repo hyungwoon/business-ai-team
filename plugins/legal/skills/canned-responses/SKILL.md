@@ -1,6 +1,9 @@
 ---
+
 name: canned-responses
 description: Generate templated responses for common legal inquiries and identify when situations require individualized attention. Use when responding to routine legal questions — data subject requests, vendor inquiries, NDA requests, discovery holds — or when managing response templates.
+when_to_use: "Use when responding to routine legal questions — data subject requests, vendor inquiries, NDA requests, discovery holds — or when managing response templates."
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 # Canned Responses Skill

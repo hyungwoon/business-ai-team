@@ -1,6 +1,9 @@
 ---
+
 name: test-scenarios
 description: "유저 스토리를 바탕으로 테스트 목표, 사전 조건, 사용자 역할, 단계별 액션, 예상 결과를 포함한 종합적인 테스트 시나리오를 작성합니다. QA 테스트 케이스 작성, 테스트 계획 수립, 인수 테스트 정의, 기능 검증 준비 시 사용하세요."
+when_to_use: "product management 도메인에서 test scenarios 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 # Test Scenarios
 

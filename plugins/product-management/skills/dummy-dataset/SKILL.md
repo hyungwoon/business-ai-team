@@ -1,6 +1,9 @@
 ---
+
 name: dummy-dataset
 description: "사용자 정의 컬럼, 제약 조건, 출력 형식(CSV, JSON, SQL, Python script)으로 테스트용 현실적인 더미 데이터셋을 생성합니다. 테스트 데이터 생성, 목(mock) 데이터셋 구성, 개발 및 데모용 샘플 데이터 생성 시 사용하세요."
+when_to_use: "product management 도메인에서 dummy dataset 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 # 더미 데이터셋 생성
 

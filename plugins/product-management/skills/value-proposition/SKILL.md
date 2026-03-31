@@ -1,6 +1,9 @@
 ---
+
 name: value-proposition
 description: "JTBD 프레임워크 기반 6단계 템플릿(Who, Why, What before, How, What after, Alternatives)을 사용하여 상세한 가치 제안을 설계합니다. 가치 제안 생성, 고객 가치 전달 분석, 또는 고객이 제품을 선택해야 하는 이유를 명확히 할 때 사용하세요."
+when_to_use: "product management 도메인에서 value proposition 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 # Value Proposition
 

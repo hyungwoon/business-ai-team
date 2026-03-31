@@ -1,6 +1,9 @@
 ---
+
 name: user-segmentation
 description: "행동, JTBD, 니즈를 기반으로 피드백 데이터에서 사용자 세분화. 최소 3개의 뚜렷한 사용자 세그먼트 식별. 사용자 기반을 세분화하거나, 다양한 사용자 피드백을 분석하거나, 세분화 모델을 구축할 때 활용하세요."
+when_to_use: "product management 도메인에서 user segmentation 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 # 사용자 세분화

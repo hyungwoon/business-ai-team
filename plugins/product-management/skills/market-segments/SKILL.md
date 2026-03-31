@@ -1,6 +1,9 @@
 ---
+
 name: market-segments
 description: "인구통계, JTBD, 제품 적합도 분석을 포함한 3~5개의 잠재 고객 세그먼트 식별. 시장 세그먼트 탐색, 타깃 고객 식별, 신규 시장 평가, 또는 시장 세분화 방법을 학습할 때 활용하세요."
+when_to_use: "product management 도메인에서 market segments 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 # 시장 세그먼트

@@ -1,6 +1,9 @@
 ---
+
 name: meeting-briefing
 description: Prepare structured briefings for meetings with legal relevance and track resulting action items. Use when preparing for contract negotiations, board meetings, compliance reviews, or any meeting where legal context, background research, or action tracking is needed.
+when_to_use: "Use when preparing for contract negotiations, board meetings, compliance reviews, or any meeting where legal context, background research, or action tracking is needed."
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 # Meeting Briefing Skill

@@ -1,6 +1,9 @@
 ---
+
 name: data-exploration
 description: Profile and explore datasets to understand their shape, quality, and patterns before analysis. Use when encountering a new dataset, assessing data quality, discovering column distributions, identifying nulls and outliers, or deciding which dimensions to analyze.
+when_to_use: "Use when encountering a new dataset, assessing data quality, discovering column distributions, identifying nulls and outliers, or deciding which dimensions to analyze."
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 # Data Exploration Skill

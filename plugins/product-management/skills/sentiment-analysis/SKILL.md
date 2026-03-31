@@ -1,6 +1,9 @@
 ---
+
 name: sentiment-analysis
 description: "감성 점수, JTBD, 제품 만족도 인사이트를 포함한 시장 세그먼트 식별을 위한 사용자 피드백 데이터 분석. 대규모 사용자 피드백 분석, 리뷰 또는 설문에 대한 감성 분석, 또는 만족도 패턴 식별 시 활용하세요."
+when_to_use: "product management 도메인에서 sentiment analysis 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 # 감성 분석

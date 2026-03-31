@@ -1,6 +1,9 @@
 ---
+
 name: customer-journey-map
 description: "단계, 접점, 감정, 페인 포인트, 기회를 포함한 엔드투엔드 고객 여정 지도 작성. 고객 경험 매핑, 마찰 지점 식별, 온보딩 개선, 또는 사용자 여정 시각화가 필요할 때 활용하세요."
+when_to_use: "product management 도메인에서 customer journey map 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 ## 고객 여정 지도

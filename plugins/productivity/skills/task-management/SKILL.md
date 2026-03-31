@@ -1,6 +1,9 @@
 ---
+
 name: task-management
 description: Simple task management using a shared TASKS.md file. Reference this when the user asks about their tasks, wants to add/complete tasks, or needs help tracking commitments.
+when_to_use: "productivity 도메인에서 task management 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 # Task Management

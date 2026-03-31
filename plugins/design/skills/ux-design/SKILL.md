@@ -1,8 +1,11 @@
 ---
+
 name: ux-design
 description: Apply UX research, information architecture, interaction design, and usability principles to product and service design. Use when planning user research, reviewing design decisions, writing UX specifications, evaluating usability, or defining design systems.
 version: 2.0.0
 last-updated: 2026-03-15
+when_to_use: "Use when planning user research, reviewing design decisions, writing UX specifications, evaluating usability, or defining design systems."
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 # UX Design Skill

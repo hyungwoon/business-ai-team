@@ -1,6 +1,9 @@
 ---
+
 name: metrics-tracking
 description: Define, track, and analyze product metrics with frameworks for goal setting and dashboard design. Use when setting up OKRs, building metrics dashboards, running weekly metrics reviews, identifying trends, or choosing the right metrics for a product area.
+when_to_use: "Use when setting up OKRs, building metrics dashboards, running weekly metrics reviews, identifying trends, or choosing the right metrics for a product area."
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 # Metrics Tracking Skill

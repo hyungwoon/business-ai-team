@@ -1,6 +1,9 @@
 ---
+
 name: financial-analysis
 description: Perform ratio analysis, financial modeling, valuation, and investment analysis with structured frameworks. Use when evaluating company performance, building financial models, calculating ROI/IRR, running scenario analysis, or benchmarking against industry peers.
+when_to_use: "Use when evaluating company performance, building financial models, calculating ROI/IRR, running scenario analysis, or benchmarking against industry peers."
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 # Financial Analysis

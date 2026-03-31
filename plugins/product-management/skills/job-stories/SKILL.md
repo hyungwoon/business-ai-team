@@ -1,6 +1,9 @@
 ---
+
 name: job-stories
 description: "'When [상황], I want to [동기], so I can [결과]' 형식으로 상세한 인수 기준을 포함한 잡 스토리를 작성합니다. 잡 스토리 작성, JTBD 방식의 백로그 항목 생성, 사용자 상황과 동기 표현 시 사용하세요."
+when_to_use: "product management 도메인에서 job stories 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 # Job Stories
 

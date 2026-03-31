@@ -1,6 +1,9 @@
 ---
+
 name: growth-loops
 description: "지속 가능한 트랙션을 위한 성장 루프(플라이휠)를 파악합니다. 바이럴, 사용, 협업, 사용자 생성, 추천 등 5가지 루프 유형을 평가합니다. 성장 메커니즘을 설계하거나, 제품 주도 트랙션을 구축하거나, 성장 루프의 작동 방식을 이해할 때 활용합니다."
+when_to_use: "product management 도메인에서 growth loops 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 # 성장 루프 (Growth Loops)
 

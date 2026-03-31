@@ -1,6 +1,9 @@
 ---
+
 name: create-prd
 description: "문제, 목표, 세그먼트, 가치 제안, 솔루션, 출시 계획을 포함하는 포괄적인 8개 섹션 템플릿으로 Product Requirements Document를 작성합니다. PRD 작성, 제품 요구사항 문서화, 기능 스펙 준비, 또는 기존 PRD 검토 시 사용하세요."
+when_to_use: "product management 도메인에서 create prd 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 # Product Requirements Document 작성

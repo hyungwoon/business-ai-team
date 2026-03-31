@@ -1,6 +1,9 @@
 ---
+
 name: stakeholder-map
 description: "권한/관심도 그리드를 사용하여 이해관계자 맵을 구성하고, 각 사분면별 커뮤니케이션 전략을 파악하며, 커뮤니케이션 계획을 수립합니다. 이해관계자 관리, 출시 준비, 부서 간 팀 정렬, 또는 이해관계자 참여 계획 수립 시 사용하세요."
+when_to_use: "product management 도메인에서 stakeholder map 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 ## 이해관계자 맵 & 커뮤니케이션 계획

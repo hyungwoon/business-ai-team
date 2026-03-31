@@ -1,6 +1,9 @@
 ---
+
 name: user-stories
 description: "3 C's(Card, Conversation, Confirmation)와 INVEST 기준을 따르는 유저 스토리를 설명, 디자인 링크, 인수 기준과 함께 작성합니다. 유저 스토리 작성, 기능을 백로그 항목으로 분해, 또는 인수 기준 정의 시 사용하세요."
+when_to_use: "product management 도메인에서 user stories 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 # User Stories
 

@@ -1,6 +1,9 @@
 ---
+
 name: identify-assumptions-new
 description: "Go-to-Market, 전략, 팀을 포함한 8가지 위험 카테고리에 걸쳐 신규 제품 아이디어의 위험 가정을 식별합니다. 스타트업 위험 평가, 신규 제품 컨셉 검토, 또는 신규 벤처의 가정 매핑 시 사용합니다."
+when_to_use: "product management 도메인에서 identify assumptions new 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 ## 가정 식별 (신규 제품)

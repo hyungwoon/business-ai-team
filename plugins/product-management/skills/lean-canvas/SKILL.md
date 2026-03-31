@@ -1,6 +1,9 @@
 ---
+
 name: lean-canvas
 description: "문제, 솔루션, 핵심 지표, 비용 구조, UVP, 경쟁 우위, 채널, 고객 세그먼트, 수익을 포함한 Lean Canvas를 생성합니다. 린 스타트업 캔버스 탐색, 비즈니스 가설 테스트, 신규 벤처 모델링 시 사용하세요."
+when_to_use: "product management 도메인에서 lean canvas 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 # Lean Canvas
 

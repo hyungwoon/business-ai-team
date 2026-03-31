@@ -1,6 +1,9 @@
 ---
+
 name: competitive-battlecard
 description: "특정 경쟁사와 비교하여 영업에 바로 활용 가능한 경쟁 배틀카드를 작성합니다 — 포지셔닝, 기능 비교, 반론 대응, 승/패 패턴. 영업팀 준비, 경쟁 자료 작성, 또는 '왜 경쟁사 X가 아닌가요?'라는 질문에 대응할 때 활용합니다."
+when_to_use: "product management 도메인에서 competitive battlecard 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 ## 경쟁 배틀카드 (Competitive Battlecard)

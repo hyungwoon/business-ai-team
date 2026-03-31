@@ -1,6 +1,9 @@
 ---
+
 name: opportunity-solution-tree
 description: "제품 디스커버리 구조화를 위한 Opportunity Solution Tree(OST)를 구축합니다 — 원하는 결과를 기회, 솔루션, 실험으로 연결합니다. Teresa Torres의 Continuous Discovery Habits 기반. 디스커버리 작업 구조화, 기회와 솔루션 매핑, 다음 빌드 결정 시 활용하세요."
+when_to_use: "product management 도메인에서 opportunity solution tree 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 ## Opportunity Solution Tree (OST)

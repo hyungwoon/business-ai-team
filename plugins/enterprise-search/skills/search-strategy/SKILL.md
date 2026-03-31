@@ -1,6 +1,9 @@
 ---
+
 name: search-strategy
 description: Query decomposition and multi-source search orchestration. Breaks natural language questions into targeted searches per source, translates queries into source-specific syntax, ranks results by relevance, and handles ambiguity and fallback strategies.
+when_to_use: "enterprise search 도메인에서 search strategy 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 # Search Strategy

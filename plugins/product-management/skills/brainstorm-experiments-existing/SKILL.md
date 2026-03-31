@@ -1,6 +1,9 @@
 ---
+
 name: brainstorm-experiments-existing
 description: "기존 제품의 가정을 검증하기 위한 실험을 설계합니다 — 프로토타입, A/B 테스트, 스파이크, 기타 저비용 검증 방법. 가정 검증, 기능 아이디어를 저렴하게 테스트, 또는 제품 실험 계획 시 사용합니다."
+when_to_use: "product management 도메인에서 brainstorm experiments existing 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 ## 실험 설계 (기존 제품)

@@ -1,6 +1,9 @@
 ---
+
 name: startup-canvas
 description: "신제품을 위한 제품 전략(9개 섹션)과 비즈니스 모델(비용 + 수익)을 결합한 Startup Canvas를 생성합니다. BMC와 Lean Canvas의 대안으로, 전략과 비즈니스 모델을 분리합니다. 신제품 출시 또는 스타트업 아이디어 평가 시 사용하세요."
+when_to_use: "product management 도메인에서 startup canvas 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 # Startup Canvas
 

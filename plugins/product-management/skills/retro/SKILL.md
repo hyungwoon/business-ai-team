@@ -1,6 +1,9 @@
 ---
+
 name: retro
 description: "구조화된 스프린트 회고를 진행합니다 — 잘 된 점, 개선할 점, 담당자와 기한이 있는 우선순위 액션 아이템. 회고 진행, 스프린트 반성, 팀 피드백에서 액션 아이템 도출, 또는 효과적인 회고 진행 방법 학습 시 사용하세요."
+when_to_use: "product management 도메인에서 retro 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 ## 스프린트 회고 진행자

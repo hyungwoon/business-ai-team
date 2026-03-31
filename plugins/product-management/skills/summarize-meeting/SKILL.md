@@ -1,6 +1,9 @@
 ---
+
 name: summarize-meeting
 description: "회의 전사본을 날짜, 참석자, 주제, 핵심 결정 사항, 요약 포인트, 액션 아이템이 포함된 구조화된 회의록으로 요약합니다. 회의 녹취 처리, 회의록 작성, 의사록 작성, 또는 논의 내용 정리 시 사용하세요."
+when_to_use: "product management 도메인에서 summarize meeting 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 # 회의 요약

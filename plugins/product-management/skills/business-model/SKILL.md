@@ -1,6 +1,9 @@
 ---
+
 name: business-model
 description: "9개 구성 요소를 포함한 Business Model Canvas를 생성합니다. 비즈니스 모델을 만들거나, 비즈니스가 가치를 창출하는 방법을 문서화하거나, 기존 비즈니스 모델을 분석할 때 사용하세요."
+when_to_use: "product management 도메인에서 business model 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 # Business Model Canvas
 

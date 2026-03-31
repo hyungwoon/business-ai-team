@@ -1,6 +1,9 @@
 ---
+
 name: release-notes
 description: "티켓, PRD, 또는 변경 이력에서 사용자 대상 릴리스 노트를 생성합니다. 카테고리별(신규 기능, 개선 사항, 버그 수정)로 정리된 명확하고 읽기 좋은 요약본을 작성합니다. 릴리스 노트 작성, 변경 이력 생성, 제품 업데이트 공지, 출시된 내용 요약 시 사용하세요."
+when_to_use: "product management 도메인에서 release notes 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 ## 릴리스 노트 생성기

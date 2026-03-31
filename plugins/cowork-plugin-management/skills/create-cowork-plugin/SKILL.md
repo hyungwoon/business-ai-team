@@ -1,10 +1,13 @@
 ---
+
 name: create-cowork-plugin
 description: >
   Guide users through creating a new plugin from scratch in a cowork session.
   Use when users want to create a plugin, build a plugin, make a new plugin, develop a plugin, scaffold a plugin, start a plugin from scratch, or design a plugin.
   This skill requires Cowork mode with access to the outputs directory for delivering the final .plugin file.
 compatibility: Requires Cowork desktop app environment with access to the outputs directory for delivering .plugin files.
+when_to_use: "cowork plugin management 도메인에서 create cowork plugin 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 # Create Cowork Plugin

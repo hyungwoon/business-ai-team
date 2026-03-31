@@ -1,6 +1,9 @@
 ---
+
 name: financial-statements
 description: Generate income statements, balance sheets, and cash flow statements with GAAP presentation and period-over-period comparison. Use when preparing financial statements, running flux analysis, or creating P&L reports with variance commentary.
+when_to_use: "Use when preparing financial statements, running flux analysis, or creating P&L reports with variance commentary."
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 # Financial Statements

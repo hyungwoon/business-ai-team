@@ -1,6 +1,9 @@
 ---
+
 name: swot-analysis
 description: "강점, 약점, 기회, 위협에 대한 실행 가능한 권고사항을 포함한 상세한 SWOT 분석을 수행합니다. 전략적 평가, 경쟁 분석, 또는 제품이나 비즈니스 포지션 평가 시 사용하세요."
+when_to_use: "product management 도메인에서 swot analysis 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 # SWOT Analysis
 

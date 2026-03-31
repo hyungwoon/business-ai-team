@@ -1,8 +1,11 @@
 ---
+
 name: tech-leadership
 description: Guide technology strategy, architecture decisions, engineering team management, and technical roadmap planning. Use when evaluating technology stacks, reviewing system architecture, managing engineering teams, planning technical debt reduction, or building engineering culture.
 version: 2.0.0
 last-updated: 2026-03-15
+when_to_use: "Use when evaluating technology stacks, reviewing system architecture, managing engineering teams, planning technical debt reduction, or building engineering culture."
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 # Tech Leadership Skill

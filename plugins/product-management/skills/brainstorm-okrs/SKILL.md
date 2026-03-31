@@ -1,6 +1,9 @@
 ---
+
 name: brainstorm-okrs
 description: "회사 목표에 맞춰 팀 수준의 OKR을 브레인스토밍합니다 — 측정 가능한 핵심 결과를 포함한 정성적 목표. 분기별 OKR 설정, 팀 목표를 회사 전략에 정렬, 목표 초안 작성, 또는 효과적인 OKR 작성법을 학습할 때 사용하세요."
+when_to_use: "product management 도메인에서 brainstorm okrs 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 # 팀 OKR 브레인스토밍

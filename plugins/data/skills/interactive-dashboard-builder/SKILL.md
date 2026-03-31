@@ -1,6 +1,9 @@
 ---
+
 name: interactive-dashboard-builder
 description: Build self-contained interactive HTML dashboards with Chart.js, dropdown filters, and professional styling. Use when creating dashboards, building interactive reports, or generating shareable HTML files with charts and filters that work without a server.
+when_to_use: "Use when creating dashboards, building interactive reports, or generating shareable HTML files with charts and filters that work without a server."
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 # Interactive Dashboard Builder Skill

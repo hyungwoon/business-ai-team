@@ -1,6 +1,9 @@
 ---
+
 name: beachhead-segment
 description: "제품 출시를 위한 첫 번째 교두보 시장 세그먼트를 파악합니다. 절박한 페인 포인트, 지불 의향, 확보 가능한 시장 점유율, 추천 가능성을 기준으로 세그먼트를 평가합니다. 첫 번째 시장을 선택하거나, 초기 고객 세그먼트를 타기팅하거나, 시장 진입 전략을 계획할 때 활용합니다."
+when_to_use: "product management 도메인에서 beachhead segment 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 # 교두보 세그먼트 (Beachhead Segment)
 

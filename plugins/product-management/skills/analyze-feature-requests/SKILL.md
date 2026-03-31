@@ -1,6 +1,9 @@
 ---
+
 name: analyze-feature-requests
 description: "기능 요청 목록을 테마, 전략적 정렬, 영향, 노력, 위험도 기준으로 분석하고 우선순위를 결정합니다. 고객 기능 요청 검토, 백로그 트리아지, 또는 우선순위 결정 시 사용합니다."
+when_to_use: "product management 도메인에서 analyze feature requests 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 ## 기능 요청 분석

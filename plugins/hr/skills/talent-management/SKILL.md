@@ -1,8 +1,11 @@
 ---
+
 name: talent-management
 description: Design hiring processes, performance management systems, compensation frameworks, and organizational culture initiatives. Use when building job descriptions, structuring interviews, designing performance reviews, planning headcount, or improving employee engagement.
 version: 2.0.0
 last-updated: 2026-03-15
+when_to_use: "Use when building job descriptions, structuring interviews, designing performance reviews, planning headcount, or improving employee engagement."
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 # Talent Management Skill

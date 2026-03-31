@@ -1,6 +1,9 @@
 ---
+
 name: campaign-planning
 description: Plan marketing campaigns with objectives, audience segmentation, channel strategy, content calendars, and success metrics. Use when launching a campaign, planning a product launch, building a content calendar, allocating budget across channels, or defining campaign KPIs.
+when_to_use: "Use when launching a campaign, planning a product launch, building a content calendar, allocating budget across channels, or defining campaign KPIs."
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 # Campaign Planning Skill

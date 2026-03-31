@@ -1,6 +1,9 @@
 ---
+
 name: monetization-strategy
 description: "타깃 적합성, 리스크, 검증 실험을 포함한 3~5가지 수익화 전략을 브레인스토밍합니다. 수익 모델 탐색, 가격 전략 평가, 또는 제품 수익화 방법을 결정할 때 사용하세요."
+when_to_use: "product management 도메인에서 monetization strategy 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 # 수익화 전략
 

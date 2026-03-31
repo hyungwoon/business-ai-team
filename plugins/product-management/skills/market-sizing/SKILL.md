@@ -1,6 +1,9 @@
 ---
+
 name: market-sizing
 description: "하향식 및 상향식 접근법으로 TAM, SAM, SOM을 활용한 시장 규모 추정. 시장 기회를 정량화하거나, 잠재 시장을 추정하거나, 투자자 피치를 준비하거나, 시장 진입을 평가할 때 활용하세요."
+when_to_use: "product management 도메인에서 market sizing 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 # 시장 규모 추정 (TAM, SAM, SOM)

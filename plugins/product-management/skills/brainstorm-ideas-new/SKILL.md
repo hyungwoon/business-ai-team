@@ -1,6 +1,9 @@
 ---
+
 name: brainstorm-ideas-new
 description: "PM, 디자이너, 엔지니어 시각에서 초기 디스커버리 단계의 신규 제품을 위한 기능 아이디어를 도출합니다. 신규 제품의 프로덕트 디스커버리 시작, 스타트업 아이디어의 기능 탐색, 또는 초기 아이디에이션 시 사용합니다."
+when_to_use: "product management 도메인에서 brainstorm ideas new 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 ## 제품 아이디어 도출 (신규 제품)

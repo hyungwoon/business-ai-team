@@ -1,6 +1,9 @@
 ---
+
 name: wwas
 description: "Why-What-Acceptance 형식으로 제품 백로그 항목을 작성합니다 — 전략적 맥락이 담긴 독립적이고 가치 있으며 테스트 가능한 항목. 구조화된 백로그 항목 작성, 기능을 작업 항목으로 분해, 또는 WWA 형식 사용 시 활용하세요."
+when_to_use: "product management 도메인에서 wwas 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 # Why-What-Acceptance (WWA)
 

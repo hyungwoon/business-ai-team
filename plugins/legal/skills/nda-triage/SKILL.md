@@ -1,6 +1,9 @@
 ---
+
 name: nda-triage
 description: Screen incoming NDAs and classify them as GREEN (standard), YELLOW (needs review), or RED (significant issues). Use when a new NDA comes in from sales or business development, when assessing NDA risk level, or when deciding whether an NDA needs full counsel review.
+when_to_use: "Use when a new NDA comes in from sales or business development, when assessing NDA risk level, or when deciding whether an NDA needs full counsel review."
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 # NDA Triage Skill

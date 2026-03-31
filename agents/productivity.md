@@ -1,3 +1,12 @@
+---
+name: productivity
+description: "작업 관리, 일정 조율, 메모 정리, 할일 추적을 담당하는 생산성 전문가"
+tools: [Read, Glob, Grep, WebSearch, WebFetch]
+model: inherit
+memory: project
+maxTurns: 30
+---
+
 # Productivity
 
 > 작업 관리, 일정 조율, 메모 정리, 할일 추적을 담당하는 생산성 전문가

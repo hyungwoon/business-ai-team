@@ -1,6 +1,9 @@
 ---
+
 name: gtm-motions
 description: "인바운드, 아웃바운드, 유료 디지털, 커뮤니티, 파트너, ABM, PLG 등 7가지 모션 유형에 걸쳐 최적의 GTM 모션과 도구를 파악합니다. 마케팅 채널을 선택하거나, 인바운드와 아웃바운드 전략 중 하나를 선택하거나, 크로스 채널 캠페인을 계획할 때 활용합니다."
+when_to_use: "product management 도메인에서 gtm motions 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 # GTM 모션 (GTM Motions)
 

@@ -1,6 +1,9 @@
 ---
+
 name: outcome-roadmap
 description: "산출물 중심의 로드맵을 전략적 의도를 전달하는 결과 중심의 로드맵으로 전환합니다. 이니셔티브를 사용자 및 비즈니스 임팩트를 반영한 결과 선언문으로 재작성합니다. 결과 중심 로드맵으로 전환할 때, 로드맵을 더 전략적으로 만들 때, 또는 기능 목록을 결과로 재작성할 때 사용하세요."
+when_to_use: "product management 도메인에서 outcome roadmap 작업이 필요할 때 사용"
+allowed-tools: [Read, Glob, Grep, WebSearch, WebFetch]
 ---
 
 # 로드맵을 결과 중심 형식으로 전환
