@@ -1,0 +1,2028 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business AI Team — System Architecture</title>
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --bg-2: #0f0f18;
+    --bg-3: #13131f;
+    --border: rgba(255,255,255,0.07);
+    --border-strong: rgba(255,255,255,0.13);
+    --text: #e2e8f0;
+    --text-muted: #94a3b8;
+    --text-dim: #64748b;
+
+    --agent: #3b82f6;
+    --agent-bg: rgba(59,130,246,0.1);
+    --agent-border: rgba(59,130,246,0.25);
+
+    --plugin: #22c55e;
+    --plugin-bg: rgba(34,197,94,0.08);
+    --plugin-border: rgba(34,197,94,0.22);
+
+    --skill: #14b8a6;
+    --skill-bg: rgba(20,184,166,0.08);
+    --skill-border: rgba(20,184,166,0.2);
+
+    --rule: #f97316;
+    --rule-bg: rgba(249,115,22,0.08);
+    --rule-border: rgba(249,115,22,0.22);
+
+    --knowledge: #a855f7;
+    --knowledge-bg: rgba(168,85,247,0.08);
+    --knowledge-border: rgba(168,85,247,0.22);
+
+    --command: #eab308;
+    --command-bg: rgba(234,179,8,0.08);
+    --command-border: rgba(234,179,8,0.22);
+
+    --product: #f472b6;
+    --product-bg: rgba(244,114,182,0.08);
+    --product-border: rgba(244,114,182,0.22);
+
+    --radius: 10px;
+    --radius-sm: 6px;
+    --radius-lg: 14px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    min-width: 1200px;
+  }
+
+  /* ── HEADER ── */
+  .site-header {
+    background: linear-gradient(135deg, #0f0f1e 0%, #13131f 100%);
+    border-bottom: 1px solid var(--border-strong);
+    padding: 28px 48px 24px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(20px);
+  }
+
+  .header-top {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .site-title {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: #fff;
+  }
+
+  .site-subtitle {
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+
+  .stats-bar {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .stat-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 5px 13px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    border: 1px solid;
+    letter-spacing: 0.2px;
+  }
+
+  .stat-pill .num {
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  .pill-agent  { background: var(--agent-bg);    border-color: var(--agent-border);    color: var(--agent);    }
+  .pill-plugin { background: var(--plugin-bg);   border-color: var(--plugin-border);   color: var(--plugin);   }
+  .pill-skill  { background: var(--skill-bg);    border-color: var(--skill-border);    color: var(--skill);    }
+  .pill-rule   { background: var(--rule-bg);     border-color: var(--rule-border);     color: var(--rule);     }
+  .pill-know   { background: var(--knowledge-bg);border-color: var(--knowledge-border);color: var(--knowledge);}
+  .pill-cmd    { background: var(--command-bg);  border-color: var(--command-border);  color: var(--command);  }
+
+  /* ── LAYOUT ── */
+  .main {
+    padding: 40px 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    max-width: 1800px;
+    margin: 0 auto;
+  }
+
+  /* ── SECTION ── */
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+
+  .section-title {
+    font-size: 19px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.3px;
+  }
+
+  .section-divider {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── GLASS CARD ── */
+  .card {
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    transition: border-color 0.2s;
+  }
+
+  .card:hover {
+    border-color: var(--border-strong);
+  }
+
+  /* ── PIPELINE ── */
+  .pipeline-wrap {
+    overflow-x: auto;
+    padding-bottom: 8px;
+  }
+
+  .pipeline {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    min-width: max-content;
+  }
+
+  .pipe-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+  }
+
+  .pipe-card {
+    background: var(--bg-2);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    min-width: 140px;
+    max-width: 180px;
+    position: relative;
+  }
+
+  .pipe-card.special {
+    background: linear-gradient(135deg, rgba(168,85,247,0.08), rgba(59,130,246,0.06));
+    border-color: rgba(168,85,247,0.3);
+    min-width: 220px;
+  }
+
+  .pipe-card.rlvr {
+    background: linear-gradient(135deg, rgba(234,179,8,0.08), rgba(34,197,94,0.06));
+    border-color: rgba(234,179,8,0.3);
+  }
+
+  .pipe-num {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--text-dim);
+    letter-spacing: 0.5px;
+    margin-bottom: 5px;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+  }
+
+  .pipe-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+
+  .pipe-desc {
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+
+  .pipe-arrow {
+    display: flex;
+    align-items: center;
+    padding: 0 4px;
+    margin-top: 28px;
+    color: var(--text-dim);
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  /* 2x2 Matrix */
+  .matrix-2x2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr 1fr;
+    gap: 2px;
+    margin-top: 10px;
+    border: 1px solid rgba(168,85,247,0.2);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    font-size: 10px;
+  }
+
+  .matrix-header {
+    background: rgba(168,85,247,0.12);
+    padding: 3px 6px;
+    text-align: center;
+    color: var(--knowledge);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  .matrix-cell {
+    background: rgba(255,255,255,0.03);
+    padding: 5px 7px;
+    line-height: 1.3;
+  }
+
+  .matrix-cell .cell-label {
+    font-weight: 700;
+    color: var(--knowledge);
+    display: block;
+    font-size: 10px;
+  }
+
+  .matrix-cell .cell-name {
+    color: var(--text);
+    font-size: 10px;
+  }
+
+  /* ── AGENT GRID ── */
+  .agent-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 16px;
+  }
+
+  .agent-card {
+    background: var(--bg-2);
+    border: 1px solid var(--agent-border);
+    border-radius: var(--radius-lg);
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .agent-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .agent-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--agent);
+  }
+
+  .agent-role {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  .agent-badge {
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: var(--agent-bg);
+    border: 1px solid var(--agent-border);
+    color: var(--agent);
+    white-space: nowrap;
+    font-weight: 600;
+  }
+
+  .plugin-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .plugin-entry {
+    background: var(--bg-3);
+    border: 1px solid var(--plugin-border);
+    border-radius: var(--radius-sm);
+    padding: 10px 12px;
+  }
+
+  .plugin-entry-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 6px;
+  }
+
+  .plugin-name {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--plugin);
+    font-family: 'SF Mono', 'Fira Code', monospace;
+  }
+
+  .plugin-count {
+    font-size: 10px;
+    color: var(--text-dim);
+    font-weight: 600;
+  }
+
+  .skill-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .skill-chip {
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 4px;
+    background: var(--skill-bg);
+    border: 1px solid var(--skill-border);
+    color: var(--skill);
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    letter-spacing: -0.2px;
+  }
+
+  /* ── PRODUCT DEEP DIVE ── */
+  .pm-groups {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 14px;
+  }
+
+  .pm-group-card {
+    background: var(--bg-2);
+    border: 1px solid var(--product-border);
+    border-radius: var(--radius);
+    padding: 16px;
+  }
+
+  .pm-group-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+
+  .pm-group-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--product);
+    font-family: 'SF Mono', 'Fira Code', monospace;
+  }
+
+  .pm-group-count {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: var(--product-bg);
+    border: 1px solid var(--product-border);
+    color: var(--product);
+    font-weight: 700;
+  }
+
+  .pm-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .pm-skill {
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 4px;
+    background: rgba(244,114,182,0.06);
+    border: 1px solid rgba(244,114,182,0.18);
+    color: #f9a8d4;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+  }
+
+  /* ── RULES TABLE ── */
+  .rules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 12px;
+  }
+
+  .rule-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 14px;
+    background: var(--bg-2);
+    border: 1px solid var(--rule-border);
+    border-radius: var(--radius);
+  }
+
+  .rule-stage-badge {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 4px;
+    background: var(--rule-bg);
+    color: var(--rule);
+    white-space: nowrap;
+    margin-top: 1px;
+    min-width: 60px;
+    text-align: center;
+    letter-spacing: 0.3px;
+  }
+
+  .rule-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .rule-file {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--rule);
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    margin-bottom: 3px;
+  }
+
+  .rule-failure {
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+
+  /* ── RLVR ── */
+  .rlvr-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+  }
+
+  .rlvr-card {
+    background: var(--bg-2);
+    border: 1px solid var(--knowledge-border);
+    border-radius: var(--radius);
+    padding: 18px;
+  }
+
+  .rlvr-card-title {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--knowledge);
+    margin-bottom: 12px;
+  }
+
+  .pattern-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .pattern-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  .pattern-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--knowledge);
+    flex-shrink: 0;
+  }
+
+  .knowledge-files {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .knowledge-file {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 10px;
+    background: var(--bg-3);
+    border: 1px solid var(--knowledge-border);
+    border-radius: var(--radius-sm);
+  }
+
+  .knowledge-file-name {
+    font-size: 12px;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    color: var(--knowledge);
+  }
+
+  .knowledge-file-count {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-muted);
+  }
+
+  .rlvr-principle {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .rlvr-principle strong {
+    color: var(--knowledge);
+  }
+
+  /* ── NATIVE SKILLS ── */
+  .native-groups {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .native-group-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-dim);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .native-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .native-chip {
+    font-size: 12px;
+    padding: 5px 12px;
+    border-radius: 6px;
+    background: var(--skill-bg);
+    border: 1px solid var(--skill-border);
+    color: var(--skill);
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-weight: 500;
+    transition: all 0.15s;
+  }
+
+  .native-chip:hover {
+    background: rgba(20,184,166,0.15);
+    border-color: var(--skill);
+    color: #5eead4;
+  }
+
+  .native-chip.eng {
+    background: rgba(99,102,241,0.08);
+    border-color: rgba(99,102,241,0.22);
+    color: #818cf8;
+  }
+
+  .native-chip.eng:hover {
+    background: rgba(99,102,241,0.15);
+    border-color: #818cf8;
+  }
+
+  .eng-wf-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 13px;
+  }
+
+  .eng-wf-table th {
+    text-align: left;
+    padding: 8px 12px;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .eng-wf-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .eng-wf-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .eng-wf-cmd {
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-weight: 600;
+    color: var(--command);
+    font-size: 13px;
+  }
+
+  .eng-wf-role {
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    background: rgba(99,102,241,0.1);
+    border: 1px solid rgba(99,102,241,0.2);
+    color: #818cf8;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .eng-wf-desc {
+    color: var(--text-muted);
+    font-size: 12px;
+  }
+
+  .eng-wf-card {
+    background: var(--bg-3);
+    border: 1px solid rgba(99,102,241,0.2);
+    border-radius: var(--radius);
+    padding: 16px;
+    overflow-x: auto;
+  }
+
+  .eng-wf-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .eng-wf-badge {
+    font-size: 11px;
+    font-weight: 700;
+    color: #818cf8;
+    background: rgba(99,102,241,0.12);
+    border: 1px solid rgba(99,102,241,0.25);
+    padding: 4px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+  }
+
+  .eng-wf-subtitle {
+    font-size: 12px;
+    color: var(--text-dim);
+  }
+
+  /* ── COMMANDS ── */
+  .commands-grid {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .cmd-card {
+    background: var(--bg-2);
+    border: 1px solid var(--command-border);
+    border-radius: var(--radius);
+    padding: 16px 20px;
+    min-width: 200px;
+    flex: 1;
+  }
+
+  .cmd-name {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--command);
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    margin-bottom: 6px;
+  }
+
+  .cmd-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  /* ── UTILS ── */
+  .tag-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .sep {
+    color: var(--border-strong);
+    font-size: 18px;
+  }
+
+  .flow-loop {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 12px 16px;
+    background: var(--bg-3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 12px;
+    color: var(--text-muted);
+    flex-wrap: wrap;
+  }
+
+  .flow-node {
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 11px;
+    white-space: nowrap;
+  }
+
+  .fn-blue   { background: var(--agent-bg); border: 1px solid var(--agent-border); color: var(--agent); }
+  .fn-green  { background: var(--plugin-bg); border: 1px solid var(--plugin-border); color: var(--plugin); }
+  .fn-purple { background: var(--knowledge-bg); border: 1px solid var(--knowledge-border); color: var(--knowledge); }
+  .fn-yellow { background: var(--command-bg); border: 1px solid var(--command-border); color: var(--command); }
+  .fn-orange { background: var(--rule-bg); border: 1px solid var(--rule-border); color: var(--rule); }
+
+  .flow-arrow { color: var(--text-dim); font-size: 14px; }
+
+  footer {
+    text-align: center;
+    padding: 32px 48px;
+    color: var(--text-dim);
+    font-size: 11px;
+    border-top: 1px solid var(--border);
+  }
+
+  /* scrollbar */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════ HEADER -->
+<header class="site-header">
+  <div class="header-top">
+    <div class="site-title">Business AI Team</div>
+    <div class="site-subtitle">System Architecture — Complete Reference</div>
+  </div>
+  <div class="stats-bar">
+    <span class="stat-pill pill-agent"><span class="num">16</span> Agents</span>
+    <span class="stat-pill pill-plugin"><span class="num">18</span> Plugins</span>
+    <span class="stat-pill pill-skill"><span class="num">60</span> Plugin Skills</span>
+    <span class="stat-pill pill-skill" style="background:rgba(99,102,241,0.08);border-color:rgba(99,102,241,0.22);color:#818cf8;"><span class="num">31</span> Native Skills</span>
+    <span class="stat-pill pill-rule"><span class="num">14</span> Rules</span>
+    <span class="stat-pill pill-cmd"><span class="num">5</span> Commands</span>
+    <span class="stat-pill pill-know"><span class="num">4</span> Knowledge Files</span>
+  </div>
+</header>
+
+<main class="main">
+
+  <!-- ═══════════════════════════════════════════════════ 1. PIPELINE -->
+  <section>
+    <div class="section-header">
+      <span class="section-label">§ 1</span>
+      <span class="section-title">Request Flow Pipeline</span>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="pipeline-wrap">
+      <div class="pipeline">
+
+        <!-- Stage 0 -->
+        <div class="pipe-item">
+          <div class="pipe-card">
+            <div class="pipe-num">USER</div>
+            <div class="pipe-title">Request</div>
+            <div class="pipe-desc">비즈니스 도메인 요청 입력</div>
+          </div>
+          <div class="pipe-arrow">→</div>
+        </div>
+
+        <!-- Stage 0.5 -->
+        <div class="pipe-item">
+          <div class="pipe-card">
+            <div class="pipe-num">STAGE 0.5</div>
+            <div class="pipe-title">Context Check</div>
+            <div class="pipe-desc">agent-memory 조회, 이전 세션 컨텍스트 복원</div>
+          </div>
+          <div class="pipe-arrow">→</div>
+        </div>
+
+        <!-- Stage 1 — Brainstorming Gate (special) -->
+        <div class="pipe-item">
+          <div class="pipe-card special">
+            <div class="pipe-num">STAGE 1</div>
+            <div class="pipe-title">Brainstorming Gate</div>
+            <div class="pipe-desc">요청 명확도 2축 분류</div>
+            <div class="matrix-2x2">
+              <div class="matrix-header">모호</div>
+              <div class="matrix-header">구체적</div>
+              <div class="matrix-cell">
+                <span class="cell-label">A — 과업</span>
+                <span class="cell-name">심층 인터뷰</span>
+              </div>
+              <div class="matrix-cell">
+                <span class="cell-label">B — 과업</span>
+                <span class="cell-name">경량 확인</span>
+              </div>
+              <div class="matrix-cell">
+                <span class="cell-label">C — 사실</span>
+                <span class="cell-name">1개 질문</span>
+              </div>
+              <div class="matrix-cell">
+                <span class="cell-label">D — 사실</span>
+                <span class="cell-name">직접 라우팅</span>
+              </div>
+            </div>
+          </div>
+          <div class="pipe-arrow">→</div>
+        </div>
+
+        <!-- Stage 2 -->
+        <div class="pipe-item">
+          <div class="pipe-card">
+            <div class="pipe-num">STAGE 2</div>
+            <div class="pipe-title">Domain Classification</div>
+            <div class="pipe-desc">키워드 매핑 → 에이전트 도메인 판단</div>
+          </div>
+          <div class="pipe-arrow">→</div>
+        </div>
+
+        <!-- Stage 3 -->
+        <div class="pipe-item">
+          <div class="pipe-card">
+            <div class="pipe-num">STAGE 3</div>
+            <div class="pipe-title">Agent Load</div>
+            <div class="pipe-desc">agents/[name].md 읽기 (시스템 프롬프트)</div>
+          </div>
+          <div class="pipe-arrow">→</div>
+        </div>
+
+        <!-- Stage 4 -->
+        <div class="pipe-item">
+          <div class="pipe-card">
+            <div class="pipe-num">STAGE 4</div>
+            <div class="pipe-title">Skill Load</div>
+            <div class="pipe-desc">plugins/[p]/skills/[s]/SKILL.md 읽기</div>
+          </div>
+          <div class="pipe-arrow">→</div>
+        </div>
+
+        <!-- Stage 4.5 -->
+        <div class="pipe-item">
+          <div class="pipe-card">
+            <div class="pipe-num">STAGE 4.5</div>
+            <div class="pipe-title">Knowledge Load</div>
+            <div class="pipe-desc">knowledge/ 보정 지식 조회 (회의적 검색)</div>
+          </div>
+          <div class="pipe-arrow">→</div>
+        </div>
+
+        <!-- Stage 5 -->
+        <div class="pipe-item">
+          <div class="pipe-card">
+            <div class="pipe-num">STAGE 5</div>
+            <div class="pipe-title">Response</div>
+            <div class="pipe-desc">전문가 관점 통합 응답 생성</div>
+          </div>
+          <div class="pipe-arrow">→</div>
+        </div>
+
+        <!-- Stage 6 -->
+        <div class="pipe-item">
+          <div class="pipe-card">
+            <div class="pipe-num">STAGE 6</div>
+            <div class="pipe-title">Attribution</div>
+            <div class="pipe-desc">담당 에이전트·스킬 출처 표시</div>
+          </div>
+          <div class="pipe-arrow">→</div>
+        </div>
+
+        <!-- RLVR -->
+        <div class="pipe-item">
+          <div class="pipe-card rlvr">
+            <div class="pipe-num">RLVR</div>
+            <div class="pipe-title">Auto-Learning</div>
+            <div class="pipe-desc">피드백 감지 → knowledge/ 자동 누적 → SKILL.md 반영</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════ 2. AGENT MAP -->
+  <section>
+    <div class="section-header">
+      <span class="section-label">§ 2</span>
+      <span class="section-title">Agent → Plugin → Skill Map</span>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="agent-grid">
+
+      <!-- 1. Product -->
+      <div class="agent-card" style="border-color:var(--product-border);">
+        <div class="agent-header">
+          <div>
+            <div class="agent-name" style="color:var(--product);">Product</div>
+            <div class="agent-role">제품 전략·로드맵·디스커버리·GTM</div>
+          </div>
+          <span class="agent-badge" style="background:var(--product-bg);border-color:var(--product-border);color:var(--product);">60 skills</span>
+        </div>
+        <div class="plugin-list">
+          <div class="plugin-entry" style="border-color:var(--product-border);">
+            <div class="plugin-entry-header">
+              <span class="plugin-name" style="color:var(--product);">product-management</span>
+              <span class="plugin-count">60 skills · 7 groups</span>
+            </div>
+            <div class="skill-chips">
+              <span class="skill-chip" style="background:var(--product-bg);border-color:var(--product-border);color:#f9a8d4;">Discovery (12)</span>
+              <span class="skill-chip" style="background:var(--product-bg);border-color:var(--product-border);color:#f9a8d4;">Strategy (14)</span>
+              <span class="skill-chip" style="background:var(--product-bg);border-color:var(--product-border);color:#f9a8d4;">Execution (15)</span>
+              <span class="skill-chip" style="background:var(--product-bg);border-color:var(--product-border);color:#f9a8d4;">Core (3)</span>
+              <span class="skill-chip" style="background:var(--product-bg);border-color:var(--product-border);color:#f9a8d4;">Research (7)</span>
+              <span class="skill-chip" style="background:var(--product-bg);border-color:var(--product-border);color:#f9a8d4;">GTM (6)</span>
+              <span class="skill-chip" style="background:var(--product-bg);border-color:var(--product-border);color:#f9a8d4;">Analytics (2) + product-name</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Marketing -->
+      <div class="agent-card">
+        <div class="agent-header">
+          <div>
+            <div class="agent-name">Marketing</div>
+            <div class="agent-role">캠페인·콘텐츠·브랜드·성과 분석</div>
+          </div>
+          <span class="agent-badge">5 skills</span>
+        </div>
+        <div class="plugin-list">
+          <div class="plugin-entry">
+            <div class="plugin-entry-header">
+              <span class="plugin-name">marketing</span>
+              <span class="plugin-count">5 skills</span>
+            </div>
+            <div class="skill-chips">
+              <span class="skill-chip">brand-voice</span>
+              <span class="skill-chip">campaign-planning</span>
+              <span class="skill-chip">competitive-analysis</span>
+              <span class="skill-chip">content-creation</span>
+              <span class="skill-chip">performance-analytics</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Sales -->
+      <div class="agent-card">
+        <div class="agent-header">
+          <div>
+            <div class="agent-name">Sales</div>
+            <div class="agent-role">파이프라인·제안서·CRM·고객지원</div>
+          </div>
+          <span class="agent-badge">11 skills</span>
+        </div>
+        <div class="plugin-list">
+          <div class="plugin-entry">
+            <div class="plugin-entry-header">
+              <span class="plugin-name">sales</span>
+              <span class="plugin-count">6 skills</span>
+            </div>
+            <div class="skill-chips">
+              <span class="skill-chip">account-research</span>
+              <span class="skill-chip">call-prep</span>
+              <span class="skill-chip">competitive-intelligence</span>
+              <span class="skill-chip">create-an-asset</span>
+              <span class="skill-chip">daily-briefing</span>
+              <span class="skill-chip">draft-outreach</span>
+            </div>
+          </div>
+          <div class="plugin-entry">
+            <div class="plugin-entry-header">
+              <span class="plugin-name">customer-support</span>
+              <span class="plugin-count">5 skills</span>
+            </div>
+            <div class="skill-chips">
+              <span class="skill-chip">customer-research</span>
+              <span class="skill-chip">escalation</span>
+              <span class="skill-chip">knowledge-management</span>
+              <span class="skill-chip">response-drafting</span>
+              <span class="skill-chip">ticket-triage</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Finance -->
+      <div class="agent-card">
+        <div class="agent-header">
+          <div>
+            <div class="agent-name">Finance</div>
+            <div class="agent-role">재무분석·예산·투자·ROI</div>
+          </div>
+          <span class="agent-badge">9 skills</span>
+        </div>
+        <div class="plugin-list">
+          <div class="plugin-entry">
+            <div class="plugin-entry-header">
+              <span class="plugin-name">finance</span>
+              <span class="plugin-count">7 skills</span>
+            </div>
+            <div class="skill-chips">
+              <span class="skill-chip">audit-support</span>
+              <span class="skill-chip">close-management</span>
+              <span class="skill-chip">financial-analysis</span>
+              <span class="skill-chip">financial-statements</span>
+              <span class="skill-chip">journal-entry-prep</span>
+              <span class="skill-chip">reconciliation</span>
+              <span class="skill-chip">variance-analysis</span>
+            </div>
+          </div>
+          <div class="plugin-entry">
+            <div class="plugin-entry-header">
+              <span class="plugin-name">data</span>
+              <span class="plugin-count">cross-ref</span>
+            </div>
+            <div class="skill-chips">
+              <span class="skill-chip">data-exploration</span>
+              <span class="skill-chip">statistical-analysis</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Research -->
+      <div class="agent-card">
+        <div class="agent-header">
+          <div>
+            <div class="agent-name">Research</div>
+            <div class="agent-role">리서치·조사·경쟁사·트렌드</div>
+          </div>
+          <span class="agent-badge">multi-plugin</span>
+        </div>
+        <div class="plugin-list">
+          <div class="plugin-entry">
+            <div class="plugin-entry-header">
+              <span class="plugin-name">marketing</span>
+              <span class="plugin-count">cross-ref</span>
+            </div>
+            <div class="skill-chips">
+              <span class="skill-chip">competitive-analysis</span>
+            </div>
+          </div>
+          <div class="plugin-entry">
+            <div class="plugin-entry-header">
+              <span class="plugin-name">sales</span>
+              <span class="plugin-count">cross-ref</span>
+            </div>
+            <div class="skill-chips">
+              <span class="skill-chip">account-research</span>
+              <span class="skill-chip">competitive-intelligence</span>
+            </div>
+          </div>
+          <div class="plugin-entry">
+            <div class="plugin-entry-header">
+              <span class="plugin-name">data</span>
+              <span class="plugin-count">cross-ref</span>
+            </div>
+            <div class="skill-chips">
+              <span class="skill-chip">data-exploration</span>
+            </div>
+          </div>
+          <div class="plugin-entry">
+            <div class="plugin-entry-header">
+              <span class="plugin-name">enterprise-search</span>
+              <span class="plugin-count">3 skills</span>
+            </div>
+            <div class="skill-chips">
+              <span class="skill-chip">knowledge-synthesis</span>
+              <span class="skill-chip">search-strategy</span>
+              <span class="skill-chip">source-management</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. Data -->
+      <div class="agent-card">
+        <div class="agent-header">
+          <div>
+            <div class="agent-name">Data</div>
+            <div class="agent-role">데이터분석·시각화·통계·SQL</div>
+          </div>
+          <span class="agent-badge">7 skills</span>
+        </div>
+        <div class="plugin-list">
+          <div class="plugin-entry">
+            <div class="plugin-entry-header">
+              <span class="plugin-name">data</span>
+              <span class="plugin-count">7 skills</span>
+            </div>
+            <div class="skill-chips">
+              <span class="skill-chip">data-context-extractor</span>
+              <span class="skill-chip">data-exploration</span>
+              <span class="skill-chip">data-validation</span>
+              <span class="skill-chip">data-visualization</span>
+              <span class="skill-chip">interactive-dashboard-builder</span>
+              <span class="skill-chip">sql-queries</span>
+              <span class="skill-chip">statistical-analysis</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. Legal -->
+      <div class="agent-card">
+        <div class="agent-header">
+          <div>
+            <div class="agent-name">Legal</div>
+            <div class="agent-role">계약·법률자문·규정·한국법령</div>
+          </div>
+          <span class="agent-badge">9+ skills</span>
+        </div>
+        <div class="plugin-list">
+          <div class="plugin-entry">
+            <div class="plugin-entry-header">
+              <span class="plugin-name">legal</span>
+              <span class="plugin-count">6 skills</span>
+            </div>
+            <div class="skill-chips">
+              <span class="skill-chip">canned-responses</span>
+              <span class="skill-chip">compliance</span>
+              <span class="skill-chip">contract-review</span>
+              <span class="skill-chip">legal-risk-assessment</span>
+              <span class="skill-chip">meeting-briefing</span>
+              <span class="skill-chip">nda-triage</span>
+            </div>
+          </div>
+          <div class="plugin-entry">
+            <div class="plugin-entry-header">
+              <span class="plugin-name">enterprise-search</span>
+              <span class="plugin-count">cross-ref</span>
+            </div>
+            <div class="skill-chips">
+              <span class="skill-chip">search-strategy</span>
+              <span class="skill-chip">knowledge-synthesis</span>
+              <span class="skill-chip">source-management</span>
+            </div>
+          </div>
+          <div class="plugin-entry" style="border-color:rgba(234,179,8,0.2);">
+            <div class="plugin-entry-header">
+              <span class="plugin-name" style="color:var(--command);">korean-law MCP</span>
+              <span class="plugin-count">64 tools</span>
+            </div>
+            <div class="skill-chips">
+              <span class="skill-chip" style="background:var(--command-bg);border-color:var(--command-border);color:var(--command);">search_law</span>
+              <span class="skill-chip" style="background:var(--command-bg);border-color:var(--command-border);color:var(--command);">search_precedents</span>
+              <span class="skill-chip" style="background:var(--command-bg);border-color:var(--command-border);color:var(--command);">get_law_text</span>
+              <span class="skill-chip" style="background:var(--command-bg);border-color:var(--command-border);color:var(--command);">chain_full_research</span>
+              <span class="skill-chip" style="background:var(--command-bg);border-color:var(--command-border);color:var(--command);">+60 more</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. BizDev -->
+      <div class="agent-card">
+        <div class="agent-header">
+          <div>
+            <div class="agent-name">BizDev</div>
+            <div class="agent-role">사업개발·파트너십·성장전략</div>
+          </div>
+          <span class="agent-badge">4 skills</span>
+        </div>
+        <div class="plugin-list">
+          <div class="plugin-entry">
+            <div class="plugin-entry-header">
+              <span class="plugin-name">business-dev</span>
+              <span class="plugin-count">1 skill</span>
+            </div>
+            <div class="skill-chips">
+              <span class="skill-chip">growth-strategy</span>
+            </div>
+          </div>
+          <div class="plugin-entry">
+            <div class="plugin-entry-header">
+              <span class="plugin-name">marketing</span>
+              <span class="plugin-count">cross-ref</span>
+            </div>
+            <div class="skill-chips">
+              <span class="skill-chip">competitive-analysis</span>
+              <span class="skill-chip">campaign-planning</span>
+            </div>
+          </div>
+          <div class="plugin-entry">
+            <div class="plugin-entry-header">
+              <span class="plugin-name">sales</span>
+              <span class="plugin-count">cross-ref</span>
+            </div>
+            <div class="skill-chips">
+              <span class="skill-chip">account-research</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9. HR -->
+      <div class="agent-card">
+        <div class="agent-header">
+          <div>
+            <div class="agent-name">HR</div>
+            <div class="agent-role">채용·조직문화·성과관리</div>
+          </div>
+          <span class="agent-badge">2 skills</span>
+        </div>
+        <div class="plugin-list">
+          <div class="plugin-entry">
+            <div class="plugin-entry-header">
+              <span class="plugin-name">hr</span>
+              <span class="plugin-count">1 skill</span>
+            </div>
+            <div class="skill-chips">
+              <span class="skill-chip">talent-management</span>
+            </div>
+          </div>
+          <div class="plugin-entry">
+            <div class="plugin-entry-header">
+              <span class="plugin-name">productivity</span>
+              <span class="plugin-count">cross-ref</span>
+            </div>
+            <div class="skill-chips">
+              <span class="skill-chip">task-management</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10. Design -->
+      <div class="agent-card">
+        <div class="agent-header">
+          <div>
+            <div class="agent-name">Design</div>
+            <div class="agent-role">UX/UI·브랜드가이드·디자인시스템</div>
+          </div>
+          <span class="agent-badge">2 skills</span>
+        </div>
+        <div class="plugin-list">
+          <div class="plugin-entry">
+            <div class="plugin-entry-header">
+              <span class="plugin-name">design</span>
+              <span class="plugin-count">1 skill</span>
+            </div>
+            <div class="skill-chips">
+              <span class="skill-chip">ux-design</span>
+            </div>
+          </div>
+          <div class="plugin-entry">
+            <div class="plugin-entry-header">
+              <span class="plugin-name">marketing</span>
+              <span class="plugin-count">cross-ref</span>
+            </div>
+            <div class="skill-chips">
+              <span class="skill-chip">brand-voice</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 11. PR -->
+      <div class="agent-card">
+        <div class="agent-header">
+          <div>
+            <div class="agent-name">PR</div>
+            <div class="agent-role">보도자료·위기관리·미디어전략</div>
+          </div>
+          <span class="agent-badge">3 skills</span>
+        </div>
+        <div class="plugin-list">
+          <div class="plugin-entry">
+            <div class="plugin-entry-header">
+              <span class="plugin-name">pr</span>
+              <span class="plugin-count">1 skill</span>
+            </div>
+            <div class="skill-chips">
+              <span class="skill-chip">communications</span>
+            </div>
+          </div>
+          <div class="plugin-entry">
+            <div class="plugin-entry-header">
+              <span class="plugin-name">marketing</span>
+              <span class="plugin-count">cross-ref</span>
+            </div>
+            <div class="skill-chips">
+              <span class="skill-chip">content-creation</span>
+              <span class="skill-chip">brand-voice</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 12. Development -->
+      <div class="agent-card">
+        <div class="agent-header">
+          <div>
+            <div class="agent-name">Development</div>
+            <div class="agent-role">기술아키텍처·개발프로세스·CTO</div>
+          </div>
+          <span class="agent-badge">3 skills</span>
+        </div>
+        <div class="plugin-list">
+          <div class="plugin-entry">
+            <div class="plugin-entry-header">
+              <span class="plugin-name">development</span>
+              <span class="plugin-count">1 skill</span>
+            </div>
+            <div class="skill-chips">
+              <span class="skill-chip">tech-leadership</span>
+            </div>
+          </div>
+          <div class="plugin-entry">
+            <div class="plugin-entry-header">
+              <span class="plugin-name">cowork-plugin-management</span>
+              <span class="plugin-count">2 skills</span>
+            </div>
+            <div class="skill-chips">
+              <span class="skill-chip">cowork-plugin-customizer</span>
+              <span class="skill-chip">create-cowork-plugin</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 13. Security -->
+      <div class="agent-card">
+        <div class="agent-header">
+          <div>
+            <div class="agent-name">Security</div>
+            <div class="agent-role">보안평가·보안정책·사이버보안</div>
+          </div>
+          <span class="agent-badge">2 skills</span>
+        </div>
+        <div class="plugin-list">
+          <div class="plugin-entry">
+            <div class="plugin-entry-header">
+              <span class="plugin-name">security</span>
+              <span class="plugin-count">1 skill</span>
+            </div>
+            <div class="skill-chips">
+              <span class="skill-chip">cybersecurity</span>
+            </div>
+          </div>
+          <div class="plugin-entry">
+            <div class="plugin-entry-header">
+              <span class="plugin-name">data</span>
+              <span class="plugin-count">cross-ref</span>
+            </div>
+            <div class="skill-chips">
+              <span class="skill-chip">data-exploration</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 14. Compliance -->
+      <div class="agent-card">
+        <div class="agent-header">
+          <div>
+            <div class="agent-name">Compliance</div>
+            <div class="agent-role">컴플라이언스·리스크·감사</div>
+          </div>
+          <span class="agent-badge">2 skills</span>
+        </div>
+        <div class="plugin-list">
+          <div class="plugin-entry">
+            <div class="plugin-entry-header">
+              <span class="plugin-name">compliance</span>
+              <span class="plugin-count">1 skill</span>
+            </div>
+            <div class="skill-chips">
+              <span class="skill-chip">risk-management</span>
+            </div>
+          </div>
+          <div class="plugin-entry">
+            <div class="plugin-entry-header">
+              <span class="plugin-name">data</span>
+              <span class="plugin-count">cross-ref</span>
+            </div>
+            <div class="skill-chips">
+              <span class="skill-chip">data-exploration</span>
+              <span class="skill-chip">data-validation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 15. Writing -->
+      <div class="agent-card">
+        <div class="agent-header">
+          <div>
+            <div class="agent-name">Writing</div>
+            <div class="agent-role">이메일·문서작성·번역·요약</div>
+          </div>
+          <span class="agent-badge">multi-plugin</span>
+        </div>
+        <div class="plugin-list">
+          <div class="plugin-entry">
+            <div class="plugin-entry-header">
+              <span class="plugin-name">marketing</span>
+              <span class="plugin-count">cross-ref</span>
+            </div>
+            <div class="skill-chips">
+              <span class="skill-chip">brand-voice</span>
+              <span class="skill-chip">content-creation</span>
+            </div>
+          </div>
+          <div class="plugin-entry">
+            <div class="plugin-entry-header">
+              <span class="plugin-name">sales</span>
+              <span class="plugin-count">cross-ref</span>
+            </div>
+            <div class="skill-chips">
+              <span class="skill-chip">draft-outreach</span>
+              <span class="skill-chip">create-an-asset</span>
+            </div>
+          </div>
+          <div class="plugin-entry">
+            <div class="plugin-entry-header">
+              <span class="plugin-name">customer-support</span>
+              <span class="plugin-count">cross-ref</span>
+            </div>
+            <div class="skill-chips">
+              <span class="skill-chip">response-drafting</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 16. Productivity -->
+      <div class="agent-card">
+        <div class="agent-header">
+          <div>
+            <div class="agent-name">Productivity</div>
+            <div class="agent-role">작업관리·일정·메모·생산성</div>
+          </div>
+          <span class="agent-badge">3 skills</span>
+        </div>
+        <div class="plugin-list">
+          <div class="plugin-entry">
+            <div class="plugin-entry-header">
+              <span class="plugin-name">productivity</span>
+              <span class="plugin-count">2 skills</span>
+            </div>
+            <div class="skill-chips">
+              <span class="skill-chip">memory-management</span>
+              <span class="skill-chip">task-management</span>
+            </div>
+          </div>
+          <div class="plugin-entry">
+            <div class="plugin-entry-header">
+              <span class="plugin-name">customer-support</span>
+              <span class="plugin-count">cross-ref</span>
+            </div>
+            <div class="skill-chips">
+              <span class="skill-chip">knowledge-management</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /agent-grid -->
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════ 3. PRODUCT DEEP DIVE -->
+  <section>
+    <div class="section-header">
+      <span class="section-label">§ 3</span>
+      <span class="section-title">Product Management Deep Dive — 60 Skills · 7 Groups</span>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="pm-groups">
+
+      <!-- Discovery -->
+      <div class="pm-group-card">
+        <div class="pm-group-header">
+          <span class="pm-group-name">pm-discovery</span>
+          <span class="pm-group-count">12</span>
+        </div>
+        <div class="pm-skills">
+          <span class="pm-skill">brainstorm-ideas-existing</span>
+          <span class="pm-skill">brainstorm-ideas-new</span>
+          <span class="pm-skill">brainstorm-experiments-existing</span>
+          <span class="pm-skill">brainstorm-experiments-new</span>
+          <span class="pm-skill">identify-assumptions-existing</span>
+          <span class="pm-skill">identify-assumptions-new</span>
+          <span class="pm-skill">prioritize-assumptions</span>
+          <span class="pm-skill">prioritize-features</span>
+          <span class="pm-skill">analyze-feature-requests</span>
+          <span class="pm-skill">opportunity-solution-tree</span>
+          <span class="pm-skill">interview-script</span>
+          <span class="pm-skill">summarize-interview</span>
+        </div>
+      </div>
+
+      <!-- Strategy -->
+      <div class="pm-group-card">
+        <div class="pm-group-header">
+          <span class="pm-group-name">pm-strategy</span>
+          <span class="pm-group-count">14</span>
+        </div>
+        <div class="pm-skills">
+          <span class="pm-skill">product-strategy</span>
+          <span class="pm-skill">startup-canvas</span>
+          <span class="pm-skill">product-vision</span>
+          <span class="pm-skill">value-proposition</span>
+          <span class="pm-skill">lean-canvas</span>
+          <span class="pm-skill">business-model</span>
+          <span class="pm-skill">monetization-strategy</span>
+          <span class="pm-skill">pricing-strategy</span>
+          <span class="pm-skill">swot-analysis</span>
+          <span class="pm-skill">pestle-analysis</span>
+          <span class="pm-skill">porters-five-forces</span>
+          <span class="pm-skill">ansoff-matrix</span>
+          <span class="pm-skill">positioning-ideas</span>
+          <span class="pm-skill">value-prop-statements</span>
+        </div>
+      </div>
+
+      <!-- Execution -->
+      <div class="pm-group-card">
+        <div class="pm-group-header">
+          <span class="pm-group-name">pm-execution</span>
+          <span class="pm-group-count">15</span>
+        </div>
+        <div class="pm-skills">
+          <span class="pm-skill">create-prd</span>
+          <span class="pm-skill">brainstorm-okrs</span>
+          <span class="pm-skill">outcome-roadmap</span>
+          <span class="pm-skill">sprint-plan</span>
+          <span class="pm-skill">retro</span>
+          <span class="pm-skill">release-notes</span>
+          <span class="pm-skill">pre-mortem</span>
+          <span class="pm-skill">stakeholder-map</span>
+          <span class="pm-skill">summarize-meeting</span>
+          <span class="pm-skill">user-stories</span>
+          <span class="pm-skill">job-stories</span>
+          <span class="pm-skill">wwas</span>
+          <span class="pm-skill">test-scenarios</span>
+          <span class="pm-skill">dummy-dataset</span>
+          <span class="pm-skill">prioritization-frameworks</span>
+        </div>
+      </div>
+
+      <!-- Core -->
+      <div class="pm-group-card">
+        <div class="pm-group-header">
+          <span class="pm-group-name">pm-core</span>
+          <span class="pm-group-count">3</span>
+        </div>
+        <div class="pm-skills">
+          <span class="pm-skill">roadmap-management</span>
+          <span class="pm-skill">metrics-tracking</span>
+          <span class="pm-skill">stakeholder-comms</span>
+        </div>
+      </div>
+
+      <!-- Research -->
+      <div class="pm-group-card">
+        <div class="pm-group-header">
+          <span class="pm-group-name">pm-research</span>
+          <span class="pm-group-count">7</span>
+        </div>
+        <div class="pm-skills">
+          <span class="pm-skill">user-personas</span>
+          <span class="pm-skill">market-segments</span>
+          <span class="pm-skill">user-segmentation</span>
+          <span class="pm-skill">customer-journey-map</span>
+          <span class="pm-skill">market-sizing</span>
+          <span class="pm-skill">competitor-analysis</span>
+          <span class="pm-skill">sentiment-analysis</span>
+        </div>
+      </div>
+
+      <!-- GTM -->
+      <div class="pm-group-card">
+        <div class="pm-group-header">
+          <span class="pm-group-name">pm-gtm</span>
+          <span class="pm-group-count">6</span>
+        </div>
+        <div class="pm-skills">
+          <span class="pm-skill">gtm-strategy</span>
+          <span class="pm-skill">gtm-motions</span>
+          <span class="pm-skill">beachhead-segment</span>
+          <span class="pm-skill">ideal-customer-profile</span>
+          <span class="pm-skill">growth-loops</span>
+          <span class="pm-skill">competitive-battlecard</span>
+        </div>
+      </div>
+
+      <!-- Analytics -->
+      <div class="pm-group-card">
+        <div class="pm-group-header">
+          <span class="pm-group-name">pm-analytics</span>
+          <span class="pm-group-count">2 + standalone</span>
+        </div>
+        <div class="pm-skills">
+          <span class="pm-skill">cohort-analysis</span>
+          <span class="pm-skill">ab-test-analysis</span>
+          <span class="pm-skill" style="background:rgba(234,179,8,0.06);border-color:rgba(234,179,8,0.18);color:#fde047;">product-name ★</span>
+        </div>
+      </div>
+
+    </div><!-- /pm-groups -->
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════ 4. RULES -->
+  <section>
+    <div class="section-header">
+      <span class="section-label">§ 4</span>
+      <span class="section-title">Quality Assurance Rules — 14 Files · 8 Failure Modes</span>
+      <div class="section-divider"></div>
+    </div>
+
+    <!-- Execution flow -->
+    <div class="flow-loop" style="margin-bottom:16px;">
+      <span class="flow-node fn-orange">requirements-brainstorming</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-node fn-orange">complexity-decomposer</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-node fn-orange">plan-compete</span>
+      <span style="color:var(--text-dim);font-size:11px;">(Complex only)</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-node fn-orange">contract-enforcement</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-node fn-orange">fresh-context-verification</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-node fn-orange">entropy-cleanup</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-node fn-orange">telemetry-rubrics</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-node fn-orange">context-compaction</span>
+      <span style="color:var(--text-dim);font-size:11px;">(if incomplete)</span>
+    </div>
+
+    <div class="rules-grid">
+      <div class="rule-row">
+        <span class="rule-stage-badge">Planning</span>
+        <div class="rule-content">
+          <div class="rule-file">plan-compete.md</div>
+          <div class="rule-failure">단기적 사고 방지 — 3개 플랜 병렬 생성 → 적대적 평가 → 최적안 선택</div>
+        </div>
+      </div>
+      <div class="rule-row">
+        <span class="rule-stage-badge">Execution</span>
+        <div class="rule-content">
+          <div class="rule-file">context-compaction.md</div>
+          <div class="rule-failure">컨텍스트 불안 방지 — 75% 도달 시 핸드오프 프롬프트 자동 생성</div>
+        </div>
+      </div>
+      <div class="rule-row">
+        <span class="rule-stage-badge">Execution</span>
+        <div class="rule-content">
+          <div class="rule-file">contract-enforcement.md</div>
+          <div class="rule-failure">계획 이탈 방지 — 매 N 태스크마다 ALIGNED/DRIFTED 판정</div>
+        </div>
+      </div>
+      <div class="rule-row">
+        <span class="rule-stage-badge">Execution</span>
+        <div class="rule-content">
+          <div class="rule-file">complexity-decomposer.md</div>
+          <div class="rule-failure">복잡성 공포 방지 — 복잡 태스크 자동 분해 + 스텁/TODO 하드 블록</div>
+        </div>
+      </div>
+      <div class="rule-row">
+        <span class="rule-stage-badge">Post</span>
+        <div class="rule-content">
+          <div class="rule-file">fresh-context-verification.md</div>
+          <div class="rule-failure">검증 게으름 방지 — 독립 에이전트가 fresh context에서 PASS/FAIL</div>
+        </div>
+      </div>
+      <div class="rule-row">
+        <span class="rule-stage-badge">Post</span>
+        <div class="rule-content">
+          <div class="rule-file">entropy-cleanup.md</div>
+          <div class="rule-failure">엔트로피 증가 방지 — 세션 종료 시 blast radius 분석 + 자동 정리</div>
+        </div>
+      </div>
+      <div class="rule-row">
+        <span class="rule-stage-badge">Meta</span>
+        <div class="rule-content">
+          <div class="rule-file">telemetry-rubrics.md</div>
+          <div class="rule-failure">측정 불가 방지 — 5개 지표 0-5점 루브릭 + 주간 트렌드 분석</div>
+        </div>
+      </div>
+      <div class="rule-row">
+        <span class="rule-stage-badge">Session</span>
+        <div class="rule-content">
+          <div class="rule-file">session-reminder.md</div>
+          <div class="rule-failure">컨텍스트 망각 방지 — 세션 시작 시 상태 복원 리마인더</div>
+        </div>
+      </div>
+      <div class="rule-row">
+        <span class="rule-stage-badge">Routing</span>
+        <div class="rule-content">
+          <div class="rule-file">expert-routing.md</div>
+          <div class="rule-failure">잘못된 라우팅 방지 — 도메인 분류 + 에이전트·스킬 파일 강제 읽기</div>
+        </div>
+      </div>
+      <div class="rule-row">
+        <span class="rule-stage-badge">Learning</span>
+        <div class="rule-content">
+          <div class="rule-file">feedback-learning.md</div>
+          <div class="rule-failure">지식 정체 방지 — 피드백 감지 패턴 + knowledge/ 자동 저장</div>
+        </div>
+      </div>
+      <div class="rule-row">
+        <span class="rule-stage-badge">Workspace</span>
+        <div class="rule-content">
+          <div class="rule-file">project-workspace.md</div>
+          <div class="rule-failure">프로젝트 혼선 방지 — 워크스페이스 격리 + 컨텍스트 바운더리</div>
+        </div>
+      </div>
+      <div class="rule-row">
+        <span class="rule-stage-badge">Session</span>
+        <div class="rule-content">
+          <div class="rule-file">session-closing.md</div>
+          <div class="rule-failure">미완료 종료 방지 — 세션 종료 전 완료 체크 + 핸드오프 생성</div>
+        </div>
+      </div>
+      <div class="rule-row">
+        <span class="rule-stage-badge">Planning</span>
+        <div class="rule-content">
+          <div class="rule-file">requirements-brainstorming.md</div>
+          <div class="rule-failure">모호한 요청 방지 — 2축 분류 매트릭스 기반 요구사항 정제</div>
+        </div>
+      </div>
+      <div class="rule-row">
+        <span class="rule-stage-badge">Execution</span>
+        <div class="rule-content">
+          <div class="rule-file">eng-workflow.md</div>
+          <div class="rule-failure">엔지니어링 프로세스 이탈 방지 — 개발 워크플로우 표준 강제</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════ 5. RLVR -->
+  <section>
+    <div class="section-header">
+      <span class="section-label">§ 5</span>
+      <span class="section-title">RLVR Knowledge System — Reinforcement Learning via Feedback</span>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="rlvr-grid">
+      <!-- Detection Patterns -->
+      <div class="rlvr-card">
+        <div class="rlvr-card-title">Detection Patterns (5)</div>
+        <div class="pattern-list">
+          <div class="pattern-item">
+            <div class="pattern-dot"></div>
+            <span>정보 보정 — "아니야, 실제로는..." 형태의 사실 수정</span>
+          </div>
+          <div class="pattern-item">
+            <div class="pattern-dot"></div>
+            <span>실무 노하우 — 사용자의 업무 도메인 지식 주입</span>
+          </div>
+          <div class="pattern-item">
+            <div class="pattern-dot"></div>
+            <span>주의사항 — "이것은 하지 마세요" 형태의 제약 추가</span>
+          </div>
+          <div class="pattern-item">
+            <div class="pattern-dot"></div>
+            <span>거부 기록 — 명시적으로 거부된 제안·접근법 로그</span>
+          </div>
+          <div class="pattern-item">
+            <div class="pattern-dot"></div>
+            <span>선호도 — 출력 형식·어조·스타일 개인화 정보</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Knowledge Files -->
+      <div class="rlvr-card">
+        <div class="rlvr-card-title">Knowledge Files (4)</div>
+        <div class="knowledge-files">
+          <div class="knowledge-file">
+            <span class="knowledge-file-name">knowledge/writing.md</span>
+            <span class="knowledge-file-count">9 entries</span>
+          </div>
+          <div class="knowledge-file">
+            <span class="knowledge-file-name">knowledge/sales.md</span>
+            <span class="knowledge-file-count">1 entry</span>
+          </div>
+          <div class="knowledge-file">
+            <span class="knowledge-file-name">knowledge/preferences.md</span>
+            <span class="knowledge-file-count">8 entries</span>
+          </div>
+          <div class="knowledge-file">
+            <span class="knowledge-file-name">knowledge/_index.md</span>
+            <span class="knowledge-file-count">index</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Principles -->
+      <div class="rlvr-card">
+        <div class="rlvr-card-title">Retrieval Principles</div>
+        <div class="rlvr-principle">
+          <p style="margin-bottom:10px;"><strong>회의적 검색 원칙</strong> — 지식 파일을 진실로 취급하지 않는다. 확률적 힌트로만 활용하며, 항상 현재 컨텍스트와 교차 검증.</p>
+          <p style="margin-bottom:10px;"><strong>90일 유효기간</strong> — 90일 이상 경과한 지식은 자동으로 staleness 경고 적용. 최신 정보로 재검증 후 사용.</p>
+          <p><strong>/improve 명령</strong> — 누적 피드백 리뷰 및 SKILL.md 반영 트리거. 수동으로도 실행 가능.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Learning Loop -->
+    <div class="flow-loop" style="margin-top:14px;">
+      <span class="flow-node fn-blue">사용자 피드백 감지</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-node fn-purple">knowledge/ 패턴 분류</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-node fn-purple">knowledge/[domain].md 저장</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-node fn-green">/improve 실행</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-node fn-green">SKILL.md 보정 반영</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-node fn-blue">다음 응답에 즉시 적용</span>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════ 6. NATIVE SKILLS -->
+  <section>
+    <div class="section-header">
+      <span class="section-label">§ 6</span>
+      <span class="section-title">Native Skills — 31 Claude Code Skills</span>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="native-groups">
+      <!-- Engineering Workflow -->
+      <div>
+        <div class="native-group-label">Engineering Workflow — gstack 기반 (8)</div>
+        <div class="eng-wf-card">
+          <div class="eng-wf-header">
+            <span class="eng-wf-badge">Engineering Path</span>
+            <span class="eng-wf-subtitle">.claude/skills/ 직접 실행 — 에이전트 라우팅 없이 자체 완결형 워크플로우</span>
+          </div>
+          <table class="eng-wf-table">
+            <thead>
+              <tr><th>Command</th><th>Role</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="eng-wf-cmd">/plan-ceo-review</span></td>
+                <td><span class="eng-wf-role">Founder / CEO</span></td>
+                <td class="eng-wf-desc">문제 재정의, 10-star product 발견, 스코프 확장/유지/축소 모드</td>
+              </tr>
+              <tr>
+                <td><span class="eng-wf-cmd">/plan-eng-review</span></td>
+                <td><span class="eng-wf-role">Eng Manager</span></td>
+                <td class="eng-wf-desc">아키텍처, 데이터 흐름, 보안, 배포 전략 심층 리뷰</td>
+              </tr>
+              <tr>
+                <td><span class="eng-wf-cmd">/review</span></td>
+                <td><span class="eng-wf-role">Staff Engineer</span></td>
+                <td class="eng-wf-desc">CI 통과하지만 프로덕션에서 터지는 버그 탐지</td>
+              </tr>
+              <tr>
+                <td><span class="eng-wf-cmd">/ship</span></td>
+                <td><span class="eng-wf-role">Release Engineer</span></td>
+                <td class="eng-wf-desc">main 동기화 → 테스트 → 푸시 → PR 생성 자동화</td>
+              </tr>
+              <tr>
+                <td><span class="eng-wf-cmd">/browse</span></td>
+                <td><span class="eng-wf-role">QA Engineer</span></td>
+                <td class="eng-wf-desc">헤드리스 브라우저로 페이지 조작, 스크린샷, 콘솔 에러 확인</td>
+              </tr>
+              <tr>
+                <td><span class="eng-wf-cmd">/qa</span></td>
+                <td><span class="eng-wf-role">QA Lead</span></td>
+                <td class="eng-wf-desc">git diff 분석 → 영향받는 페이지 자동 테스트 → QA 리포트</td>
+              </tr>
+              <tr>
+                <td><span class="eng-wf-cmd">/setup-browser-cookies</span></td>
+                <td><span class="eng-wf-role">Session Manager</span></td>
+                <td class="eng-wf-desc">실제 브라우저(Chrome, Arc 등)에서 쿠키 가져오기</td>
+              </tr>
+              <tr>
+                <td><span class="eng-wf-cmd">/eng-retro</span></td>
+                <td><span class="eng-wf-role">Eng Manager</span></td>
+                <td class="eng-wf-desc">git 커밋 분석 기반 주간 엔지니어링 회고</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Business Domain -->
+      <div>
+        <div class="native-group-label">Business Domain Mega-Skills (16)</div>
+        <div class="native-chips">
+          <span class="native-chip">business-dev</span>
+          <span class="native-chip">compliance</span>
+          <span class="native-chip">customer-support</span>
+          <span class="native-chip">data-analysis</span>
+          <span class="native-chip">design</span>
+          <span class="native-chip">development</span>
+          <span class="native-chip">enterprise-search</span>
+          <span class="native-chip">finance</span>
+          <span class="native-chip">hr</span>
+          <span class="native-chip">legal</span>
+          <span class="native-chip">marketing</span>
+          <span class="native-chip">plugin-management</span>
+          <span class="native-chip">pr</span>
+          <span class="native-chip">productivity</span>
+          <span class="native-chip">sales</span>
+          <span class="native-chip">security</span>
+        </div>
+      </div>
+
+      <!-- PM Mega-Skills -->
+      <div>
+        <div class="native-group-label">PM Mega-Skills (7)</div>
+        <div class="native-chips">
+          <span class="native-chip eng">pm-analytics</span>
+          <span class="native-chip eng">pm-core</span>
+          <span class="native-chip eng">pm-discovery</span>
+          <span class="native-chip eng">pm-execution</span>
+          <span class="native-chip eng">pm-gtm</span>
+          <span class="native-chip eng">pm-research</span>
+          <span class="native-chip eng">pm-strategy</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════ 7. COMMANDS -->
+  <section>
+    <div class="section-header">
+      <span class="section-label">§ 7</span>
+      <span class="section-title">CLI Commands — 5</span>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="commands-grid">
+      <div class="cmd-card">
+        <div class="cmd-name">/ask</div>
+        <div class="cmd-desc">비즈니스 질문에 전문가 관점으로 즉답. <code>/route</code>의 간편 버전. 명확한 단일 도메인 질문에 적합.</div>
+      </div>
+      <div class="cmd-card">
+        <div class="cmd-name">/route</div>
+        <div class="cmd-desc">비즈니스 요청을 전문가 에이전트에 라우팅. 에이전트 파일 + 스킬 파일을 명시적으로 읽고 전문 관점으로 응답.</div>
+      </div>
+      <div class="cmd-card">
+        <div class="cmd-name">/team</div>
+        <div class="cmd-desc">현재 사용 가능한 전문가 에이전트 팀과 보유 스킬 목록 표시. 팀 구성 현황 파악용.</div>
+      </div>
+      <div class="cmd-card">
+        <div class="cmd-name">/improve</div>
+        <div class="cmd-desc">학습 지식 리뷰. 누적된 피드백 현황 확인 및 SKILL.md 반영 트리거. RLVR 수동 실행.</div>
+      </div>
+      <div class="cmd-card">
+        <div class="cmd-name">/health</div>
+        <div class="cmd-desc">프로젝트 건강도 진단. 스킬 크기, 중복, 학습 현황, 구조 점수(A–F) 산출. 유지보수 인사이트 제공.</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  Business AI Team — System Architecture &nbsp;·&nbsp; 16 Agents · 18 Plugins · 60 Plugin Skills · 31 Native Skills · 14 Rules · 5 Commands &nbsp;·&nbsp; Generated 2026-04-03
+</footer>
+
+</body>
+</html>
