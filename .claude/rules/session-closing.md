@@ -9,6 +9,13 @@
    - 동일 도메인 3건 이상 누적 시 → 해당 SKILL.md에 `## 실무 보정 사항` 자동 추가
    - `feedback-learning.md` 규칙에 따라 처리
 
+0.2. **Worklog 전파** ← `~/.claude/rules/worklog-enforcement.md` 규칙 참조
+   - 오늘 Daily 노트가 없으면 → `/worklog` 실행하여 자동 생성
+   - 이번 세션에서 작업한 프로젝트의 `Projects/*.md` "최근 활동" 섹션 갱신
+   - feat/fix 커밋이 있었으면 → `Tasks/` 에 Task 노트 자동 파생 + Project "태스크" 섹션에 링크
+   - Daily 30개+ AND Concepts/ 비어있으면 → `/worklog insights` 실행 권고 (60개+ 시 자동 실행)
+   - 전파 체크리스트 확인: Daily 존재 / Project 갱신 / Task 파생 완료
+
 0.5. **엔트로피 정리** ← `entropy-cleanup.md` 규칙 참조
    - fresh-context 에이전트를 스폰하여 이번 세션의 변경사항 정합성 검사
    - 스테일 주석, 미사용 임포트, 문서 불일치 자동 수정
