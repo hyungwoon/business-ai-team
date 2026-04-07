@@ -16,8 +16,8 @@ business-ai-team/
 ├── plugins/               # 17 domain plugins, 110+ skills (best practices)
 ├── knowledge/             # RLVR feedback storage (auto-learning)
 ├── .claude/skills/        # 31 native skills (23 business + 8 engineering)
-├── .claude/rules/         # 14 rules (expert-routing, requirements-brainstorming, feedback-learning, session-reminder, session-closing, project-workspace, eng-workflow, plan-compete, contract-enforcement, complexity-decomposer, context-compaction, entropy-cleanup, fresh-context-verification, telemetry-rubrics)
-├── .claude/commands/      # 5 commands (/ask, /route, /team, /improve, /health)
+├── .claude/rules/         # 14 rules (expert-routing, requirements-brainstorming, feedback-learning, session-reminder, session-closing, project-workspace, eng-workflow, plan-compete, contract-enforcement, complexity-decomposer, context-compaction, entropy-cleanup, fresh-context-verification, skill-budget)
+├── .claude/commands/      # 6 commands (/ask, /route, /team, /improve, /health, /skill-test)
 └── projects/              # Client deliverables (LOCAL ONLY)
 ```
 

@@ -163,12 +163,10 @@ git commit -m "chore: 세션 후 엔트로피 정리
 - **session-closing.md**: 0.5단계로 삽입 (학습 반영 후, _context.md 전)
 - **ai-slop-cleaner**: 기존 정리 스킬과 보완적 — ai-slop-cleaner는 코드 품질, 이 규칙은 정합성
 - **sync-docs**: 문서 동기화 부분에서 활용
-- **telemetry-rubrics.md**: entropy_delta 점수 기록
 - **feedback-learning.md**: knowledge/ 항목 추가는 feedback-learning이, 정리는 이 규칙의 3.5단계(autoDream)가 담당
 
 ## 금지 사항
 
-- **절대 금지**: 정리 없이 세션 종료 (session-closing 체크리스트에 포함됨)
-- **절대 금지**: 정리 범위를 전체 프로젝트로 확장 (이번 세션 변경분만)
-- **절대 금지**: 플래그 항목을 자동 수정 (사용자 판단 필요)
-- **절대 금지**: 정리 커밋과 기능 커밋을 합치기 (별도 커밋 필수)
+- **금지**: 정리 범위를 전체 프로젝트로 확장 (이번 세션 변경분만)
+- **금지**: 플래그 항목을 자동 수정 (사용자 판단 필요)
+- **주의**: 정리 커밋과 기능 커밋을 합치기 (별도 커밋 권장)

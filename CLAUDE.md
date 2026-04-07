@@ -1,5 +1,9 @@
 # CLAUDE.md
 
+> **CRITICAL**: 비즈니스 도메인 응답 전 반드시 agents/[domain].md를 Read 도구로 실제 읽기. 기억/추정 대체 절대 금지.
+> **CRITICAL**: 응답 맨 앞에 `> **담당**: [Agent] | 참조 스킬: [Skill]` 헤더 필수 포함.
+> **CRITICAL**: `git add .` 사용 금지 — projects/ 유출 위험. 구체적 파일명으로 스테이징.
+
 ## 프로젝트 개요
 비즈니스를 돕는 범용 AI 전문가 팀 시스템. 마케팅, 리서치, 전략 수립, 문서 작성 등 다양한 비즈니스 업무를 지원한다.
 
@@ -12,6 +16,7 @@
 | `/team` | 현재 사용 가능한 전문가 에이전트 팀과 보유 스킬 목록 표시 |
 | `/improve` | 학습 지식 리뷰 — 누적된 피드백 현황 확인 및 SKILL.md 반영 |
 | `/health` | 프로젝트 건강도 진단 — 스킬 크기, 중복, 학습 현황, 구조 점수(A-F) |
+| `/skill-test [스킬명]` | 스킬 품질 테스트 — Evaluation/A/B 테스트, 포트폴리오 점검, 디스크립션 최적화 |
 
 ## 에이전트 매핑 테이블 (라우팅 힌트)
 
@@ -92,3 +97,8 @@
 - **학습 지식**: `knowledge/` (RLVR — 사용자 피드백 자동 학습, `/improve`로 리뷰)
 - **결과물 저장**: `projects/` (로컬 전용, Git 제외)
 
+---
+
+> **REMINDER**: 비즈니스 응답 전 agents/*.md + SKILL.md + knowledge/preferences.md 각각 별도 Read 호출 필수.
+> **REMINDER**: `> **담당**:` 헤더 없는 비즈니스 응답 전달 금지.
+> **REMINDER**: projects/ 폴더는 절대 git에 추가하지 않는다.
