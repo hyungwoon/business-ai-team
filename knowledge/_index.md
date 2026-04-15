@@ -20,9 +20,9 @@
 | Product | `product.md` | 0 | 0 | 0 | 0 | 0 | — |
 | Productivity | `productivity.md` | 0 | 0 | 0 | 0 | 0 | — |
 | Research | `research.md` | 0 | 0 | 0 | 0 | 0 | — |
-| Sales | `sales.md` | 1 | 0 | 0 | 0 | 1 | — |
+| Sales | `sales.md` | 1 | 0 | 0 | 0 | 1 | 2026-04-15 |
 | Security | `security.md` | 0 | 0 | 0 | 0 | 0 | — |
-| Writing | `writing.md` | 1 | 5 | 3 | 0 | 9 | — |
+| Writing | `writing.md` | 1 | 5 | 3 | 0 | 9 | 2026-04-15 ✓반영 |
 | **합계** | | **1** | **5** | **3** | **0** | **9** | |
 
 ## 도메인 공통
@@ -38,6 +38,7 @@
 - **수동 리뷰**: `/improve` 커맨드로 누적된 학습 지식 리뷰 및 SKILL.md 반영
 - **카운트 갱신**: 항목 추가/삭제 시 이 파일의 카운트 테이블도 함께 업데이트
 - **Skeptical Retrieval**: knowledge 항목은 힌트이지 진실이 아님. 90일+ 경과 항목은 현재 상태와 대조 검증 후 사용 (`expert-routing.md` 6단계 참조)
+- **✓반영 마커**: `last_cleaned` 컬럼의 "✓반영"은 해당 도메인의 knowledge가 이미 agent/SKILL 레이어에 직접 배선되어 별도 SKILL.md 복사가 불필요함을 뜻함 (예: `writing.md`는 `agents/writing.md`가 직접 참조)
 
 ## 파일 자동 생성
 

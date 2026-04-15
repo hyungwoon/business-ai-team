@@ -1,6 +1,8 @@
 # Writing — 학습 지식
 
 > 문서작성 도메인에서 사용자 피드백으로 학습된 지식을 기록합니다.
+>
+> **반영 상태 (2026-04-15)**: 이 파일은 `agents/writing.md`의 라우팅 테이블에서 "형운 보이스 콘텐츠 → `knowledge` → `writing.md 보이스 프로파일`"로 직접 참조됨. 별도 `plugins/writing/` 또는 `plugins/marketing/brand-voice/`에 복사하지 않음 (drift 방지). 신규 학습 추가 시 이 파일에 append만 하면 자동 적용.
 
 ## 정보 보정
 
