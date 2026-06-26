@@ -68,7 +68,7 @@ info "  agents: ${AGENT_COUNT}개, skills: ${SKILL_COUNT}개 설치 완료"
 info "슬래시 커맨드 설치 중..."
 mkdir -p "$COMMANDS_DIR"
 
-for CMD in route.md ask.md team.md improve.md health.md; do
+for CMD in route.md ask.md team.md improve.md health.md skill-test.md; do
     SRC="$COMMANDS_DIR/$CMD"
     CMD_SRC="$SCRIPT_DIR/.claude/commands/$CMD"
     if [[ ! -f "$CMD_SRC" ]]; then
@@ -123,7 +123,7 @@ echo ""
 echo "설치 경로:"
 echo "  에이전트/스킬: $INSTALL_DIR/"
 echo "  학습 지식:    $INSTALL_DIR/knowledge/"
-echo "  커맨드:       $COMMANDS_DIR/{route,ask,team,improve,health}.md"
+echo "  커맨드:       $COMMANDS_DIR/{route,ask,team,improve,health,skill-test}.md"
 echo "  규칙:         $RULES_DIR/{expert-routing,requirements-brainstorming,feedback-learning}.md"
 echo ""
 echo "사용법:"
