@@ -54,7 +54,7 @@
 
 ## 실행 품질 보장 시스템
 
-> 장시간 자율 에이전트 워크플로우의 8가지 실패 모드를 체계적으로 방지하는 규칙 세트.
+> 장시간 자율 에이전트 워크플로우의 6가지 실패 모드를 체계적으로 방지하는 규칙 세트.
 > 모든 규칙은 `.claude/rules/`에 위치하며, 에이전트 모드(autopilot, ralph, ultrawork)와 자동 연동된다.
 
 | 단계 | 실패 모드 | 대응 규칙 | 핵심 메커니즘 |
@@ -65,7 +65,6 @@
 | 실행 | 복잡성 공포 | `complexity-decomposer.md` | 복잡 태스크 자동 분해 + 스텁/TODO 하드 블록 |
 | 사후 | 검증 게으름 | `fresh-context-verification.md` | 독립 에이전트가 fresh context에서 검증 → PASS/FAIL |
 | 사후 | 엔트로피 증가 | `entropy-cleanup.md` | 세션 종료 시 blast radius 분석 + 자동 정리 |
-| 메타 | 측정 불가 | `telemetry-rubrics.md` | 5개 지표 0-5점 루브릭 + 주간 트렌드 분석 |
 
 ### 실행 순서 (자동)
 
@@ -76,7 +75,6 @@
   → 실행 + 주기적 계약 검증 (contract-enforcement.md)
   → 태스크 완료 시 독립 검증 (fresh-context-verification.md)
   → 세션 종료 시 엔트로피 정리 (entropy-cleanup.md)
-  → 텔레메트리 기록 (telemetry-rubrics.md)
   → 핸드오프 생성 (context-compaction.md) — 미완료 시
 ```
 
@@ -139,7 +137,7 @@ business-ai-team/
 | Modify routing rules | `.claude/rules/expert-routing.md` | Mandatory procedures + forbidden actions + domain boundary routing |
 | Modify brainstorming gate | `.claude/rules/requirements-brainstorming.md` | 심층 인터뷰 게이트 (2축 분류 + 7개 인터뷰 기법, 질문 수 무제한) |
 | Modify feedback detection | `.claude/rules/feedback-learning.md` | 5종 감지 패턴 (정보 보정, 실무 노하우, 주의사항, 거부 기록, 선호도) |
-| Quality assurance rules | `.claude/rules/plan-compete.md` + 6 more | 8가지 실패 모드 대응 (plan-compete, contract-enforcement, complexity-decomposer, context-compaction, entropy-cleanup, fresh-context-verification, telemetry-rubrics) |
+| Quality assurance rules | `.claude/rules/plan-compete.md` + 5 more | 6가지 실패 모드 대응 (plan-compete, contract-enforcement, complexity-decomposer, context-compaction, entropy-cleanup, fresh-context-verification) |
 | Session lifecycle | `.claude/rules/session-closing.md`, `project-workspace.md` | 세션 종료 체크리스트, 프로젝트 폴더링 규칙 |
 | Engineering workflow | `.claude/rules/eng-workflow.md` | gstack 기반 엔지니어링 스킬 가이드 |
 | Review learning status | `knowledge/_index.md` | Domain counts; `/improve` command |
