@@ -235,7 +235,8 @@ System control layer: 4 routing rules + 5 slash commands + 31 native skills. The
     ├── route.md
     ├── team.md
     ├── improve.md
-    └── health.md               # NEW: project health dashboard
+    ├── health.md               # NEW: project health dashboard
+    └── skill-test.md
 ```
 
 ### .claude/ where to look
